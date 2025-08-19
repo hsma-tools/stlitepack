@@ -3,17 +3,17 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "vidigi"
+name = "stlitepack"
 dynamic = ["version"]
-description = "A package for creating animated visualisations of queues and pathways from historical data or simulations"
-readme = "README.md"
-license = "MIT"
+description = "A package for converting streamlit apps to stlite apps to remove the need for hosting"
+readme = { file = "README.md", content-type = "text/markdown" }
+license = "Apache-2.0"
 requires-python = ">=3.9"
 authors = [
     { name = "Sammi Rosser", email = "s.j.rosser@exeter.ac.uk" },
 ]
 classifiers = [
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -25,8 +25,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/hsma-tools/vidigi"
-"Bug Tracker" = "https://github.com/hsma-tools/vidigi/issues"
+Homepage = "https://github.com/Bergam0t/stlitepack"
+"Bug Tracker" = "https://github.com/Bergam0t/stlitepack/issues"
 
 [tool.hatch.version]
 path = "stlitepack/__init__.py"
