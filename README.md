@@ -40,7 +40,7 @@ Contributions, feature requests, and feedback are welcome!
 Open an issue or submit a pull request to help improve stlitepack.
 
 ## 📜 License
-MIT License. See LICENSE for details.
+Apache 2.0 License. See LICENSE for details.
 
 ## Acknowledgements
 
