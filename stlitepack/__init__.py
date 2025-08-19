@@ -26,7 +26,7 @@ Usage Example
 
 The generated app will be available at ``docs/index.html`` by default.
 """
-__version__ = '0.1.0'
+__version__ = '0.0.1'
 __author__ = 'Sammi Rosser'
 
 from .pack import pack

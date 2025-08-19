@@ -24,6 +24,7 @@ TEMPLATE = """<!doctype html>
     <streamlit-app>
 {code}
     </streamlit-app>
+    {requirements}
   </body>
 </html>
 """
@@ -65,6 +66,7 @@ def pack(
         requirements: list[str] | None = None,
         title: str = "App",
         output_dir: str = "docs",
+        output_file: str = "index.html",
         stylesheet_version: str = "0.77.0",
         js_bundle_version: str = "0.77.0",
         use_raw_api: bool = False
@@ -128,21 +130,38 @@ def pack(
 
     # Normalize requirements
     if requirements is None:
-        reqs = "[]"
+        if use_raw_api:
+            reqs = "[]"
+        else:
+            reqs = ""
     else:
-        req_list = [f'"{req}"' for req in requirements]
-        reqs = "[" + ", ".join(req_list) + "]"
+        if isinstance(requirements, str):
+            with open(requirements) as f:
+                requirements = [line.split("#", 1)[0].strip() for line in f if line.strip() and not line.strip().startswith("#")]
+
+        if use_raw_api:
+            req_list = [f'"{req}"' for req in requirements]
+            reqs = "[" + ", ".join(req_list) + "]"
+        else:
+            req_list = [f'{req}' for req in requirements]
+            reqs = "<app-requirements>\n" + "\n".join(req_list) + "\n</app-requirements>"
 
     # Fill template
     if use_raw_api:
-        template = TEMPLATE_MOUNT
-    else:
-        template = TEMPLATE
-
-    html = template.format(
+        html = TEMPLATE_MOUNT.format(
         title=title,
         entrypoint=app_path.name,
-        requirements=json.dumps(reqs),
+        requirements=reqs,
+        code=code,
+        stylesheet_version=stylesheet_version,
+        js_bundle_version=js_bundle_version
+    )
+
+    else:
+        html = TEMPLATE.format(
+        title=title,
+        entrypoint=app_path.name,
+        requirements=reqs,
         code=code,
         stylesheet_version=stylesheet_version,
         js_bundle_version=js_bundle_version
@@ -151,7 +170,7 @@ def pack(
     # Write to output dir
     outdir = Path(output_dir)
     outdir.mkdir(parents=True, exist_ok=True)
-    outfile = outdir / "index.html"
+    outfile = outdir / output_file
     outfile.write_text(html, encoding="utf-8")
 
     print(f"Packed app written to {outfile}")
