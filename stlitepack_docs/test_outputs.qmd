@@ -5,12 +5,18 @@ format: html
 
 # Test Results
 
-- [simplest/docs](simplest/docs/index.html)
-- [single_page_with_reqs/from_reqs_file/docs](single_page_with_reqs/from_reqs_file/docs/index.html)
-- [single_page_with_reqs/from_reqs_file_loose/docs](single_page_with_reqs/from_reqs_file_loose/docs/index.html)
-- [single_page_with_reqs/from_reqs_file_loose_raw_api/docs](single_page_with_reqs/from_reqs_file_loose_raw_api/docs/index.html)
-- [single_page_with_reqs/from_reqs_file_raw_api/docs](single_page_with_reqs/from_reqs_file_raw_api/docs/index.html)
-- [single_page_with_reqs/from_reqs_file_strict/docs](single_page_with_reqs/from_reqs_file_strict/docs/index.html)
-- [single_page_with_reqs/from_reqs_file_strict_raw_api/docs](single_page_with_reqs/from_reqs_file_strict_raw_api/docs/index.html)
-- [single_page_with_reqs/from_reqs_list/docs](single_page_with_reqs/from_reqs_list/docs/index.html)
-- [single_page_with_reqs/from_reqs_list_raw_api/docs](single_page_with_reqs/from_reqs_list_raw_api/docs/index.html)
+
+## simplest
+
+- [simplest](..\tests\simplest\docs\index.html)
+
+## single_page_with_reqs
+
+  - [from_reqs_file](..\tests\single_page_with_reqs\from_reqs_file\docs\index.html)
+  - [from_reqs_file_loose](..\tests\single_page_with_reqs\from_reqs_file_loose\docs\index.html)
+  - [from_reqs_file_loose_raw_api](..\tests\single_page_with_reqs\from_reqs_file_loose_raw_api\docs\index.html)
+  - [from_reqs_file_raw_api](..\tests\single_page_with_reqs\from_reqs_file_raw_api\docs\index.html)
+  - [from_reqs_file_strict](..\tests\single_page_with_reqs\from_reqs_file_strict\docs\index.html)
+  - [from_reqs_file_strict_raw_api](..\tests\single_page_with_reqs\from_reqs_file_strict_raw_api\docs\index.html)
+  - [from_reqs_list](..\tests\single_page_with_reqs\from_reqs_list\docs\index.html)
+  - [from_reqs_list_raw_api](..\tests\single_page_with_reqs\from_reqs_list_raw_api\docs\index.html)

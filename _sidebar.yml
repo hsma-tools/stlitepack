@@ -11,7 +11,9 @@ website:
         section: Packing Functions
       section: Reference
     - href: stlitepack_docs/test_outputs.qmd
-      section: Tests
+      text: Tests
+    - href: LICENCE.md
+      text: Licence
     id: reference
     search: true
     style: docked

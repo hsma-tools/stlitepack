@@ -49,8 +49,10 @@ quartodoc:
       - section: "Reference"
         contents:
           - "{{ contents }}"
-      - section: "Tests"
+      - text: "Tests"
         href: stlitepack_docs/test_outputs.qmd
+      - text: "Licence"
+        href: LICENCE.md
 
   sections:
     - title: Packing Functions
