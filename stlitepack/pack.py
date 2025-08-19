@@ -23,8 +23,8 @@ TEMPLATE = """<!doctype html>
   <body>
     <streamlit-app>
 {code}
+{requirements}
     </streamlit-app>
-    {requirements}
   </body>
 </html>
 """
@@ -67,8 +67,8 @@ def pack(
         title: str = "App",
         output_dir: str = "docs",
         output_file: str = "index.html",
-        stylesheet_version: str = "0.77.0",
-        js_bundle_version: str = "0.77.0",
+        stylesheet_version: str = "0.84.1",
+        js_bundle_version: str = "0.84.1",
         use_raw_api: bool = False
         ):
     """
