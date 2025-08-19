@@ -18,12 +18,12 @@ pip install stlitepack
 
 ```python
 from stlitepack import pack
-```
-
 
 # Pack your Streamlit app (e.g., "app.py") into a stlite bundle
-pack("app.py", output_dir="dist")
-This will create a dist/ folder containing your stlite-ready app files, which you can open directly in the browser or serve as static files.
+pack("app.py", output_dir="docs")
+```
+
+This will create a docs/ folder containing your stlite-ready app files, which you can serve as static files.
 
 ## 🔮 Roadmap
 
