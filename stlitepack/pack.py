@@ -1,7 +1,34 @@
 import json
 from pathlib import Path
 
-TEMPLATE = """<!DOCTYPE html>
+TEMPLATE = """<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Stlite App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@stlite/browser@{stylesheet_version}/build/stlite.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@stlite/browser@{js_bundle_version}/build/stlite.js"
+    ></script>
+  </head>
+  <body>
+    <streamlit-app>
+{code}
+    </streamlit-app>
+  </body>
+</html>
+"""
+
+TEMPLATE_MOUNT = """<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -35,11 +62,12 @@ TEMPLATE = """<!DOCTYPE html>
 
 def pack(
         app_file: str,
-        requirements,
+        requirements: list[str] | None = None,
         title: str = "App",
         output_dir: str = "docs",
         stylesheet_version: str = "0.77.0",
-        js_bundle_version: str = "0.76.0"
+        js_bundle_version: str = "0.77.0",
+        use_raw_api: bool = False
         ):
     """
     Pack a single-page Streamlit app into a stlite-compatible index.html file.
@@ -61,6 +89,8 @@ def pack(
     output_dir : str, optional
         Directory where the generated ``index.html`` will be written.
         Default is ``"dist"``.
+    use_raw_api : bool, optional
+        If True, will use the version of the template that calls the `mount()` API explicitly
 
     Raises
     ------
@@ -97,16 +127,19 @@ def pack(
     code = Path(app_file).read_text(encoding="utf-8")
 
     # Normalize requirements
-    if isinstance(requirements, str) and requirements.endswith(".txt"):
-        reqs = Path(requirements).read_text(encoding="utf-8").splitlines()
-        reqs = [r.strip() for r in reqs if r.strip()]
-    elif isinstance(requirements, list):
-        reqs = requirements
+    if requirements is None:
+        reqs = "[]"
     else:
-        raise ValueError("requirements must be a list or a path to requirements.txt")
+        req_list = [f'"{req}"' for req in requirements]
+        reqs = "[" + ", ".join(req_list) + "]"
 
     # Fill template
-    html = TEMPLATE.format(
+    if use_raw_api:
+        template = TEMPLATE_MOUNT
+    else:
+        template = TEMPLATE
+
+    html = template.format(
         title=title,
         entrypoint=app_path.name,
         requirements=json.dumps(reqs),
