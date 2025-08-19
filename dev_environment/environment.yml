@@ -6,6 +6,7 @@ dependencies:
   - flake8
   - hatch
   - pip=24.0
+  - python=3.11
   - pytest=8.3.2
   - quartodoc=0.11.1
   - pytest-html=4.1.1
