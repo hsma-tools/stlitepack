@@ -10,6 +10,8 @@ website:
         - reference/pack.pack.qmd
         section: Packing Functions
       section: Reference
+    - href: stlitepack_docs/test_outputs.qmd
+      section: Tests
     id: reference
     search: true
     style: docked

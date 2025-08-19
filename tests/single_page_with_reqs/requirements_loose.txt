@@ -1,0 +1,10 @@
+# Core dependencies - allow latest versions
+streamlit>=1.0
+pandas>=1.5
+
+# Numpy and matplotlib with no upper cap
+numpy>=1.20
+matplotlib>=3.5
+
+# Plotly can be big, but let's allow flex here too
+plotly>=5.0

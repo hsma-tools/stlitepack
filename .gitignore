@@ -1,3 +1,4 @@
 .quarto/
 *.pyc
-tests/**/index.html
+
+/.quarto/

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.77.0/build/style.css"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import * as stlite from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.77.0/build/stlite.js";
+      stlite.mount(
+        {
+          requirements: ["streamlit==1.36.0", "pandas==2.2.2", "numpy>=1.26,<2.0", "plotly==5.22.0", "matplotlib>=3.8,<3.10"],
+          entrypoint: "single_page_with_reqs.py",
+          files: {
+            "single_page_with_reqs.py": `
+import streamlit as st
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import matplotlib.pyplot as plt
+
+st.title("stlitepack Test App")
+
+# Create a sample dataframe
+np.random.seed(42)
+df = pd.DataFrame({
+    "x": np.arange(10),
+    "y": np.random.randn(10).cumsum(),
+    "category": np.random.choice(["A", "B"], size=10)
+})
+
+st.subheader("📊 DataFrame")
+st.dataframe(df)
+
+# Plotly plot
+st.subheader("📈 Plotly Line Plot")
+fig = px.line(df, x="x", y="y", color="category", title="Plotly Line Plot")
+st.plotly_chart(fig)
+
+# Matplotlib plot
+st.subheader("📉 Matplotlib Scatter Plot")
+fig, ax = plt.subplots()
+for cat, group in df.groupby("category"):
+    ax.scatter(group["x"], group["y"], label=cat)
+ax.legend()
+ax.set_title("Matplotlib Scatter Plot")
+st.pyplot(fig)
+
+            `
+          },
+        },
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>

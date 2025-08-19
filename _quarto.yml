@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: docs
+  pre-render: stlitepack_docs/make_test_index.py
   # render:
   # - "!docs/**"
 
@@ -48,6 +49,8 @@ quartodoc:
       - section: "Reference"
         contents:
           - "{{ contents }}"
+      - section: "Tests"
+        href: stlitepack_docs/test_outputs.qmd
 
   sections:
     - title: Packing Functions

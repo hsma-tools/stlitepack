@@ -3,11 +3,13 @@
 ```python
 pack.pack(
     app_file,
-    requirements,
+    requirements=None,
     title='App',
     output_dir='docs',
+    output_file='index.html',
     stylesheet_version='0.77.0',
-    js_bundle_version='0.76.0',
+    js_bundle_version='0.77.0',
+    use_raw_api=False,
 )
 ```
 
@@ -22,9 +24,10 @@ The resulting HTML can be served as static content (e.g., via GitHub Pages).
 | Name         | Type               | Description                                                                                                     | Default    |
 |--------------|--------------------|-----------------------------------------------------------------------------------------------------------------|------------|
 | app_file     | str                | Path to the Streamlit application file (e.g., ``"app.py"``).                                                    | _required_ |
-| requirements | str or list of str | Either:   - Path to a ``requirements.txt`` file (str), or   - A list of required Python packages (list of str). | _required_ |
+| requirements | str or list of str | Either:   - Path to a ``requirements.txt`` file (str), or   - A list of required Python packages (list of str). | `None`     |
 | title        | str                | Title to insert into the HTML ``<title>`` tag. Default is ``"stlite app"``.                                     | `'App'`    |
 | output_dir   | str                | Directory where the generated ``index.html`` will be written. Default is ``"dist"``.                            | `'docs'`   |
+| use_raw_api  | bool               | If True, will use the version of the template that calls the `mount()` API explicitly                           | `False`    |
 
 ## Raises {.doc-section .doc-section-raises}
 
