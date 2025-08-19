@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction – stlitepack</title>
+<title>index – stlitepack</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -276,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../stlitepack_docs/introduction.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../stlitepack_docs/index.html">Introduction</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -331,14 +331,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../stlitepack_docs/introduction.html" class="sidebar-item-text sidebar-link active">
+  <a href="../stlitepack_docs/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Reference</span></a>
+ <span class="menu-text">stlitepack Function Reference</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -366,10 +366,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Tests</span></span>
-  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stlitepack_docs/test_outputs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tests</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stlitepack_docs/licence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Licence</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -377,66 +385,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Introduction</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
 
 
 <section id="stlitepack" class="level1">
 <h1>stlitepack</h1>
-<p><code>stlitepack</code> is a lightweight Python package that helps you transform existing <a href="https://streamlit.io">Streamlit</a> apps into <a href="https://github.com/whitphx/stlite">stlite</a> apps — fully client-side, serverless apps that can be deployed as static files (e.g., via GitHub Pages).</p>
-<p>With <code>stlitepack</code>, you can package a Streamlit app into a single <code>index.html</code> file that runs entirely in the browser.</p>
-<hr>
-<section id="why-stlitepack" class="level2">
-<h2 class="anchored" data-anchor-id="why-stlitepack">✨ Why stlitepack?</h2>
-<p>Streamlit is a fantastic framework for rapid prototyping and data apps. But deploying small, simple apps often requires a server, which adds complexity.</p>
-<p><strong>stlite</strong> solves this by compiling Streamlit to WebAssembly and running it directly in the browser. <code>stlitepack</code> makes the transition easy: it takes your existing <code>app.py</code> and turns it into a stlite-ready bundle.</p>
-<hr>
-</section>
-<section id="features" class="level2">
-<h2 class="anchored" data-anchor-id="features">🚀 Features</h2>
+<p>stlitepack is a Python utility that helps you turn your existing Streamlit apps into <a href="https://github.com/whitphx/stlite">stlite apps — lightweight, browser-only Streamlit apps that run entirely in the client without a server</a>.</p>
+<p>With stlitepack, you can:</p>
 <ul>
-<li>✅ <strong>Single-page app packaging</strong> into <code>index.html</code></li>
-<li>✅ Support for requirements via <code>requirements.txt</code> or inline list</li>
-<li>✅ Function-call based API (<code>pack()</code>)</li>
+<li>📦 Pack your Streamlit app into a stlite-ready format (current functionality).</li>
+<li>🚀 (Upcoming) Generate GitHub Actions workflows to auto-deploy your app to GitHub Pages.</li>
+<li>🗂️ (Planned) Add support for multi-page apps, external resources, and more.</li>
 </ul>
-<p>Planned: - 🔜 Multi-page app support - 🔜 Resource bundling (images, datasets, assets) - 🔜 GitHub Pages auto-deploy (via GitHub Actions)</p>
-<hr>
-</section>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">📦 Installation</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install stlitepack</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="quickstart" class="level2">
-<h2 class="anchored" data-anchor-id="quickstart">Quickstart</h2>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">🚀 Usage</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"app.py"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    requirements<span class="op">=</span><span class="st">"requirements.txt"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"My App"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"docs"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will generate:</p>
-<pre><code>dist/
-└── index.html</code></pre>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pack your Streamlit app (e.g., "app.py") into a stlite bundle</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pack(<span class="st">"app.py"</span>, output_dir<span class="op">=</span><span class="st">"docs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will create a docs/ folder containing your stlite-ready app files, which you can serve as static files.</p>
+</section>
+<section id="roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="roadmap">🔮 Roadmap</h2>
+<ul>
+<li>v0.1: Single-page app packing via function</li>
+<li>v0.2: GitHub Pages auto-deploy (via GitHub Actions workflow generation)</li>
+<li>v0.3: TOML or YAML file support as optional alternative to the packing function</li>
+<li>v0.4: Multi-page app support</li>
+<li>v0.5: Resource bundling (images, CSVs, assets, etc.)</li>
+<li>v0.6: Auto-handling of stlite-specific features (e.g.&nbsp;asyncio vs sleep)</li>
+<li>v1.0: Full toolkit for packaging, deploying, and managing stlite apps</li>
+</ul>
+</section>
+<section id="contributing" class="level2">
+<h2 class="anchored" data-anchor-id="contributing">🤝 Contributing</h2>
+<p>Contributions, feature requests, and feedback are welcome! Open an issue or submit a pull request to help improve stlitepack.</p>
+</section>
+<section id="license" class="level2">
+<h2 class="anchored" data-anchor-id="license">📜 License</h2>
+<p>Apache 2.0 License. See LICENSE for details.</p>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<ul>
+<li><a href="https://github.com/whitphx">whitphx</a> for creating the amazing <a href="https://github.com/whitphx/stlite">stlite</a> framework!</li>
+</ul>
+</section>
+<section id="generative-ai-use-disclosure" class="level2">
+<h2 class="anchored" data-anchor-id="generative-ai-use-disclosure">Generative AI Use Disclosure</h2>
+<p>This package was developed with the assistance of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner. All code and design decisions were reviewed and finalized by a human, and ChatGPT’s output was used as a foundation rather than a final product.</p>
 
 
 </section>

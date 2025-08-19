@@ -1,7 +1,9 @@
 project:
   type: website
   output-dir: docs
-  pre-render: stlitepack_docs/make_test_index.py
+  pre-render:
+    - stlitepack_docs/make_test_index.py
+    - stlitepack_docs/sync_docs.py
   # render:
   # - "!docs/**"
 
@@ -40,23 +42,23 @@ quartodoc:
 
     search: true
     title: "stlitepack"
-    subtitle: "Simple packaging for turning Streamlit apps into stlite apps with minimal fuss"
+    subtitle: "A small package for turning Streamlit apps into stlite apps with minimal fuss"
     collapse-level: 2
 
     contents:
       - text: "Introduction"
-        href: stlitepack_docs/introduction.qmd
-      - section: "Reference"
+        href: stlitepack_docs/index.qmd
+      - section: "stlitepack Function Reference"
         contents:
           - "{{ contents }}"
       - text: "Tests"
         href: stlitepack_docs/test_outputs.qmd
       - text: "Licence"
-        href: LICENCE.md
+        href: stlitepack_docs/licence.qmd
 
   sections:
     - title: Packing Functions
-      desc: Functions to pack up streamlit apps to stlite
+      desc: ""
       contents:
         - pack.pack
 

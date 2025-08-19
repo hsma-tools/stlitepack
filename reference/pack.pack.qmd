@@ -7,8 +7,8 @@ pack.pack(
     title='App',
     output_dir='docs',
     output_file='index.html',
-    stylesheet_version='0.82.1',
-    js_bundle_version='0.82.1',
+    stylesheet_version='0.84.1',
+    js_bundle_version='0.84.1',
     use_raw_api=False,
 )
 ```

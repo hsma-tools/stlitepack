@@ -2,22 +2,22 @@ website:
   sidebar:
   - collapse-level: 2
     contents:
-    - href: stlitepack_docs/introduction.qmd
+    - href: stlitepack_docs/index.qmd
       text: Introduction
     - contents:
       - reference/index.qmd
       - contents:
         - reference/pack.pack.qmd
         section: Packing Functions
-      section: Reference
+      section: stlitepack Function Reference
     - href: stlitepack_docs/test_outputs.qmd
       text: Tests
-    - href: LICENCE.md
+    - href: stlitepack_docs/licence.qmd
       text: Licence
     id: reference
     search: true
     style: docked
-    subtitle: Simple packaging for turning Streamlit apps into stlite apps with minimal
+    subtitle: A small package for turning Streamlit apps into stlite apps with minimal
       fuss
     title: stlitepack
     tools:
