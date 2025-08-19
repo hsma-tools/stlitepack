@@ -1,0 +1,12 @@
+name: stlitepack_package_dev
+channels:
+  - conda-forge
+dependencies:
+  - black
+  - flake8
+  - hatch
+  - pip=24.0
+  - pytest=8.3.2
+  - quartodoc=0.11.1
+  - pytest-html=4.1.1
+  - tox=4.25.0

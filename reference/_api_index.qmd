@@ -1,0 +1,9 @@
+# Function reference {.doc .doc-index}
+
+## Packing Functions
+
+Functions to pack up streamlit apps to stlite
+
+| | |
+| --- | --- |
+| [pack.pack](pack.pack.qmd#stlitepack.pack.pack) | Pack a single-page Streamlit app into a stlite-compatible index.html file. |

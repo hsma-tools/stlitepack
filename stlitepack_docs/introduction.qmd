@@ -1,0 +1,61 @@
+---
+title: "Introduction"
+format: html
+---
+
+# stlitepack
+
+`stlitepack` is a lightweight Python package that helps you transform existing [Streamlit](https://streamlit.io) apps into [stlite](https://github.com/whitphx/stlite) apps — fully client-side, serverless apps that can be deployed as static files (e.g., via GitHub Pages).
+
+With `stlitepack`, you can package a Streamlit app into a single `index.html` file that runs entirely in the browser.
+
+---
+
+## ✨ Why stlitepack?
+
+Streamlit is a fantastic framework for rapid prototyping and data apps.
+But deploying small, simple apps often requires a server, which adds complexity.
+
+**stlite** solves this by compiling Streamlit to WebAssembly and running it directly in the browser.
+`stlitepack` makes the transition easy: it takes your existing `app.py` and turns it into a stlite-ready bundle.
+
+---
+
+## 🚀 Features
+
+- ✅ **Single-page app packaging** into `index.html`
+- ✅ Support for requirements via `requirements.txt` or inline list
+- ✅ Function-call based API (`pack()`)
+
+Planned:
+- 🔜 Multi-page app support
+- 🔜 Resource bundling (images, datasets, assets)
+- 🔜 GitHub Pages auto-deploy (via GitHub Actions)
+
+---
+
+## 📦 Installation
+
+```bash
+pip install stlitepack
+```
+
+## Quickstart
+
+```python
+from stlitepack import pack
+
+pack(
+    app_file="app.py",
+    requirements="requirements.txt",
+    title="My App",
+    output_dir="docs"
+)
+```
+
+This will generate:
+
+```
+dist/
+└── index.html
+```

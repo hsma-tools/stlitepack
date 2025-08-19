@@ -1,0 +1,69 @@
+project:
+  type: website
+  output-dir: docs
+  # render:
+  # - "!docs/**"
+
+website:
+  title: stlitepack
+  description: "Documentation for the stlitepack streamlit packaging library"
+
+# tell quarto to read the generated sidebar
+metadata-files:
+  - _sidebar.yml
+
+quartodoc:
+  dir: reference
+  out_index: _api_index.qmd
+  # the name used to import the package you want to create reference docs for
+  package: stlitepack
+
+  # write sidebar data to this file
+  sidebar:
+    file: "_sidebar.yml"
+    style: docked
+    tools:
+      - icon: github
+        menu:
+          - text: Source Code
+            href:  https://github.com/Bergam0t/stlitepack
+            target: _blank
+          - text: Report a Bug
+            href:  https://github.com/Bergam0t/stlitepack/issues
+            target: _blank
+      - icon: box-fill
+        menu:
+          - text: Download on pypi
+            href: https://pypi.org/project/stlitepack/
+            target: _blank
+
+    search: true
+    title: "stlitepack"
+    subtitle: "Simple packaging for turning Streamlit apps into stlite apps with minimal fuss"
+    collapse-level: 2
+
+    contents:
+      - text: "Introduction"
+        href: stlitepack_docs/introduction.qmd
+      - section: "Reference"
+        contents:
+          - "{{ contents }}"
+
+  sections:
+    - title: Packing Functions
+      desc: Functions to pack up streamlit apps to stlite
+      contents:
+        - pack.pack
+
+format:
+  html:
+    grid:
+      sidebar-width: 325px
+      body-width: 1200px
+      margin-width: 250px
+      gutter-width: 1.5rem
+    execute:
+      freeze: auto
+    theme:
+      dark: [darkly, theme-dark.scss]
+      light: [flatly, theme-light.scss]

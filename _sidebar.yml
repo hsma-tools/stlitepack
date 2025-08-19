@@ -1,0 +1,33 @@
+website:
+  sidebar:
+  - collapse-level: 2
+    contents:
+    - href: stlitepack_docs/introduction.qmd
+      text: Introduction
+    - contents:
+      - reference/index.qmd
+      - contents:
+        - reference/pack.pack.qmd
+        section: Packing Functions
+      section: Reference
+    id: reference
+    search: true
+    style: docked
+    subtitle: Simple packaging for turning Streamlit apps into stlite apps with minimal
+      fuss
+    title: stlitepack
+    tools:
+    - icon: github
+      menu:
+      - href: https://github.com/Bergam0t/stlitepack
+        target: _blank
+        text: Source Code
+      - href: https://github.com/Bergam0t/stlitepack/issues
+        target: _blank
+        text: Report a Bug
+    - icon: box-fill
+      menu:
+      - href: https://pypi.org/project/stlitepack/
+        target: _blank
+        text: Download on pypi
+  - id: dummy-sidebar
