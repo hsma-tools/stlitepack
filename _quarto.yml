@@ -8,8 +8,10 @@ project:
   # - "!docs/**"
   render:
   - "*"
+  - "!README.md"
   - "!PAGES_SETUP.md"
   - "!LICENCE.md"
+  - "!tests/README.md"
 
 website:
   title: stlitepack
@@ -65,6 +67,14 @@ quartodoc:
       desc: ""
       contents:
         - pack.pack
+    - title: Publishing Functions
+      desc: ""
+      contents:
+        - publish.setup_github_pages
+    - title: Helper Functions
+      desc: ""
+      contents:
+        - pack.get_stlite_versions
 
 format:
   html:

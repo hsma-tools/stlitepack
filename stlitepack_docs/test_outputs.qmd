@@ -8,7 +8,8 @@ format: html
 
 ## multi_page_pages_subfolder_no_reqs
 
-- [multi_page_pages_subfolder_no_reqs](..\tests\multi_page_pages_subfolder_no_reqs\docs\index.html)
+  - [raw_api](..\tests\multi_page_pages_subfolder_no_reqs\raw_api\docs\index.html)
+  - [simple_api](..\tests\multi_page_pages_subfolder_no_reqs\simple_api\docs\index.html)
 
 ## simplest
 

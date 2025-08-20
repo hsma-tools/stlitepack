@@ -35,7 +35,9 @@ This will create a docs/ folder containing your stlite-ready app files, which yo
 - v0.4: Resource bundling (images, CSVs, assets, etc.)
 - v0.5: Multi-page app support (for [`st.navigation()`](https://webapps.hsma.co.uk/multipage.html#method-1-st.page-and-st.navigation) method)
 - v0.6: Auto-handling of stlite-specific features (e.g. asyncio vs sleep)
-- v0.7: TOML or YAML file support as optional alternative to the packing function
+- v0.7: Add support for generating the required package.json for [desktop app bundling](https://github.com/whitphx/stlite/tree/main/packages/desktop)
+- v0.8: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache
+- v0.9: TOML or YAML file support as optional alternative to the packing function
 - v1.0: Full toolkit for packaging, deploying, and managing stlite apps
 
 ## 🤝 Contributing

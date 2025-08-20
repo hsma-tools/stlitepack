@@ -71,26 +71,26 @@ def setup_github_pages(
     branch: str = "main"
 ):
     """
-    Set up GitHub Pages deployment for a stlite app.
+Set up GitHub Pages deployment for a stlite app.
 
-    Parameters
-    ----------
-    mode : {"gh-actions", "manual"}, optional
-        Deployment mode.
-        - "gh-actions": Use a `gh-pages` branch with GitHub Actions.
-        - "manual": Deploy directly from `main` branch (manual Pages settings required).
-    use_docs : bool, optional
-        If True, serve from the `docs/` folder. Otherwise serve from the repo root.
-    only_on_index : bool, optional
-        If True, trigger deployment only when `index.html` changes (gh-pages mode only).
-    branch: str, optional
-        Branch to use as source. Defaults to main.
+Parameters
+----------
+mode : {"gh-actions", "manual"}, optional
+    Deployment mode.
+    - "gh-actions": Use a `gh-pages` branch with GitHub Actions.
+    - "manual": Deploy directly from `main` branch (manual Pages settings required).
+use_docs : bool, optional
+    If True, serve from the `docs/` folder. Otherwise serve from the repo root.
+only_on_index : bool, optional
+    If True, trigger deployment only when `index.html` changes (gh-pages mode only).
+branch: str, optional
+    Branch to use as source. Defaults to main.
 
-    Returns
-    -------
-    Path or None
-        Path to created workflow file (gh-pages mode),
-        or Path to helper instructions file (main mode).
+Returns
+-------
+Path or None
+    Path to created workflow file (gh-pages mode),
+    or Path to helper instructions file (main mode).
     """
     target_dir = "docs" if use_docs else "."
     # Create nojekyll file in both docs and target dir

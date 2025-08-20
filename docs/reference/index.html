@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +40,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-dab4a41226abeda922e29e5c79af6477.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-c49572100bcb58f3e9c8b5c897b41c24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-118ef196ea5a522dd56ba8aec161d365.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-2f16ea7a84ed9ca618c0e06b6872dad0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -276,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../stlitepack_docs/index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">stlitepack Function Reference</a></li><li class="breadcrumb-item"><a href="../reference/index.html">All Functions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -331,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../stlitepack_docs/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../stlitepack_docs/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -346,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">All Functions</span></a>
   </div>
 </li>
@@ -422,66 +387,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">stlitepack Function Reference</a></li><li class="breadcrumb-item"><a href="../reference/index.html">All Functions</a></li></ol></nav></header>
 
 
 
 
 
-<section id="stlitepack" class="level1">
-<h1>stlitepack</h1>
-<p><a href="https://pypi.org/project/stlitepack/"><img src="https://img.shields.io/pypi/v/stlitepack?label=pypi%20package"></a></p>
-<p>stlitepack is a Python utility that helps you turn your existing Streamlit apps into <a href="https://github.com/whitphx/stlite">stlite apps — lightweight, browser-only Streamlit apps that run entirely in the client without a server</a>.</p>
-<p>With stlitepack, you can:</p>
-<ul>
-<li>📦 Pack your Streamlit app into a stlite-ready format (current functionality).</li>
-<li>🚀 (Upcoming) Generate GitHub Actions workflows to auto-deploy your app to GitHub Pages.</li>
-<li>🗂️ (Planned) Add support for multi-page apps, external resources, and more.</li>
-</ul>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">📦 Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install stlitepack</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="all-functions" class="level1">
+<h1>All Functions</h1>
 </section>
-<section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage">🚀 Usage</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pack your Streamlit app (e.g., "app.py") into a stlite bundle</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pack(<span class="st">"app.py"</span>, output_dir<span class="op">=</span><span class="st">"docs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will create a docs/ folder containing your stlite-ready app files, which you can serve as static files.</p>
+<section id="function-reference" class="level1 doc doc-index">
+<h1 class="doc doc-index">Function reference</h1>
+<section id="packing-functions" class="level2">
+<h2 class="anchored" data-anchor-id="packing-functions">Packing Functions</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><a href="../reference/pack.pack.html#stlitepack.pack.pack">pack.pack</a></td>
+<td>Pack a Streamlit app into a stlite-compatible index.html file.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="roadmap" class="level2">
-<h2 class="anchored" data-anchor-id="roadmap">🔮 Roadmap</h2>
-<ul>
-<li>v0.1: Single-page app packing</li>
-<li>v0.2: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)</li>
-<li>v0.3: Multi-page app support (for <a href="https://webapps.hsma.co.uk/multipage.html#method-2-pages-subfolder"><code>pages/</code> subfolder</a> method)</li>
-<li>v0.4: Resource bundling (images, CSVs, assets, etc.)</li>
-<li>v0.5: Multi-page app support (for <a href="https://webapps.hsma.co.uk/multipage.html#method-1-st.page-and-st.navigation"><code>st.navigation()</code></a> method)</li>
-<li>v0.6: Auto-handling of stlite-specific features (e.g.&nbsp;asyncio vs sleep)</li>
-<li>v0.7: Add support for generating the required package.json for <a href="https://github.com/whitphx/stlite/tree/main/packages/desktop">desktop app bundling</a></li>
-<li>v0.8: Add helpers for generating files for additional deployment options e.g.&nbsp;Docker, Caddy, Nginx, Apache</li>
-<li>v0.9: TOML or YAML file support as optional alternative to the packing function</li>
-<li>v1.0: Full toolkit for packaging, deploying, and managing stlite apps</li>
-</ul>
+<section id="publishing-functions" class="level2">
+<h2 class="anchored" data-anchor-id="publishing-functions">Publishing Functions</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><a href="../reference/publish.setup_github_pages.html#stlitepack.publish.setup_github_pages">publish.setup_github_pages</a></td>
+<td>Set up GitHub Pages deployment for a stlite app.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="contributing" class="level2">
-<h2 class="anchored" data-anchor-id="contributing">🤝 Contributing</h2>
-<p>Contributions, feature requests, and feedback are welcome! Open an issue or submit a pull request to help improve stlitepack.</p>
-</section>
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">📜 License</h2>
-<p>Apache 2.0 License. See LICENSE for details.</p>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<ul>
-<li><a href="https://github.com/whitphx">whitphx</a> for creating the amazing <a href="https://github.com/whitphx/stlite">stlite</a> framework!</li>
-</ul>
-</section>
-<section id="generative-ai-use-disclosure" class="level2">
-<h2 class="anchored" data-anchor-id="generative-ai-use-disclosure">Generative AI Use Disclosure</h2>
-<p>This package was developed with the assistance of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner. All code and design decisions were reviewed and finalized by a human, and ChatGPT’s output was used as a foundation rather than a final product.</p>
+<section id="helper-functions" class="level2">
+<h2 class="anchored" data-anchor-id="helper-functions">Helper Functions</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><a href="../reference/pack.get_stlite_versions.html#stlitepack.pack.get_stlite_versions">pack.get_stlite_versions</a></td>
+<td>Fetch the list of released Stlite versions from GitHub and print a nicely formatted message.</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

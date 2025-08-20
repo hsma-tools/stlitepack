@@ -7,3 +7,19 @@
 | | |
 | --- | --- |
 | [pack.pack](pack.pack.qmd#stlitepack.pack.pack) | Pack a Streamlit app into a stlite-compatible index.html file. |
+
+## Publishing Functions
+
+
+
+| | |
+| --- | --- |
+| [publish.setup_github_pages](publish.setup_github_pages.qmd#stlitepack.publish.setup_github_pages) | Set up GitHub Pages deployment for a stlite app. |
+
+## Helper Functions
+
+
+
+| | |
+| --- | --- |
+| [pack.get_stlite_versions](pack.get_stlite_versions.qmd#stlitepack.pack.get_stlite_versions) | Fetch the list of released Stlite versions from GitHub and print a nicely formatted message. |

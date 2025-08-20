@@ -9,6 +9,12 @@ website:
       - contents:
         - reference/pack.pack.qmd
         section: Packing Functions
+      - contents:
+        - reference/publish.setup_github_pages.qmd
+        section: Publishing Functions
+      - contents:
+        - reference/pack.get_stlite_versions.qmd
+        section: Helper Functions
       section: stlitepack Function Reference
     - href: stlitepack_docs/test_outputs.qmd
       text: Tests

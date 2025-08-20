@@ -1,0 +1,19 @@
+# pack.get_stlite_versions { #stlitepack.pack.get_stlite_versions }
+
+```python
+pack.get_stlite_versions()
+```
+
+Fetch the list of released Stlite versions from GitHub and print a nicely formatted message.
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type        | Description                                                  |
+|--------|-------------|--------------------------------------------------------------|
+|        | list\[str\] | A list of version strings (e.g., ["0.84.1", "0.84.0", ...]). |
+
+## Raises {.doc-section .doc-section-raises}
+
+| Name   | Type         | Description                      |
+|--------|--------------|----------------------------------|
+|        | RuntimeError | If the GitHub API request fails. |

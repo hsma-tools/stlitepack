@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – stlitepack</title>
+<title>pack.get_stlite_versions – stlitepack</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-dab4a41226abeda922e29e5c79af6477.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-c49572100bcb58f3e9c8b5c897b41c24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-118ef196ea5a522dd56ba8aec161d365.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-2f16ea7a84ed9ca618c0e06b6872dad0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -276,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../stlitepack_docs/index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">stlitepack Function Reference</a></li><li class="breadcrumb-item"><a href="../reference/pack.get_stlite_versions.html">Helper Functions</a></li><li class="breadcrumb-item"><a href="../reference/pack.get_stlite_versions.html">pack.get_stlite_versions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -331,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../stlitepack_docs/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../stlitepack_docs/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -386,16 +386,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Helper Functions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/pack.get_stlite_versions.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/pack.get_stlite_versions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">pack.get_stlite_versions</span></a>
   </div>
 </li>
@@ -422,66 +422,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">stlitepack Function Reference</a></li><li class="breadcrumb-item"><a href="../reference/pack.get_stlite_versions.html">Helper Functions</a></li><li class="breadcrumb-item"><a href="../reference/pack.get_stlite_versions.html">pack.get_stlite_versions</a></li></ol></nav></header>
 
 
 
 
 
-<section id="stlitepack" class="level1">
-<h1>stlitepack</h1>
-<p><a href="https://pypi.org/project/stlitepack/"><img src="https://img.shields.io/pypi/v/stlitepack?label=pypi%20package"></a></p>
-<p>stlitepack is a Python utility that helps you turn your existing Streamlit apps into <a href="https://github.com/whitphx/stlite">stlite apps — lightweight, browser-only Streamlit apps that run entirely in the client without a server</a>.</p>
-<p>With stlitepack, you can:</p>
-<ul>
-<li>📦 Pack your Streamlit app into a stlite-ready format (current functionality).</li>
-<li>🚀 (Upcoming) Generate GitHub Actions workflows to auto-deploy your app to GitHub Pages.</li>
-<li>🗂️ (Planned) Add support for multi-page apps, external resources, and more.</li>
-</ul>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">📦 Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install stlitepack</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="stlitepack.pack.get_stlite_versions" class="level1">
+<h1>pack.get_stlite_versions</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pack.get_stlite_versions()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Fetch the list of released Stlite versions from GitHub and print a nicely formatted message.</p>
+<section id="returns" class="level2 doc-section doc-section-returns">
+<h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 15%">
+<col style="width: 74%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>list[str]</td>
+<td>A list of version strings (e.g., [“0.84.1”, “0.84.0”, …]).</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage">🚀 Usage</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pack your Streamlit app (e.g., "app.py") into a stlite bundle</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pack(<span class="st">"app.py"</span>, output_dir<span class="op">=</span><span class="st">"docs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will create a docs/ folder containing your stlite-ready app files, which you can serve as static files.</p>
-</section>
-<section id="roadmap" class="level2">
-<h2 class="anchored" data-anchor-id="roadmap">🔮 Roadmap</h2>
-<ul>
-<li>v0.1: Single-page app packing</li>
-<li>v0.2: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)</li>
-<li>v0.3: Multi-page app support (for <a href="https://webapps.hsma.co.uk/multipage.html#method-2-pages-subfolder"><code>pages/</code> subfolder</a> method)</li>
-<li>v0.4: Resource bundling (images, CSVs, assets, etc.)</li>
-<li>v0.5: Multi-page app support (for <a href="https://webapps.hsma.co.uk/multipage.html#method-1-st.page-and-st.navigation"><code>st.navigation()</code></a> method)</li>
-<li>v0.6: Auto-handling of stlite-specific features (e.g.&nbsp;asyncio vs sleep)</li>
-<li>v0.7: Add support for generating the required package.json for <a href="https://github.com/whitphx/stlite/tree/main/packages/desktop">desktop app bundling</a></li>
-<li>v0.8: Add helpers for generating files for additional deployment options e.g.&nbsp;Docker, Caddy, Nginx, Apache</li>
-<li>v0.9: TOML or YAML file support as optional alternative to the packing function</li>
-<li>v1.0: Full toolkit for packaging, deploying, and managing stlite apps</li>
-</ul>
-</section>
-<section id="contributing" class="level2">
-<h2 class="anchored" data-anchor-id="contributing">🤝 Contributing</h2>
-<p>Contributions, feature requests, and feedback are welcome! Open an issue or submit a pull request to help improve stlitepack.</p>
-</section>
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">📜 License</h2>
-<p>Apache 2.0 License. See LICENSE for details.</p>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<ul>
-<li><a href="https://github.com/whitphx">whitphx</a> for creating the amazing <a href="https://github.com/whitphx/stlite">stlite</a> framework!</li>
-</ul>
-</section>
-<section id="generative-ai-use-disclosure" class="level2">
-<h2 class="anchored" data-anchor-id="generative-ai-use-disclosure">Generative AI Use Disclosure</h2>
-<p>This package was developed with the assistance of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner. All code and design decisions were reviewed and finalized by a human, and ChatGPT’s output was used as a foundation rather than a final product.</p>
+<section id="raises" class="level2 doc-section doc-section-raises">
+<h2 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>RuntimeError</td>
+<td>If the GitHub API request fails.</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
