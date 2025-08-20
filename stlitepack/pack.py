@@ -223,3 +223,47 @@ def pack(
     outfile.write_text(html, encoding="utf-8")
 
     print(f"Packed app written to {outfile}")
+
+def get_stlite_versions():
+    """
+    Fetch the list of released Stlite versions from GitHub and print a nicely formatted message.
+
+    Returns
+    -------
+    list[str]
+        A list of version strings (e.g., ["0.84.1", "0.84.0", ...]).
+
+    Raises
+    ------
+    RuntimeError
+        If the GitHub API request fails.
+    """
+    import requests
+
+    url = "https://api.github.com/repos/whitphx/stlite/releases"
+    resp = requests.get(url)
+    if resp.status_code != 200:
+        raise RuntimeError(f"Failed to fetch Stlite releases: HTTP {resp.status_code}")
+
+    releases = resp.json()
+    versions = [r["tag_name"].lstrip("v") for r in releases]
+
+    if not versions:
+        print("No versions found on GitHub.")
+        return []
+
+    newest = versions[0]
+    other_versions = versions[1:]
+
+    # Terminal-friendly formatting
+    print("\n=== Stlite Versions ===")
+    print(f"Newest release: {newest}\n")
+
+    if other_versions:
+        print("Other valid releases:")
+        # print in columns of 5
+        for i in range(0, len(other_versions), 5):
+            print("  " + ", ".join(other_versions[i:i+5]))
+    print("=======================\n")
+
+    return versions
