@@ -7,3 +7,4 @@ PAGES_SETUP.md
 .github/workflows/*
 
 test_logs/*
+!test_logs/.gitkeep
