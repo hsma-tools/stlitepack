@@ -26,9 +26,10 @@ Usage Example
 
 The generated app will be available at ``docs/index.html`` by default.
 """
-__version__ = '0.0.1'
+__version__ = '0.2.0'
 __author__ = 'Sammi Rosser'
 
 from .pack import pack
+from .publish import setup_github_pages
 
-__all__ = ["pack"]
+__all__ = ["pack", "setup_github_pages"]
