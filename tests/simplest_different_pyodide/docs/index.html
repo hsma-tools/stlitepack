@@ -16,7 +16,7 @@
       import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.84.1/build/stlite.js";
       mount(
         {
-          
+          pyodideUrl: "https://cdn.jsdelivr.net/pyodide/v0.27.0/full/pyodide.js",
           requirements: [],
           entrypoint: "simplest.py",
           files: {
@@ -24,12 +24,6 @@
 import streamlit as st
 
 st.write("Hello World!")
-
-            `,
-            "pages/2_about.py": `
-import streamlit as st
-
-st.header("I'm a different page")
 
             `
           },

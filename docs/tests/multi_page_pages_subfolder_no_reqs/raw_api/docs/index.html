@@ -13,21 +13,24 @@
   <body>
     <div id="root"></div>
     <script type="module">
-      import * as stlite from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.84.1/build/stlite.js";
-      stlite.mount(
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.84.1/build/stlite.js";
+      mount(
         {
+          
           requirements: [],
           entrypoint: "simplest.py",
           files: {
             "simplest.py": `
-      import streamlit as st
-      
-      st.write("Hello World!")
+import streamlit as st
+
+st.write("Hello World!")
+
             `,
             "pages/2_about.py": `
-      import streamlit as st
-      
-      st.header("I'm a different page")
+import streamlit as st
+
+st.header("I'm a different page")
+
             `
           },
         },

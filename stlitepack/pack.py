@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 from packaging import version
 import requests
+import warnings
+
 
 TEMPLATE = """<!doctype html>
 <html>
@@ -50,6 +52,7 @@ TEMPLATE_MOUNT = """<!DOCTYPE html>
       import {{ mount }} from "https://cdn.jsdelivr.net/npm/@stlite/browser@{js_bundle_version}/build/stlite.js";
       mount(
         {{
+          {pyodide_version}
           requirements: {requirements},
           entrypoint: "{entrypoint}",
           files: {{
@@ -104,6 +107,11 @@ def pack(
         Multi-page apps are not currently supported with the raw API, so set this to False if you
         wish to create a multi-page app.
         Default is `False`.
+    pyodide_version: str, optional
+        If not 'default', tries to serve the requested pyodide version from the pyodide CDN.
+        Only works with raw API.
+        Versions can be found here: https://pyodide.org/en/stable/project/changelog.html
+        Default is 'default' (use default pyodide version, which is linked to stlite version)
 
     Raises
     ------
@@ -177,6 +185,19 @@ def pack(
             )
         files_js = ",\n".join(file_entries)
 
+        if pyodide_version != "default":
+            if not use_raw_api:
+                warnings.warn(
+                  "pyodide_version is ignored when use_raw_api=False. "
+                  "The simple API uses Pyodide version linked to the chosen stlite release.",
+                  UserWarning
+                )
+                pyodide_version_string = ""
+            else:
+                pyodide_version_string = f'pyodideUrl: "https://cdn.jsdelivr.net/pyodide/v{pyodide_version}/full/pyodide.js",'
+        else:
+            pyodide_version_string = ""
+
         html = TEMPLATE_MOUNT.format(
             title=title,
             stylesheet_version=stylesheet_version,
@@ -184,6 +205,7 @@ def pack(
             requirements=json.dumps(req_list),
             entrypoint=app_path.relative_to(base_dir).as_posix(),
             files=files_js,
+            pyodide_version=pyodide_version_string
         )
 
     # Build for <streamlit-app> template
@@ -237,8 +259,6 @@ def get_stlite_versions():
     RuntimeError
         If the GitHub API request fails.
     """
-    import requests
-
     url = "https://api.github.com/repos/whitphx/stlite/releases"
     resp = requests.get(url)
     if resp.status_code != 200:

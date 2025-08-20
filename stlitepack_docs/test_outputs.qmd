@@ -15,6 +15,10 @@ format: html
 
 - [simplest](..\tests\simplest\docs\index.html)
 
+## simplest_different_pyodide
+
+- [simplest_different_pyodide](..\tests\simplest_different_pyodide\docs\index.html)
+
 ## single_page_with_reqs
 
   - [from_reqs_file](..\tests\single_page_with_reqs\from_reqs_file\docs\index.html)

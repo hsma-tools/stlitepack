@@ -1,9 +1,9 @@
 # Core dependencies (pinned to ensure reproducibility)
-streamlit==1.36.0
+streamlit==1.42.0
 pandas==2.2.2
 
 # Allow some flexibility for transitive deps
-numpy>=1.26,<2.0
+numpy>=1.26
 
 # Plotly is heavy, so pin but not too strictly
 plotly==5.22.0
