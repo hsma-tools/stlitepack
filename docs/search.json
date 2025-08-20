@@ -70,109 +70,53 @@
     ]
   },
   {
-    "objectID": "reference/publish.setup_github_pages.html",
-    "href": "reference/publish.setup_github_pages.html",
-    "title": "publish.setup_github_pages",
+    "objectID": "stlitepack_docs/code_of_conduct.html",
+    "href": "stlitepack_docs/code_of_conduct.html",
+    "title": "Code of Conduct",
     "section": "",
-    "text": "publish.setup_github_pages(\n    mode='gh-actions',\n    use_docs=True,\n    only_on_index=True,\n    branch='main',\n)\nSet up GitHub Pages deployment for a stlite app.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Publishing Functions",
-      "publish.setup_github_pages"
-    ]
+    "text": "We are committed to creating a welcoming and inclusive environment for everyone who participates in this project. We pledge to make participation in our community a harassment-free experience for all, regardless of: - Age - Body size - Disability - Ethnicity - Gender identity and expression - Level of experience - Nationality - Personal appearance - Race - Religion - Sexual identity and orientation\n\n\n\nExamples of behavior that contributes to a positive environment include: - Being respectful and considerate in all interactions - Offering constructive feedback - Using inclusive language - Focusing on what is best for the community - Showing empathy toward other contributors\nExamples of unacceptable behavior include: - Harassment or discrimination of any kind - Personal attacks, trolling, or insulting comments - Public or private harassment - Publishing others’ private information without consent - Any conduct which could reasonably be considered inappropriate in a professional setting\n\n\n\nProject maintainers are responsible for clarifying standards of acceptable behavior and are expected to take appropriate action in response to any unacceptable behavior. They have the right and responsibility to remove, edit, or reject contributions that do not align with this Code of Conduct.\n\n\n\nThis Code of Conduct applies both within project spaces (e.g., GitHub issues, pull requests, discussions) and in public spaces when someone is representing the project or its community.\n\n\n\nInstances of abusive, harassing, or otherwise unacceptable behavior may be reported to the maintainers via GitHub Issues or by direct contact. All complaints will be reviewed and investigated promptly and fairly.\n\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.1."
   },
   {
-    "objectID": "reference/publish.setup_github_pages.html#parameters",
-    "href": "reference/publish.setup_github_pages.html#parameters",
-    "title": "publish.setup_github_pages",
+    "objectID": "stlitepack_docs/code_of_conduct.html#our-pledge",
+    "href": "stlitepack_docs/code_of_conduct.html#our-pledge",
+    "title": "Code of Conduct",
     "section": "",
-    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Publishing Functions",
-      "publish.setup_github_pages"
-    ]
+    "text": "We are committed to creating a welcoming and inclusive environment for everyone who participates in this project. We pledge to make participation in our community a harassment-free experience for all, regardless of: - Age - Body size - Disability - Ethnicity - Gender identity and expression - Level of experience - Nationality - Personal appearance - Race - Religion - Sexual identity and orientation"
   },
   {
-    "objectID": "reference/publish.setup_github_pages.html#returns",
-    "href": "reference/publish.setup_github_pages.html#returns",
-    "title": "publish.setup_github_pages",
+    "objectID": "stlitepack_docs/code_of_conduct.html#our-standards",
+    "href": "stlitepack_docs/code_of_conduct.html#our-standards",
+    "title": "Code of Conduct",
     "section": "",
-    "text": "Name\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Publishing Functions",
-      "publish.setup_github_pages"
-    ]
+    "text": "Examples of behavior that contributes to a positive environment include: - Being respectful and considerate in all interactions - Offering constructive feedback - Using inclusive language - Focusing on what is best for the community - Showing empathy toward other contributors\nExamples of unacceptable behavior include: - Harassment or discrimination of any kind - Personal attacks, trolling, or insulting comments - Public or private harassment - Publishing others’ private information without consent - Any conduct which could reasonably be considered inappropriate in a professional setting"
   },
   {
-    "objectID": "reference/pack.get_stlite_versions.html",
-    "href": "reference/pack.get_stlite_versions.html",
-    "title": "pack.get_stlite_versions",
+    "objectID": "stlitepack_docs/code_of_conduct.html#our-responsibilities",
+    "href": "stlitepack_docs/code_of_conduct.html#our-responsibilities",
+    "title": "Code of Conduct",
     "section": "",
-    "text": "pack.get_stlite_versions()\nFetch the list of released Stlite versions from GitHub and print a nicely formatted message.\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist[str]\nA list of version strings (e.g., [“0.84.1”, “0.84.0”, …]).\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nRuntimeError\nIf the GitHub API request fails.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Helper Functions",
-      "pack.get_stlite_versions"
-    ]
+    "text": "Project maintainers are responsible for clarifying standards of acceptable behavior and are expected to take appropriate action in response to any unacceptable behavior. They have the right and responsibility to remove, edit, or reject contributions that do not align with this Code of Conduct."
   },
   {
-    "objectID": "reference/pack.get_stlite_versions.html#returns",
-    "href": "reference/pack.get_stlite_versions.html#returns",
-    "title": "pack.get_stlite_versions",
+    "objectID": "stlitepack_docs/code_of_conduct.html#scope",
+    "href": "stlitepack_docs/code_of_conduct.html#scope",
+    "title": "Code of Conduct",
     "section": "",
-    "text": "Name\nType\nDescription\n\n\n\n\n\nlist[str]\nA list of version strings (e.g., [“0.84.1”, “0.84.0”, …]).",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Helper Functions",
-      "pack.get_stlite_versions"
-    ]
+    "text": "This Code of Conduct applies both within project spaces (e.g., GitHub issues, pull requests, discussions) and in public spaces when someone is representing the project or its community."
   },
   {
-    "objectID": "reference/pack.get_stlite_versions.html#raises",
-    "href": "reference/pack.get_stlite_versions.html#raises",
-    "title": "pack.get_stlite_versions",
+    "objectID": "stlitepack_docs/code_of_conduct.html#enforcement",
+    "href": "stlitepack_docs/code_of_conduct.html#enforcement",
+    "title": "Code of Conduct",
     "section": "",
-    "text": "Name\nType\nDescription\n\n\n\n\n\nRuntimeError\nIf the GitHub API request fails.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Helper Functions",
-      "pack.get_stlite_versions"
-    ]
+    "text": "Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the maintainers via GitHub Issues or by direct contact. All complaints will be reviewed and investigated promptly and fairly."
   },
   {
-    "objectID": "reference/index.html#packing-functions",
-    "href": "reference/index.html#packing-functions",
-    "title": "All Functions",
-    "section": "Packing Functions",
-    "text": "Packing Functions\n\n\n\npack.pack\nPack a Streamlit app into a stlite-compatible index.html file.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "All Functions"
-    ]
-  },
-  {
-    "objectID": "reference/index.html#publishing-functions",
-    "href": "reference/index.html#publishing-functions",
-    "title": "All Functions",
-    "section": "Publishing Functions",
-    "text": "Publishing Functions\n\n\n\npublish.setup_github_pages\nSet up GitHub Pages deployment for a stlite app.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "All Functions"
-    ]
-  },
-  {
-    "objectID": "reference/index.html#helper-functions",
-    "href": "reference/index.html#helper-functions",
-    "title": "All Functions",
-    "section": "Helper Functions",
-    "text": "Helper Functions\n\n\n\npack.get_stlite_versions\nFetch the list of released Stlite versions from GitHub and print a nicely formatted message.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "All Functions"
-    ]
+    "objectID": "stlitepack_docs/code_of_conduct.html#attribution",
+    "href": "stlitepack_docs/code_of_conduct.html#attribution",
+    "title": "Code of Conduct",
+    "section": "",
+    "text": "This Code of Conduct is adapted from the Contributor Covenant, version 2.1."
   },
   {
     "objectID": "reference/pack.pack.html",
@@ -235,11 +179,116 @@
     ]
   },
   {
+    "objectID": "reference/index.html#packing-functions",
+    "href": "reference/index.html#packing-functions",
+    "title": "All Functions",
+    "section": "Packing Functions",
+    "text": "Packing Functions\n\n\n\npack.pack\nPack a Streamlit app into a stlite-compatible index.html file.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "All Functions"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#publishing-functions",
+    "href": "reference/index.html#publishing-functions",
+    "title": "All Functions",
+    "section": "Publishing Functions",
+    "text": "Publishing Functions\n\n\n\npublish.setup_github_pages\nSet up GitHub Pages deployment for a stlite app.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "All Functions"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#helper-functions",
+    "href": "reference/index.html#helper-functions",
+    "title": "All Functions",
+    "section": "Helper Functions",
+    "text": "Helper Functions\n\n\n\npack.get_stlite_versions\nFetch the list of released Stlite versions from GitHub and print a nicely formatted message.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "All Functions"
+    ]
+  },
+  {
+    "objectID": "reference/pack.get_stlite_versions.html",
+    "href": "reference/pack.get_stlite_versions.html",
+    "title": "pack.get_stlite_versions",
+    "section": "",
+    "text": "pack.get_stlite_versions()\nFetch the list of released Stlite versions from GitHub and print a nicely formatted message.\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist[str]\nA list of version strings (e.g., [“0.84.1”, “0.84.0”, …]).\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nRuntimeError\nIf the GitHub API request fails.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Helper Functions",
+      "pack.get_stlite_versions"
+    ]
+  },
+  {
+    "objectID": "reference/pack.get_stlite_versions.html#returns",
+    "href": "reference/pack.get_stlite_versions.html#returns",
+    "title": "pack.get_stlite_versions",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nlist[str]\nA list of version strings (e.g., [“0.84.1”, “0.84.0”, …]).",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Helper Functions",
+      "pack.get_stlite_versions"
+    ]
+  },
+  {
+    "objectID": "reference/pack.get_stlite_versions.html#raises",
+    "href": "reference/pack.get_stlite_versions.html#raises",
+    "title": "pack.get_stlite_versions",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nRuntimeError\nIf the GitHub API request fails.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Helper Functions",
+      "pack.get_stlite_versions"
+    ]
+  },
+  {
+    "objectID": "reference/publish.setup_github_pages.html",
+    "href": "reference/publish.setup_github_pages.html",
+    "title": "publish.setup_github_pages",
+    "section": "",
+    "text": "publish.setup_github_pages(\n    mode='gh-actions',\n    use_docs=True,\n    only_on_index=True,\n    branch='main',\n)\nSet up GitHub Pages deployment for a stlite app.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Publishing Functions",
+      "publish.setup_github_pages"
+    ]
+  },
+  {
+    "objectID": "reference/publish.setup_github_pages.html#parameters",
+    "href": "reference/publish.setup_github_pages.html#parameters",
+    "title": "publish.setup_github_pages",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Publishing Functions",
+      "publish.setup_github_pages"
+    ]
+  },
+  {
+    "objectID": "reference/publish.setup_github_pages.html#returns",
+    "href": "reference/publish.setup_github_pages.html#returns",
+    "title": "publish.setup_github_pages",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Publishing Functions",
+      "publish.setup_github_pages"
+    ]
+  },
+  {
     "objectID": "stlitepack_docs/index.html",
     "href": "stlitepack_docs/index.html",
     "title": "stlitepack",
     "section": "",
-    "text": "stlitepack is a Python utility that helps you turn your existing Streamlit apps into stlite apps — lightweight, browser-only Streamlit apps that run entirely in the client without a server.\nWith stlitepack, you can:\n\n📦 Pack your Streamlit app into a stlite-ready format (current functionality).\n🚀 (Upcoming) Generate GitHub Actions workflows to auto-deploy your app to GitHub Pages.\n🗂️ (Planned) Add support for multi-page apps, external resources, and more.\n\n\n\npip install stlitepack\n\n\n\nfrom stlitepack import pack\n\n# Pack your Streamlit app (e.g., \"app.py\") into a stlite bundle\npack(\"app.py\", output_dir=\"docs\")\nThis will create a docs/ folder containing your stlite-ready app files, which you can serve as static files.\n\n\n\n\n✅ v0.1: Single-page app packing\n✅ v0.2: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)\n✅ v0.3: Multi-page app support (for pages/ subfolder method)\nv0.4: Better support for resource bundling (images, CSVs, assets, etc.) of local or web-based files\nv0.5: Better multi-page app support (for st.navigation() method)\nv0.6: Auto-handling of stlite-specific features (e.g. asyncio vs sleep)\nv0.7: Add support for generating the required package.json for desktop app bundling\nv0.8: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache\nv0.9: TOML or YAML file support as optional alternative to the packing function\nv1.0: Full toolkit for packaging, deploying, and managing stlite apps\n\n\n\n\nContributions, feature requests, and feedback are welcome! Open an issue or submit a pull request to help improve stlitepack.\n\n\n\nApache 2.0 License. See LICENSE for details.\n\n\n\n\nwhitphx for creating the amazing stlite framework!\n\n\n\n\nThis package was developed with the assistance of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner. All code and design decisions were reviewed and finalized by a human, and ChatGPT’s output was used as a foundation rather than a final product.",
+    "text": "stlitepack is a Python utility that helps you turn your existing Streamlit apps into stlite apps — lightweight, browser-only Streamlit apps that run entirely in the client without a server.\nWith stlitepack, you can:\n\n📦 Pack your Streamlit app into a stlite-ready format (current functionality).\n🚀 (Upcoming) Generate GitHub Actions workflows to auto-deploy your app to GitHub Pages.\n🗂️ (Planned) Add support for multi-page apps, external resources, and more.\n\n\n\npip install stlitepack\n\n\n\nfrom stlitepack import pack\n\n# Pack your Streamlit app (e.g., \"app.py\") into a stlite bundle\npack(\"app.py\")\nThis will create an index.html file with all of the required stlite additions, which you can then serve as a static file using a hosting platform such as github pages.\n\n\n\nCheck out the quickstart guide at sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart.\nYou can also find the full reference for each function at sammirosser.com/stlitepack/reference/\n\n\n\n\n✅ v0.1: Single-page app packing\n✅ v0.2: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)\n✅ v0.3: Multi-page app support (for pages/ subfolder method)\nv0.4: Better support for resource bundling (images, CSVs, assets, etc.) of local or web-based files\nv0.5: Better multi-page app support (for st.navigation() method)\nv0.6: Auto-handling of stlite-specific required changes (e.g. asyncio vs sleep)\nv0.7: Add support for generating the required package.json for desktop app bundling\nv0.8: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache\nv0.9: TOML or YAML file support as optional alternative to the packing function\nv1.0: Full toolkit for packaging, deploying, and managing stlite apps\n\n\n\n\nContributions, feature requests, and feedback are welcome!\nOpen an issue or submit a pull request to help improve stlitepack.\n\n\n\nApache 2.0 License. See LICENSE for details.\n\n\n\n\nwhitphx for creating the amazing stlite framework!\n\n\n\n\nThis package was developed with the assistance of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner. All code and design decisions were reviewed and finalized by a human, and ChatGPT’s output was used as a foundation rather than a final product.",
     "crumbs": [
       "Introduction"
     ]
@@ -259,7 +308,17 @@
     "href": "stlitepack_docs/index.html#usage",
     "title": "stlitepack",
     "section": "",
-    "text": "from stlitepack import pack\n\n# Pack your Streamlit app (e.g., \"app.py\") into a stlite bundle\npack(\"app.py\", output_dir=\"docs\")\nThis will create a docs/ folder containing your stlite-ready app files, which you can serve as static files.",
+    "text": "from stlitepack import pack\n\n# Pack your Streamlit app (e.g., \"app.py\") into a stlite bundle\npack(\"app.py\")\nThis will create an index.html file with all of the required stlite additions, which you can then serve as a static file using a hosting platform such as github pages.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/index.html#documentation",
+    "href": "stlitepack_docs/index.html#documentation",
+    "title": "stlitepack",
+    "section": "",
+    "text": "Check out the quickstart guide at sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart.\nYou can also find the full reference for each function at sammirosser.com/stlitepack/reference/",
     "crumbs": [
       "Introduction"
     ]
@@ -269,7 +328,7 @@
     "href": "stlitepack_docs/index.html#roadmap",
     "title": "stlitepack",
     "section": "",
-    "text": "✅ v0.1: Single-page app packing\n✅ v0.2: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)\n✅ v0.3: Multi-page app support (for pages/ subfolder method)\nv0.4: Better support for resource bundling (images, CSVs, assets, etc.) of local or web-based files\nv0.5: Better multi-page app support (for st.navigation() method)\nv0.6: Auto-handling of stlite-specific features (e.g. asyncio vs sleep)\nv0.7: Add support for generating the required package.json for desktop app bundling\nv0.8: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache\nv0.9: TOML or YAML file support as optional alternative to the packing function\nv1.0: Full toolkit for packaging, deploying, and managing stlite apps",
+    "text": "✅ v0.1: Single-page app packing\n✅ v0.2: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)\n✅ v0.3: Multi-page app support (for pages/ subfolder method)\nv0.4: Better support for resource bundling (images, CSVs, assets, etc.) of local or web-based files\nv0.5: Better multi-page app support (for st.navigation() method)\nv0.6: Auto-handling of stlite-specific required changes (e.g. asyncio vs sleep)\nv0.7: Add support for generating the required package.json for desktop app bundling\nv0.8: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache\nv0.9: TOML or YAML file support as optional alternative to the packing function\nv1.0: Full toolkit for packaging, deploying, and managing stlite apps",
     "crumbs": [
       "Introduction"
     ]
@@ -279,7 +338,7 @@
     "href": "stlitepack_docs/index.html#contributing",
     "title": "stlitepack",
     "section": "",
-    "text": "Contributions, feature requests, and feedback are welcome! Open an issue or submit a pull request to help improve stlitepack.",
+    "text": "Contributions, feature requests, and feedback are welcome!\nOpen an issue or submit a pull request to help improve stlitepack.",
     "crumbs": [
       "Introduction"
     ]
@@ -349,7 +408,7 @@
     "href": "stlitepack_docs/stlitepack_quickstart.html#publishing-with-github-pages",
     "title": "stlitepack Quickstart Guide",
     "section": "Publishing with GitHub Pages",
-    "text": "Publishing with GitHub Pages\nUse setup_github_pages() to scaffold a GitHub Pages deployment for your packaged stlite app. It creates the necessary files and prints step-by-step instructions (also saved to PAGES_SETUP.md).\n\nPrerequisites\n\nYou have a GitHub account and a repository for your app.\nYour packaged app (e.g., docs/index.html) is committed in that repository.\nYou know which branch you’ll publish from (default: main).\n\n\n\n\n\n\n\nGitHub Basics\n\n\n\n\nRepositories are project folders hosted on GitHub. You’ll need to push your code there first.\nBranches are parallel versions of your repository (most often \"main\").\nGitHub Pages is a free hosting service for static sites from your repo.\n\n\n\n\n\nTypical workflow\nfrom stlitepack import pack, setup_github_pages\n\n# 1) Pack your app into docs/index.html (recommended for Pages)\npack(\n    app_file=\"streamlit_app.py\",\n    requirements=[\"matplotlib\"],\n    output_dir=\"docs\"\n)\n\n# 2) Scaffold GitHub Pages\nsetup_github_pages(\n    mode=\"gh-actions\",     # or \"manual\"\n    use_docs=True,         # serve from /docs (recommended)\n    only_on_index=True,    # only trigger CI when index.html changes (gh-actions mode only)\n    branch=\"main\"\n)\n\n# 3) Commit and push the changes (index.html, .nojekyll, and possibly .github/workflows/deploy.yml)\n#    Then follow the printed instructions (also saved to PAGES_SETUP.md).\n\n\nParameters\n\nmode: {\"gh-actions\", \"manual\"}\n\n\"gh-actions\": Creates a GitHub Actions workflow to deploy your Pages site. You must still go to Repo → Settings → Pages and set Source: GitHub Actions so the workflow may run.\n\"manual\": You deploy directly from a branch (no Actions). The function prints and writes setup instructions (to PAGES_SETUP.md) so you can configure Pages in repo settings.\n\nuse_docs (bool, default True)\n\nIf True, serve from the docs/ folder (i.e., your app is at docs/index.html).\nIf False, serve from the repository root (i.e., ./index.html).\n\nonly_on_index (bool, default True — gh-actions only)\n\nIf True, the workflow triggers only when index.html changes.\nIgnored in \"manual\" mode.\n\nbranch (str, default \"main\")\n\nThe source branch for GitHub Pages (and for the workflow if using Actions).\n\n\n\n\nWhat the function creates\n\nA .nojekyll file in the repo root, and also in docs/ if use_docs=True (disables Jekyll so files are served as-is).\nIf mode=\"gh-actions\":\n\nA workflow file at .github/workflows/deploy.yml.\nA PAGES_SETUP.md helper with the exact steps to enable Pages via GitHub Actions.\n\nIf mode=\"manual\":\n\nA PAGES_SETUP.md helper with exact steps to configure Deploy from a branch.\n\n\n\n\nFinishing steps (by mode)\nIf mode=\"manual\" 1. Commit index.html (and .nojekyll) into /{docs or .}/ on the chosen branch. 2. In Repo → Settings → Pages: - Build and deployment → Source: Deploy from a branch - Branch: your branch (e.g., main) - Folder: /docs (if use_docs=True) or root (if use_docs=False)\nIf mode=\"gh-actions\" 1. In Repo → Settings → Pages: - Build and deployment → Source: GitHub Actions. 2. Commit the generated files: - .github/workflows/deploy.yml - .nojekyll (root and, if applicable, docs/.nojekyll) - index.html in your target folder (docs/ if use_docs=True, else repo root). 3. Push to your repo. The workflow will build and deploy your site.\nYour app will be available at:\nhttps://&lt;your-github-username&gt;.github.io/&lt;your-repo-name&gt;/\n\nNote: It can take a few minutes for the first deployment to appear. If using Actions, ensure the workflow runs and passes; if using manual mode, double-check your Pages settings.",
+    "text": "Publishing with GitHub Pages\nUse setup_github_pages() to scaffold a GitHub Pages deployment for your packaged stlite app. It creates the necessary files and prints step-by-step instructions (also saved to PAGES_SETUP.md).\n\nPrerequisites\n\nYou have a GitHub account and a repository for your app.\nYour packaged app (e.g., docs/index.html) is committed in that repository.\nYou know which branch you’ll publish from (default: main).\n\n\n\n\n\n\n\nGitHub Basics\n\n\n\n\nRepositories are project folders hosted on GitHub. You’ll need to push your code there first.\nBranches are parallel versions of your repository (most often \"main\").\nGitHub Pages is a free hosting service for static sites from your repo.\n\n\n\n\n\nTypical workflow\nfrom stlitepack import pack, setup_github_pages\n\n# 1) Pack your app into docs/index.html (recommended for Pages)\npack(\n    app_file=\"streamlit_app.py\",\n    requirements=[\"matplotlib\"],\n    output_dir=\"docs\"\n)\n\n# 2) Scaffold GitHub Pages\nsetup_github_pages(\n    mode=\"gh-actions\",     # or \"manual\"\n    use_docs=True,         # serve from /docs (recommended)\n    only_on_index=True,    # only trigger CI when index.html changes (gh-actions mode only)\n    branch=\"main\"\n)\n\n# 3) Commit and push the changes (index.html, .nojekyll, and possibly .github/workflows/deploy.yml)\n#    Then follow the printed instructions (also saved to PAGES_SETUP.md).\n\n\nParameters\n\nmode: {\"gh-actions\", \"manual\"}\n\n\"gh-actions\": Creates a GitHub Actions workflow to deploy your Pages site. You must still go to Repo → Settings → Pages and set Source: GitHub Actions so the workflow may run.\n\"manual\": You deploy directly from a branch (no Actions). The function prints and writes setup instructions (to PAGES_SETUP.md) so you can configure Pages in repo settings.\n\nuse_docs (bool, default True)\n\nIf True, serve from the docs/ folder (i.e., your app is at docs/index.html).\nIf False, serve from the repository root (i.e., ./index.html).\n\nonly_on_index (bool, default True — gh-actions only)\n\nIf True, the workflow triggers only when index.html changes.\nIgnored in \"manual\" mode.\n\nbranch (str, default \"main\")\n\nThe source branch for GitHub Pages (and for the workflow if using Actions).\n\n\n\n\nWhat the function creates\n\nA .nojekyll file in the repo root, and also in docs/ if use_docs=True (disables Jekyll so files are served as-is).\nIf mode=\"gh-actions\":\n\nA workflow file at .github/workflows/deploy.yml.\nA PAGES_SETUP.md helper with the exact steps to enable Pages via GitHub Actions.\n\nIf mode=\"manual\":\n\nA PAGES_SETUP.md helper with exact steps to configure Deploy from a branch.\n\n\n\n\nFinishing steps (by mode)\nIf mode=\"manual\"\n\nCommit index.html (and .nojekyll) into /{docs or .}/ on the chosen branch.\nIn Repo → Settings → Pages:\n\nBuild and deployment → Source: Deploy from a branch\nBranch: your branch (e.g., main)\nFolder: /docs (if use_docs=True) or root (if use_docs=False)\n\n\nIf mode=\"gh-actions\"\n\nIn Repo → Settings → Pages:\n\nBuild and deployment → Source: GitHub Actions.\n\nCommit the generated files:\n\n.github/workflows/deploy.yml\n.nojekyll (root and, if applicable, docs/.nojekyll)\nindex.html in your target folder (docs/ if use_docs=True, else repo root).\n\nPush to your repo. The workflow will build and deploy your site.\n\nYour app will be available at:\nhttps://&lt;your-github-username&gt;.github.io/&lt;your-repo-name&gt;/\n\nNote: It can take a few minutes for the first deployment to appear. If using Actions, ensure the workflow runs and passes; if using manual mode, double-check your Pages settings.",
     "crumbs": [
       "Quickstart Guide"
     ]

@@ -34,7 +34,7 @@ When you then come to host it on a site like github pages, you have to remember 
 - ensuring your html file was called the right thing so github pages could find it
 - creating a `.nojekyll` file to avoid extra processing being done to your app
 
-`stlitepack` grew out of a need to be able to develop Streamlit apps as normal, and then streamline the process of getting them up and hosted as quickly as possible. With just two key commands -- `pack()` and `publish()` - you can take a streamlit app and turn it into a hosted stlite app on github pages.
+`stlitepack` grew out of a need to be able to develop Streamlit apps as normal, and then streamline the process of getting them up and hosted as quickly as possible. With just two key commands -- `pack()` and `setup_github_pages()` - you can take a streamlit app and turn it into a hosted stlite app on github pages.
 
 ## Installation
 
@@ -280,6 +280,7 @@ setup_github_pages(
 ### Finishing steps (by mode)
 
 **If `mode="manual"`**
+
 1. Commit `index.html` (and `.nojekyll`) into `/{docs or .}/` on the chosen `branch`.
 2. In **Repo → Settings → Pages**:
    - **Build and deployment → Source**: `Deploy from a branch`
@@ -287,6 +288,7 @@ setup_github_pages(
    - **Folder**: `/docs` (if `use_docs=True`) or `root` (if `use_docs=False`)
 
 **If `mode="gh-actions"`**
+
 1. In **Repo → Settings → Pages**:
    - **Build and deployment → Source**: `GitHub Actions`.
 2. Commit the generated files:

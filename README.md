@@ -22,10 +22,16 @@ pip install stlitepack
 from stlitepack import pack
 
 # Pack your Streamlit app (e.g., "app.py") into a stlite bundle
-pack("app.py", output_dir="docs")
+pack("app.py")
 ```
 
-This will create a docs/ folder containing your stlite-ready app files, which you can serve as static files.
+This will create an `index.html` file with all of the required stlite additions, which you can then serve as a static file using a hosting platform such as github pages.
+
+## Documentation
+
+Check out the quickstart guide at [sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart](http://sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart).
+
+You can also find the full reference for each function at [sammirosser.com/stlitepack/reference/](http://sammirosser.com/stlitepack/reference/)
 
 ## 🔮 Roadmap
 
@@ -34,7 +40,7 @@ This will create a docs/ folder containing your stlite-ready app files, which yo
 - ✅ v0.3: Multi-page app support (for [`pages/` subfolder](https://webapps.hsma.co.uk/multipage.html#method-2-pages-subfolder) method)
 - v0.4: Better support for resource bundling (images, CSVs, assets, etc.) of local or web-based files
 - v0.5: Better multi-page app support (for [`st.navigation()`](https://webapps.hsma.co.uk/multipage.html#method-1-st.page-and-st.navigation) method)
-- v0.6: Auto-handling of stlite-specific features (e.g. asyncio vs sleep)
+- v0.6: Auto-handling of stlite-specific required changes (e.g. asyncio vs sleep)
 - v0.7: Add support for generating the required package.json for [desktop app bundling](https://github.com/whitphx/stlite/tree/main/packages/desktop)
 - v0.8: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache
 - v0.9: TOML or YAML file support as optional alternative to the packing function
@@ -42,6 +48,7 @@ This will create a docs/ folder containing your stlite-ready app files, which yo
 
 ## 🤝 Contributing
 Contributions, feature requests, and feedback are welcome!
+
 Open an issue or submit a pull request to help improve stlitepack.
 
 ## 📜 License

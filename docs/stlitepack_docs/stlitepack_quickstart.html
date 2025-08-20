@@ -500,7 +500,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>ensuring your html file was called the right thing so github pages could find it</li>
 <li>creating a <code>.nojekyll</code> file to avoid extra processing being done to your app</li>
 </ul>
-<p><code>stlitepack</code> grew out of a need to be able to develop Streamlit apps as normal, and then streamline the process of getting them up and hosted as quickly as possible. With just two key commands – <code>pack()</code> and <code>publish()</code> - you can take a streamlit app and turn it into a hosted stlite app on github pages.</p>
+<p><code>stlitepack</code> grew out of a need to be able to develop Streamlit apps as normal, and then streamline the process of getting them up and hosted as quickly as possible. With just two key commands – <code>pack()</code> and <code>setup_github_pages()</code> - you can take a streamlit app and turn it into a hosted stlite app on github pages.</p>
 </section>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
@@ -746,8 +746,30 @@ GitHub Basics
 </section>
 <section id="finishing-steps-by-mode" class="level3">
 <h3 class="anchored" data-anchor-id="finishing-steps-by-mode">Finishing steps (by mode)</h3>
-<p><strong>If <code>mode="manual"</code></strong> 1. Commit <code>index.html</code> (and <code>.nojekyll</code>) into <code>/{docs or .}/</code> on the chosen <code>branch</code>. 2. In <strong>Repo → Settings → Pages</strong>: - <strong>Build and deployment → Source</strong>: <code>Deploy from a branch</code> - <strong>Branch</strong>: your branch (e.g., <code>main</code>) - <strong>Folder</strong>: <code>/docs</code> (if <code>use_docs=True</code>) or <code>root</code> (if <code>use_docs=False</code>)</p>
-<p><strong>If <code>mode="gh-actions"</code></strong> 1. In <strong>Repo → Settings → Pages</strong>: - <strong>Build and deployment → Source</strong>: <code>GitHub Actions</code>. 2. Commit the generated files: - <code>.github/workflows/deploy.yml</code> - <code>.nojekyll</code> (root and, if applicable, <code>docs/.nojekyll</code>) - <code>index.html</code> in your target folder (<code>docs/</code> if <code>use_docs=True</code>, else repo root). 3. Push to your repo. The workflow will build and deploy your site.</p>
+<p><strong>If <code>mode="manual"</code></strong></p>
+<ol type="1">
+<li>Commit <code>index.html</code> (and <code>.nojekyll</code>) into <code>/{docs or .}/</code> on the chosen <code>branch</code>.</li>
+<li>In <strong>Repo → Settings → Pages</strong>:
+<ul>
+<li><strong>Build and deployment → Source</strong>: <code>Deploy from a branch</code></li>
+<li><strong>Branch</strong>: your branch (e.g., <code>main</code>)</li>
+<li><strong>Folder</strong>: <code>/docs</code> (if <code>use_docs=True</code>) or <code>root</code> (if <code>use_docs=False</code>)</li>
+</ul></li>
+</ol>
+<p><strong>If <code>mode="gh-actions"</code></strong></p>
+<ol type="1">
+<li>In <strong>Repo → Settings → Pages</strong>:
+<ul>
+<li><strong>Build and deployment → Source</strong>: <code>GitHub Actions</code>.</li>
+</ul></li>
+<li>Commit the generated files:
+<ul>
+<li><code>.github/workflows/deploy.yml</code></li>
+<li><code>.nojekyll</code> (root and, if applicable, <code>docs/.nojekyll</code>)</li>
+<li><code>index.html</code> in your target folder (<code>docs/</code> if <code>use_docs=True</code>, else repo root).</li>
+</ul></li>
+<li>Push to your repo. The workflow will build and deploy your site.</li>
+</ol>
 <p>Your app will be available at:</p>
 <pre><code>https://&lt;your-github-username&gt;.github.io/&lt;your-repo-name&gt;/</code></pre>
 <blockquote class="blockquote">

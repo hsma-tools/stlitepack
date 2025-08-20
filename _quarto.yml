@@ -65,6 +65,8 @@ quartodoc:
         href: stlitepack_docs/test_outputs.qmd
       - text: "Licence"
         href: stlitepack_docs/licence.qmd
+      - text: "Contributor Code of Conduct"
+        href: stlitepack_docs/code_of_conduct.qmd
 
   sections:
     - title: Packing Functions
