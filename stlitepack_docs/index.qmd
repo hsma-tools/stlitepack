@@ -29,12 +29,13 @@ This will create a docs/ folder containing your stlite-ready app files, which yo
 
 ## 🔮 Roadmap
 
-- v0.1: Single-page app packing via function
-- v0.2: GitHub Pages auto-deploy (via GitHub Actions workflow generation)
-- v0.3: TOML or YAML file support as optional alternative to the packing function
-- v0.4: Multi-page app support
-- v0.5: Resource bundling (images, CSVs, assets, etc.)
+- v0.1: Single-page app packing
+- v0.2: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)
+- v0.3: Multi-page app support (for [`pages/` subfolder](https://webapps.hsma.co.uk/multipage.html#method-2-pages-subfolder) method)
+- v0.4: Resource bundling (images, CSVs, assets, etc.)
+- v0.5: Multi-page app support (for [`st.navigation()`](https://webapps.hsma.co.uk/multipage.html#method-1-st.page-and-st.navigation) method)
 - v0.6: Auto-handling of stlite-specific features (e.g. asyncio vs sleep)
+- v0.7: TOML or YAML file support as optional alternative to the packing function
 - v1.0: Full toolkit for packaging, deploying, and managing stlite apps
 
 ## 🤝 Contributing

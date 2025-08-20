@@ -10,7 +10,7 @@ TEMPLATE = """<!doctype html>
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>Stlite App</title>
+    <title>{title}</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@stlite/browser@{stylesheet_version}/build/stlite.css"
@@ -22,7 +22,7 @@ TEMPLATE = """<!doctype html>
   </head>
   <body>
     <streamlit-app>
-{code}
+{app_files}
 {requirements}
     </streamlit-app>
   </body>
@@ -63,6 +63,7 @@ TEMPLATE_MOUNT = """<!DOCTYPE html>
 
 def pack(
         app_file: str,
+        extra_files: list[str] | None = None,
         requirements: list[str] | None = None,
         title: str = "App",
         output_dir: str = "docs",
@@ -72,16 +73,21 @@ def pack(
         use_raw_api: bool = False
         ):
     """
-    Pack a single-page Streamlit app into a stlite-compatible index.html file.
+    Pack a Streamlit app into a stlite-compatible index.html file.
 
     This function reads a Streamlit Python script, injects it into an HTML
     template compatible with stlite, and writes the output as ``index.html``.
     The resulting HTML can be served as static content (e.g., via GitHub Pages).
 
+    If additional pages are found in a 'pages' folder at the same level as the main app file,
+    these will be added in as additional files.
+
     Parameters
     ----------
     app_file : str
-        Path to the Streamlit application file (e.g., ``"app.py"``).
+        Path to the main Streamlit application file (entrypoint) (e.g., ``"app.py"``).
+    extra_files : list[str], optional
+        Additional files to mount into the app (e.g. .streamlit/config.toml).
     requirements : str or list of str
         Either:
           - Path to a ``requirements.txt`` file (str), or
@@ -92,7 +98,10 @@ def pack(
         Directory where the generated ``index.html`` will be written.
         Default is ``"dist"``.
     use_raw_api : bool, optional
-        If True, will use the version of the template that calls the `mount()` API explicitly
+        If True, will use the version of the template that calls the `mount()` API explicitly.
+        Multi-page apps are not currently supported with the raw API, so set this to False if you
+        wish to create a multi-page app.
+        Default is `False`.
 
     Raises
     ------
@@ -125,8 +134,33 @@ def pack(
     if not app_path.exists():
         raise FileNotFoundError(f"App file not found: {app_file}")
 
-    # Read app code
-    code = Path(app_file).read_text(encoding="utf-8")
+    base_dir = app_path.parent
+
+    # Gather files: entrypoint first, then optional pages/*
+    files_to_pack = [app_path]
+    pages_dir = base_dir / "pages"
+    if pages_dir.is_dir():
+        files_to_pack.extend(sorted(pages_dir.glob("*.py")))
+
+    # Add extra files explicitly
+    if extra_files:
+        files_to_pack.extend(Path(f) for f in extra_files)
+
+    # Build <app-file> blocks
+    app_file_blocks = []
+    for f in files_to_pack:
+        if not f.exists():
+            raise FileNotFoundError(f"Extra file not found: {f}")
+        code = f.read_text(encoding="utf-8")
+        rel_name = str(f.relative_to(base_dir).as_posix())
+        entry_attr = " entrypoint" if f == app_path else ""
+        app_file_blocks.append(
+            f'  <app-file name="{rel_name}"{entry_attr}>\n'
+            + "\n".join("    " + line for line in code.splitlines())
+            + "\n  </app-file>"
+        )
+
+    app_files_section = "\n".join(app_file_blocks)
 
     # Normalize requirements
     if requirements is None:
@@ -158,14 +192,13 @@ def pack(
     )
 
     else:
-        html = TEMPLATE.format(
-        title=title,
-        entrypoint=app_path.name,
-        requirements=reqs,
-        code=code,
-        stylesheet_version=stylesheet_version,
-        js_bundle_version=js_bundle_version
-    )
+      html = TEMPLATE.format(
+          title=title,
+          app_files=app_files_section,
+          requirements=reqs,
+          stylesheet_version=stylesheet_version,
+          js_bundle_version=js_bundle_version,
+      )
 
     # Write to output dir
     outdir = Path(output_dir)

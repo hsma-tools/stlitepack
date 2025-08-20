@@ -6,6 +6,10 @@ project:
     - stlitepack_docs/sync_docs.py
   # render:
   # - "!docs/**"
+  render:
+  - "*"
+  - "!PAGES_SETUP.md"
+  - "!LICENCE.md"
 
 website:
   title: stlitepack

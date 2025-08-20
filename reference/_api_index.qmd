@@ -6,4 +6,4 @@
 
 | | |
 | --- | --- |
-| [pack.pack](pack.pack.qmd#stlitepack.pack.pack) | Pack a single-page Streamlit app into a stlite-compatible index.html file. |
+| [pack.pack](pack.pack.qmd#stlitepack.pack.pack) | Pack a Streamlit app into a stlite-compatible index.html file. |

@@ -395,24 +395,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>pack.pack</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pack.pack(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    app_file,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    requirements<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'App'</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">'docs'</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    output_file<span class="op">=</span><span class="st">'index.html'</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    stylesheet_version<span class="op">=</span><span class="st">'0.84.1'</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    js_bundle_version<span class="op">=</span><span class="st">'0.84.1'</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    use_raw_api<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Pack a single-page Streamlit app into a stlite-compatible index.html file.</p>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    extra_files<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    requirements<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'App'</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">'docs'</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    output_file<span class="op">=</span><span class="st">'index.html'</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    stylesheet_version<span class="op">=</span><span class="st">'0.84.1'</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    js_bundle_version<span class="op">=</span><span class="st">'0.84.1'</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    use_raw_api<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pack a Streamlit app into a stlite-compatible index.html file.</p>
 <p>This function reads a Streamlit Python script, injects it into an HTML template compatible with stlite, and writes the output as <code>index.html</code>. The resulting HTML can be served as static content (e.g., via GitHub Pages).</p>
+<p>If additional pages are found in a ‘pages’ folder at the same level as the main app file, these will be added in as additional files.</p>
 <section id="parameters" class="level2 doc-section doc-section-parameters">
 <h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 8%">
-<col style="width: 12%">
-<col style="width: 71%">
+<col style="width: 5%">
 <col style="width: 7%">
+<col style="width: 83%">
+<col style="width: 4%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -426,31 +428,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>app_file</td>
 <td>str</td>
-<td>Path to the Streamlit application file (e.g., <code>"app.py"</code>).</td>
+<td>Path to the main Streamlit application file (entrypoint) (e.g., <code>"app.py"</code>).</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
+<td>extra_files</td>
+<td>list[str]</td>
+<td>Additional files to mount into the app (e.g.&nbsp;.streamlit/config.toml).</td>
+<td><code>None</code></td>
+</tr>
+<tr class="odd">
 <td>requirements</td>
 <td>str or list of str</td>
 <td>Either: - Path to a <code>requirements.txt</code> file (str), or - A list of required Python packages (list of str).</td>
 <td><code>None</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>title</td>
 <td>str</td>
 <td>Title to insert into the HTML <code>&lt;title&gt;</code> tag. Default is <code>"stlite app"</code>.</td>
 <td><code>'App'</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>output_dir</td>
 <td>str</td>
 <td>Directory where the generated <code>index.html</code> will be written. Default is <code>"dist"</code>.</td>
 <td><code>'docs'</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>use_raw_api</td>
 <td>bool</td>
-<td>If True, will use the version of the template that calls the <code>mount()</code> API explicitly</td>
+<td>If True, will use the version of the template that calls the <code>mount()</code> API explicitly. Multi-page apps are not currently supported with the raw API, so set this to False if you wish to create a multi-page app. Default is <code>False</code>.</td>
 <td><code>False</code></td>
 </tr>
 </tbody>
