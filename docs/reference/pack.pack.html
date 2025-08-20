@@ -440,7 +440,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    stylesheet_version<span class="op">=</span><span class="st">'0.84.1'</span>,</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    js_bundle_version<span class="op">=</span><span class="st">'0.84.1'</span>,</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    use_raw_api<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    pyodide_version<span class="op">=</span><span class="st">'default'</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Pack a Streamlit app into a stlite-compatible index.html file.</p>
 <p>This function reads a Streamlit Python script, injects it into an HTML template compatible with stlite, and writes the output as <code>index.html</code>. The resulting HTML can be served as static content (e.g., via GitHub Pages).</p>
 <p>If additional pages are found in a ‘pages’ folder at the same level as the main app file, these will be added in as additional files.</p>
@@ -449,9 +450,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="caption-top table">
 <colgroup>
 <col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 83%">
-<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 84%">
+<col style="width: 3%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -497,6 +498,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>bool</td>
 <td>If True, will use the version of the template that calls the <code>mount()</code> API explicitly. Multi-page apps are not currently supported with the raw API, so set this to False if you wish to create a multi-page app. Default is <code>False</code>.</td>
 <td><code>False</code></td>
+</tr>
+<tr class="odd">
+<td>pyodide_version</td>
+<td>str</td>
+<td>If not ‘default’, tries to serve the requested pyodide version from the pyodide CDN. Only works with raw API. Versions can be found here: https://pyodide.org/en/stable/project/changelog.html Default is ‘default’ (use default pyodide version, which is linked to stlite version)</td>
+<td><code>'default'</code></td>
 </tr>
 </tbody>
 </table>

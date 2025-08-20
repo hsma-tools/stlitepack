@@ -77,20 +77,29 @@ Parameters
 ----------
 mode : {"gh-actions", "manual"}, optional
     Deployment mode.
-    - "gh-actions": Use a `gh-pages` branch with GitHub Actions.
-    - "manual": Deploy directly from `main` branch (manual Pages settings required).
+    - "gh-actions": Deploys from a branch with GitHub Actions. Mostly hands-off, though note that
+      you will still need to go to your repos settings --> pages --> Github Actions so that the
+      generated workflow has permission to run.
+    - "manual": Deploy directly from a branch - manual github pages settings required. This will
+      still generate some additional required files, but you will need to follow the provided
+      instructions to get the files to build.
 use_docs : bool, optional
     If True, serve from the `docs/` folder. Otherwise serve from the repo root.
 only_on_index : bool, optional
-    If True, trigger deployment only when `index.html` changes (gh-pages mode only).
+    If True, trigger deployment only when `index.html` changes (gh-actions mode only).
 branch: str, optional
     Branch to use as source. Defaults to main.
 
 Returns
 -------
 Path or None
-    Path to created workflow file (gh-pages mode),
-    or Path to helper instructions file (main mode).
+    Path to created workflow file (gh-actions mode), or Path to helper instructions file (main mode).
+
+    In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it
+    is present.
+
+    In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to
+    the provided file. This folder will be created if it does not exist.
     """
     target_dir = "docs" if use_docs else "."
     # Create nojekyll file in both docs and target dir

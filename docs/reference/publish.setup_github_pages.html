@@ -441,10 +441,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 11%">
-<col style="width: 74%">
-<col style="width: 7%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 89%">
+<col style="width: 3%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -458,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>mode</td>
 <td>(gh - actions, manual)</td>
-<td>Deployment mode. - “gh-actions”: Use a <code>gh-pages</code> branch with GitHub Actions. - “manual”: Deploy directly from <code>main</code> branch (manual Pages settings required).</td>
+<td>Deployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.</td>
 <td><code>"gh-actions"</code></td>
 </tr>
 <tr class="even">
@@ -470,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>only_on_index</td>
 <td>bool</td>
-<td>If True, trigger deployment only when <code>index.html</code> changes (gh-pages mode only).</td>
+<td>If True, trigger deployment only when <code>index.html</code> changes (gh-actions mode only).</td>
 <td><code>True</code></td>
 </tr>
 <tr class="even">
@@ -486,9 +486,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 11%">
-<col style="width: 81%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 94%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -501,7 +501,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td></td>
 <td>Path or None</td>
-<td>Path to created workflow file (gh-pages mode), or Path to helper instructions file (main mode).</td>
+<td>Path to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.</td>
 </tr>
 </tbody>
 </table>
