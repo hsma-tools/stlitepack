@@ -22,6 +22,8 @@ website:
       text: Tests
     - href: stlitepack_docs/licence.qmd
       text: Licence
+    - href: stlitepack_docs/code_of_conduct.qmd
+      text: Contributor Code of Conduct
     id: reference
     search: true
     style: docked
