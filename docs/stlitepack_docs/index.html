@@ -446,9 +446,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>stlitepack is a Python utility that helps you turn your existing Streamlit apps into <a href="https://github.com/whitphx/stlite">stlite apps — lightweight, browser-only Streamlit apps that run entirely in the client without a server</a>.</p>
 <p>With stlitepack, you can:</p>
 <ul>
-<li>📦 Pack your Streamlit app into a stlite-ready format (current functionality).</li>
-<li>🚀 (Upcoming) Generate GitHub Actions workflows to auto-deploy your app to GitHub Pages.</li>
-<li>🗂️ (Planned) Add support for multi-page apps, external resources, and more.</li>
+<li>📦 Pack your Streamlit app into a stlite-ready format</li>
+<li>🗂️ Include additional resources like config.toml</li>
+<li>🚀 Generate GitHub Actions workflows to (almost) auto-deploy your app to GitHub Pages</li>
 </ul>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">📦 Installation</h2>
@@ -465,15 +465,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
 <p>Check out the quickstart guide at <a href="http://sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart">sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart</a>.</p>
-<p>You can also find the full reference for each function at <a href="http://sammirosser.com/stlitepack/reference/">sammirosser.com/stlitepack/reference/</a></p>
+<p>You can also find the full reference for each function at <a href="http://sammirosser.com/stlitepack/reference/">sammirosser.com/stlitepack/reference/</a>.</p>
 </section>
 <section id="roadmap" class="level2">
 <h2 class="anchored" data-anchor-id="roadmap">🔮 Roadmap</h2>
 <ul>
 <li>✅ v0.1: Single-page app packing</li>
 <li>✅ v0.2: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)</li>
-<li>✅ v0.3: Multi-page app support (for <a href="https://webapps.hsma.co.uk/multipage.html#method-2-pages-subfolder"><code>pages/</code> subfolder</a> method)</li>
-<li>v0.4: Better support for resource bundling (images, CSVs, assets, etc.) of local or web-based files</li>
+<li>✅ v0.3: Multi-page app support (for <a href="https://webapps.hsma.co.uk/multipage.html#method-2-pages-subfolder"><code>pages/</code> subfolder</a> method) and simple additional file inclusion</li>
+<li>v0.4: Better support for resource bundling (images, CSVs, assets, config files etc.) of local or web-based files</li>
 <li>v0.5: Better multi-page app support (for <a href="https://webapps.hsma.co.uk/multipage.html#method-1-st.page-and-st.navigation"><code>st.navigation()</code></a> method)</li>
 <li>v0.6: Auto-handling of stlite-specific required changes (e.g.&nbsp;asyncio vs sleep)</li>
 <li>v0.7: Add support for generating the required package.json for <a href="https://github.com/whitphx/stlite/tree/main/packages/desktop">desktop app bundling</a></li>

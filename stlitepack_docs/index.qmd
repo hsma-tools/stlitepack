@@ -6,9 +6,9 @@ stlitepack is a Python utility that helps you turn your existing Streamlit apps 
 
 With stlitepack, you can:
 
-- 📦 Pack your Streamlit app into a stlite-ready format (current functionality).
-- 🚀 (Upcoming) Generate GitHub Actions workflows to auto-deploy your app to GitHub Pages.
-- 🗂️ (Planned) Add support for multi-page apps, external resources, and more.
+- 📦 Pack your Streamlit app into a stlite-ready format
+- 🗂️ Include additional resources like config.toml
+- 🚀 Generate GitHub Actions workflows to (almost) auto-deploy your app to GitHub Pages
 
 ## 📦 Installation
 
@@ -31,14 +31,14 @@ This will create an `index.html` file with all of the required stlite additions,
 
 Check out the quickstart guide at [sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart](http://sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart).
 
-You can also find the full reference for each function at [sammirosser.com/stlitepack/reference/](http://sammirosser.com/stlitepack/reference/)
+You can also find the full reference for each function at [sammirosser.com/stlitepack/reference/](http://sammirosser.com/stlitepack/reference/).
 
 ## 🔮 Roadmap
 
 - ✅ v0.1: Single-page app packing
 - ✅ v0.2: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)
-- ✅ v0.3: Multi-page app support (for [`pages/` subfolder](https://webapps.hsma.co.uk/multipage.html#method-2-pages-subfolder) method)
-- v0.4: Better support for resource bundling (images, CSVs, assets, etc.) of local or web-based files
+- ✅ v0.3: Multi-page app support (for [`pages/` subfolder](https://webapps.hsma.co.uk/multipage.html#method-2-pages-subfolder) method) and simple additional file inclusion
+- v0.4: Better support for resource bundling (images, CSVs, assets, config files etc.) of local or web-based files
 - v0.5: Better multi-page app support (for [`st.navigation()`](https://webapps.hsma.co.uk/multipage.html#method-1-st.page-and-st.navigation) method)
 - v0.6: Auto-handling of stlite-specific required changes (e.g. asyncio vs sleep)
 - v0.7: Add support for generating the required package.json for [desktop app bundling](https://github.com/whitphx/stlite/tree/main/packages/desktop)
