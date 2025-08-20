@@ -1,5 +1,7 @@
 import json
 from pathlib import Path
+from packaging import version
+import requests
 
 TEMPLATE = """<!doctype html>
 <html>
@@ -29,6 +31,7 @@ TEMPLATE = """<!doctype html>
 </html>
 """
 
+
 TEMPLATE_MOUNT = """<!DOCTYPE html>
 <html>
   <head>
@@ -50,9 +53,7 @@ TEMPLATE_MOUNT = """<!DOCTYPE html>
           requirements: {requirements},
           entrypoint: "{entrypoint}",
           files: {{
-            "{entrypoint}": `
-{code}
-            `
+{files}
           }},
         }},
         document.getElementById("root")
@@ -129,6 +130,11 @@ def pack(
 
     The resulting HTML file will be written to ``dist/index.html`` by default.
     """
+    # --- Version check ---
+    min_version = version.parse("0.76.0")
+    for v_name, v_str in [("stylesheet_version", stylesheet_version), ("js_bundle_version", js_bundle_version)]:
+        if version.parse(v_str) < min_version:
+            raise ValueError(f"{v_name} must be >= 0.76.0, got {v_str}")
 
     app_path = Path(app_file)
     if not app_path.exists():
@@ -146,59 +152,69 @@ def pack(
     if extra_files:
         files_to_pack.extend(Path(f) for f in extra_files)
 
-    # Build <app-file> blocks
-    app_file_blocks = []
-    for f in files_to_pack:
-        if not f.exists():
-            raise FileNotFoundError(f"Extra file not found: {f}")
-        code = f.read_text(encoding="utf-8")
-        rel_name = str(f.relative_to(base_dir).as_posix())
-        entry_attr = " entrypoint" if f == app_path else ""
-        app_file_blocks.append(
-            f'  <app-file name="{rel_name}"{entry_attr}>\n'
-            + "\n".join("    " + line for line in code.splitlines())
-            + "\n  </app-file>"
-        )
-
-    app_files_section = "\n".join(app_file_blocks)
-
     # Normalize requirements
     if requirements is None:
-        if use_raw_api:
-            reqs = "[]"
+        req_list = []
+    elif isinstance(requirements, str):
+        with open(requirements) as f:
+            req_list = [
+                line.split("#", 1)[0].strip()
+                for line in f
+                if line.strip() and not line.strip().startswith("#")
+            ]
+    else:
+        req_list = requirements
+
+    # Build for raw API
+    if use_raw_api:
+        file_entries = []
+        for f in files_to_pack:
+            rel_name = f.relative_to(base_dir).as_posix()
+            code = f.read_text(encoding="utf-8")
+            # indent lines by 2 spaces (for nice formatting)
+            code_indented = "\n".join("      " + line for line in code.splitlines())
+            file_entries.append(
+                f'            "{rel_name}": `\n{code_indented}\n            `'
+            )
+        files_js = ",\n".join(file_entries)
+
+        html = TEMPLATE_MOUNT.format(
+            title=title,
+            stylesheet_version=stylesheet_version,
+            js_bundle_version=js_bundle_version,
+            requirements=json.dumps(req_list),
+            entrypoint=app_path.relative_to(base_dir).as_posix(),
+            files=files_js,
+        )
+
+    # Build for <streamlit-app> template
+    else:
+        # Build <app-file> blocks
+        app_file_blocks = []
+        for f in files_to_pack:
+            code = f.read_text(encoding="utf-8")
+            rel_name = f.relative_to(base_dir).as_posix()
+            entry_attr = " entrypoint" if f == app_path else ""
+            app_file_blocks.append(
+                f'  <app-file name="{rel_name}"{entry_attr}>\n'
+                + "\n".join("    " + line for line in code.splitlines())
+                + "\n  </app-file>"
+            )
+        app_files_section = "\n".join(app_file_blocks)
+
+        # Requirements block
+        if req_list:
+            reqs = "<app-requirements>\n" + "\n".join(req_list) + "\n</app-requirements>"
         else:
             reqs = ""
-    else:
-        if isinstance(requirements, str):
-            with open(requirements) as f:
-                requirements = [line.split("#", 1)[0].strip() for line in f if line.strip() and not line.strip().startswith("#")]
 
-        if use_raw_api:
-            req_list = [f'"{req}"' for req in requirements]
-            reqs = "[" + ", ".join(req_list) + "]"
-        else:
-            req_list = [f'{req}' for req in requirements]
-            reqs = "<app-requirements>\n" + "\n".join(req_list) + "\n</app-requirements>"
-
-    # Fill template
-    if use_raw_api:
-        html = TEMPLATE_MOUNT.format(
-        title=title,
-        entrypoint=app_path.name,
-        requirements=reqs,
-        code=code,
-        stylesheet_version=stylesheet_version,
-        js_bundle_version=js_bundle_version
-    )
-
-    else:
-      html = TEMPLATE.format(
-          title=title,
-          app_files=app_files_section,
-          requirements=reqs,
-          stylesheet_version=stylesheet_version,
-          js_bundle_version=js_bundle_version,
-      )
+        html = TEMPLATE.format(
+            title=title,
+            app_files=app_files_section,
+            requirements=reqs,
+            stylesheet_version=stylesheet_version,
+            js_bundle_version=js_bundle_version,
+        )
 
     # Write to output dir
     outdir = Path(output_dir)
