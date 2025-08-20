@@ -5,3 +5,5 @@
 PAGES_SETUP.md
 
 .github/workflows/*
+
+test_logs/*

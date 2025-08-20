@@ -4,7 +4,7 @@
     "href": "stlitepack_docs/test_outputs.html",
     "title": "Test Results",
     "section": "",
-    "text": "raw_api\nsimple_api\n\n\n\n\n\nsimplest\n\n\n\n\n\nsimplest_different_pyodide\n\n\n\n\n\nfrom_reqs_file\nfrom_reqs_file_loose\nfrom_reqs_file_loose_raw_api\nfrom_reqs_file_raw_api\nfrom_reqs_file_strict\nfrom_reqs_file_strict_raw_api\nfrom_reqs_list\nfrom_reqs_list_raw_api",
+    "text": "raw_api\nsimple_api\n\n\n\n\n\nsimplest\n\n\n\n\n\nsimplest_different_pyodide\n\n\n\n\n\nwith_config\nwith_config_raw_api\n\n\n\n\n\nfrom_reqs_file\nfrom_reqs_file_loose\nfrom_reqs_file_loose_raw_api\nfrom_reqs_file_raw_api\nfrom_reqs_file_strict\nfrom_reqs_file_strict_raw_api\nfrom_reqs_list\nfrom_reqs_list_raw_api",
     "crumbs": [
       "Tests"
     ]
@@ -40,6 +40,16 @@
     ]
   },
   {
+    "objectID": "stlitepack_docs/test_outputs.html#single_page_extra_file",
+    "href": "stlitepack_docs/test_outputs.html#single_page_extra_file",
+    "title": "Test Results",
+    "section": "",
+    "text": "with_config\nwith_config_raw_api",
+    "crumbs": [
+      "Tests"
+    ]
+  },
+  {
     "objectID": "stlitepack_docs/test_outputs.html#single_page_with_reqs",
     "href": "stlitepack_docs/test_outputs.html#single_page_with_reqs",
     "title": "Test Results",
@@ -47,6 +57,181 @@
     "text": "from_reqs_file\nfrom_reqs_file_loose\nfrom_reqs_file_loose_raw_api\nfrom_reqs_file_raw_api\nfrom_reqs_file_strict\nfrom_reqs_file_strict_raw_api\nfrom_reqs_list\nfrom_reqs_list_raw_api",
     "crumbs": [
       "Tests"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/licence.html",
+    "href": "stlitepack_docs/licence.html",
+    "title": "stlitepack",
+    "section": "",
+    "text": "Apache License\n                       Version 2.0, January 2004\n                    http://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\nDefinitions.\n“License” shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.\n“Licensor” shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.\n“Legal Entity” shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, “control” means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial ownership of such entity.\n“You” (or “Your”) shall mean an individual or Legal Entity exercising permissions granted by this License.\n“Source” form shall mean the preferred form for making modifications, including but not limited to software source code, documentation source, and configuration files.\n“Object” form shall mean any form resulting from mechanical transformation or translation of a Source form, including but not limited to compiled object code, generated documentation, and conversions to other media types.\n“Work” shall mean the work of authorship, whether in Source or Object form, made available under the License, as indicated by a copyright notice that is included in or attached to the work (an example is provided in the Appendix below).\n“Derivative Works” shall mean any work, whether in Source or Object form, that is based on (or derived from) the Work and for which the editorial revisions, annotations, elaborations, or other modifications represent, as a whole, an original work of authorship. For the purposes of this License, Derivative Works shall not include works that remain separable from, or merely link (or bind by name) to the interfaces of, the Work and Derivative Works thereof.\n“Contribution” shall mean any work of authorship, including the original version of the Work and any modifications or additions to that Work or Derivative Works thereof, that is intentionally submitted to Licensor for inclusion in the Work by the copyright owner or by an individual or Legal Entity authorized to submit on behalf of the copyright owner. For the purposes of this definition, “submitted” means any form of electronic, verbal, or written communication sent to the Licensor or its representatives, including but not limited to communication on electronic mailing lists, source code control systems, and issue tracking systems that are managed by, or on behalf of, the Licensor for the purpose of discussing and improving the Work, but excluding communication that is conspicuously marked or otherwise designated in writing by the copyright owner as “Not a Contribution.”\n“Contributor” shall mean Licensor and any individual or Legal Entity on behalf of whom a Contribution has been received by Licensor and subsequently incorporated within the Work.\nGrant of Copyright License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare Derivative Works of, publicly display, publicly perform, sublicense, and distribute the Work and such Derivative Works in Source or Object form.\nGrant of Patent License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this section) patent license to make, have made, use, offer to sell, sell, import, and otherwise transfer the Work, where such license applies only to those patent claims licensable by such Contributor that are necessarily infringed by their Contribution(s) alone or by combination of their Contribution(s) with the Work to which such Contribution(s) was submitted. If You institute patent litigation against any entity (including a cross-claim or counterclaim in a lawsuit) alleging that the Work or a Contribution incorporated within the Work constitutes direct or contributory patent infringement, then any patent licenses granted to You under this License for that Work shall terminate as of the date such litigation is filed.\nRedistribution. You may reproduce and distribute copies of the Work or Derivative Works thereof in any medium, with or without modifications, and in Source or Object form, provided that You meet the following conditions:\n\nYou must give any other recipients of the Work or Derivative Works a copy of this License; and\nYou must cause any modified files to carry prominent notices stating that You changed the files; and\nYou must retain, in the Source form of any Derivative Works that You distribute, all copyright, patent, trademark, and attribution notices from the Source form of the Work, excluding those notices that do not pertain to any part of the Derivative Works; and\nIf the Work includes a “NOTICE” text file as part of its distribution, then any Derivative Works that You distribute must include a readable copy of the attribution notices contained within such NOTICE file, excluding those notices that do not pertain to any part of the Derivative Works, in at least one of the following places: within a NOTICE text file distributed as part of the Derivative Works; within the Source form or documentation, if provided along with the Derivative Works; or, within a display generated by the Derivative Works, if and wherever such third-party notices normally appear. The contents of the NOTICE file are for informational purposes only and do not modify the License. You may add Your own attribution notices within Derivative Works that You distribute, alongside or as an addendum to the NOTICE text from the Work, provided that such additional attribution notices cannot be construed as modifying the License.\n\nYou may add Your own copyright statement to Your modifications and may provide additional or different license terms and conditions for use, reproduction, or distribution of Your modifications, or for any such Derivative Works as a whole, provided Your use, reproduction, and distribution of the Work otherwise complies with the conditions stated in this License.\nSubmission of Contributions. Unless You explicitly state otherwise, any Contribution intentionally submitted for inclusion in the Work by You to the Licensor shall be under the terms and conditions of this License, without any additional terms or conditions. Notwithstanding the above, nothing herein shall supersede or modify the terms of any separate license agreement you may have executed with Licensor regarding such Contributions.\nTrademarks. This License does not grant permission to use the trade names, trademarks, service marks, or product names of the Licensor, except as required for reasonable and customary use in describing the origin of the Work and reproducing the content of the NOTICE file.\nDisclaimer of Warranty. Unless required by applicable law or agreed to in writing, Licensor provides the Work (and each Contributor provides its Contributions) on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the appropriateness of using or redistributing the Work and assume any risks associated with Your exercise of permissions under this License.\nLimitation of Liability. In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall any Contributor be liable to You for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising as a result of this License or out of the use or inability to use the Work (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if such Contributor has been advised of the possibility of such damages.\nAccepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.\n\nEND OF TERMS AND CONDITIONS\nAPPENDIX: How to apply the Apache License to your work.\n  To apply the Apache License to your work, attach the following\n  boilerplate notice, with the fields enclosed by brackets \"[]\"\n  replaced with your own identifying information. (Don't include\n  the brackets!)  The text should be enclosed in the appropriate\n  comment syntax for the file format. We also recommend that a\n  file or class name and description of purpose be included on the\n  same \"printed page\" as the copyright notice for easier\n  identification within third-party archives.\nCopyright 2025 Sammi Rosser\nLicensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n   http://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.",
+    "crumbs": [
+      "Licence"
+    ]
+  },
+  {
+    "objectID": "reference/publish.setup_github_pages.html",
+    "href": "reference/publish.setup_github_pages.html",
+    "title": "publish.setup_github_pages",
+    "section": "",
+    "text": "publish.setup_github_pages(\n    mode='gh-actions',\n    use_docs=True,\n    only_on_index=True,\n    branch='main',\n)\nSet up GitHub Pages deployment for a stlite app.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Publishing Functions",
+      "publish.setup_github_pages"
+    ]
+  },
+  {
+    "objectID": "reference/publish.setup_github_pages.html#parameters",
+    "href": "reference/publish.setup_github_pages.html#parameters",
+    "title": "publish.setup_github_pages",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Publishing Functions",
+      "publish.setup_github_pages"
+    ]
+  },
+  {
+    "objectID": "reference/publish.setup_github_pages.html#returns",
+    "href": "reference/publish.setup_github_pages.html#returns",
+    "title": "publish.setup_github_pages",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Publishing Functions",
+      "publish.setup_github_pages"
+    ]
+  },
+  {
+    "objectID": "reference/pack.get_stlite_versions.html",
+    "href": "reference/pack.get_stlite_versions.html",
+    "title": "pack.get_stlite_versions",
+    "section": "",
+    "text": "pack.get_stlite_versions()\nFetch the list of released Stlite versions from GitHub and print a nicely formatted message.\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist[str]\nA list of version strings (e.g., [“0.84.1”, “0.84.0”, …]).\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nRuntimeError\nIf the GitHub API request fails.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Helper Functions",
+      "pack.get_stlite_versions"
+    ]
+  },
+  {
+    "objectID": "reference/pack.get_stlite_versions.html#returns",
+    "href": "reference/pack.get_stlite_versions.html#returns",
+    "title": "pack.get_stlite_versions",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nlist[str]\nA list of version strings (e.g., [“0.84.1”, “0.84.0”, …]).",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Helper Functions",
+      "pack.get_stlite_versions"
+    ]
+  },
+  {
+    "objectID": "reference/pack.get_stlite_versions.html#raises",
+    "href": "reference/pack.get_stlite_versions.html#raises",
+    "title": "pack.get_stlite_versions",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nRuntimeError\nIf the GitHub API request fails.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Helper Functions",
+      "pack.get_stlite_versions"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#packing-functions",
+    "href": "reference/index.html#packing-functions",
+    "title": "All Functions",
+    "section": "Packing Functions",
+    "text": "Packing Functions\n\n\n\npack.pack\nPack a Streamlit app into a stlite-compatible index.html file.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "All Functions"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#publishing-functions",
+    "href": "reference/index.html#publishing-functions",
+    "title": "All Functions",
+    "section": "Publishing Functions",
+    "text": "Publishing Functions\n\n\n\npublish.setup_github_pages\nSet up GitHub Pages deployment for a stlite app.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "All Functions"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#helper-functions",
+    "href": "reference/index.html#helper-functions",
+    "title": "All Functions",
+    "section": "Helper Functions",
+    "text": "Helper Functions\n\n\n\npack.get_stlite_versions\nFetch the list of released Stlite versions from GitHub and print a nicely formatted message.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "All Functions"
+    ]
+  },
+  {
+    "objectID": "reference/pack.pack.html",
+    "href": "reference/pack.pack.html",
+    "title": "pack.pack",
+    "section": "",
+    "text": "pack.pack(\n    app_file,\n    extra_files=None,\n    requirements=None,\n    title='App',\n    output_dir='docs',\n    output_file='index.html',\n    stylesheet_version='0.84.1',\n    js_bundle_version='0.84.1',\n    use_raw_api=False,\n    pyodide_version='default',\n)\nPack a Streamlit app into a stlite-compatible index.html file.\nThis function reads a Streamlit Python script, injects it into an HTML template compatible with stlite, and writes the output as index.html. The resulting HTML can be served as static content (e.g., via GitHub Pages).\nIf additional pages are found in a ‘pages’ folder at the same level as the main app file, these will be added in as additional files.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\napp_file\nstr\nPath to the main Streamlit application file (entrypoint) (e.g., \"app.py\").\nrequired\n\n\nextra_files\nlist[str]\nAdditional files to mount into the app (e.g. .streamlit/config.toml).\nNone\n\n\nrequirements\nstr or list of str\nEither: - Path to a requirements.txt file (str), or - A list of required Python packages (list of str).\nNone\n\n\ntitle\nstr\nTitle to insert into the HTML &lt;title&gt; tag. Default is \"stlite app\".\n'App'\n\n\noutput_dir\nstr\nDirectory where the generated index.html will be written. Default is \"dist\".\n'docs'\n\n\nuse_raw_api\nbool\nIf True, will use the version of the template that calls the mount() API explicitly. Multi-page apps are not currently supported with the raw API, so set this to False if you wish to create a multi-page app. Default is False.\nFalse\n\n\npyodide_version\nstr\nIf not ‘default’, tries to serve the requested pyodide version from the pyodide CDN. Only works with raw API. Versions can be found here: https://pyodide.org/en/stable/project/changelog.html Default is ‘default’ (use default pyodide version, which is linked to stlite version)\n'default'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the specified app_file does not exist.\n\n\n\nValueError\nIf requirements is not a list or a valid requirements file path.\n\n\n\n\n\n\n\nCurrently supports only single-page Streamlit apps.\nFuture versions will support multi-page apps, additional resources, and GitHub Pages deployment automation.\n\n\n\n\nPack an app using a requirements file:\n&gt;&gt;&gt; from stlitepack import pack\n&gt;&gt;&gt; pack(\"app.py\", requirements=\"requirements.txt\", title=\"My App\")\nPack an app with inline requirements:\n&gt;&gt;&gt; pack(\"app.py\", requirements=[\"pandas\", \"numpy\"], title=\"Data Explorer\")\nThe resulting HTML file will be written to dist/index.html by default.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Packing Functions",
+      "pack.pack"
+    ]
+  },
+  {
+    "objectID": "reference/pack.pack.html#parameters",
+    "href": "reference/pack.pack.html#parameters",
+    "title": "pack.pack",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\napp_file\nstr\nPath to the main Streamlit application file (entrypoint) (e.g., \"app.py\").\nrequired\n\n\nextra_files\nlist[str]\nAdditional files to mount into the app (e.g. .streamlit/config.toml).\nNone\n\n\nrequirements\nstr or list of str\nEither: - Path to a requirements.txt file (str), or - A list of required Python packages (list of str).\nNone\n\n\ntitle\nstr\nTitle to insert into the HTML &lt;title&gt; tag. Default is \"stlite app\".\n'App'\n\n\noutput_dir\nstr\nDirectory where the generated index.html will be written. Default is \"dist\".\n'docs'\n\n\nuse_raw_api\nbool\nIf True, will use the version of the template that calls the mount() API explicitly. Multi-page apps are not currently supported with the raw API, so set this to False if you wish to create a multi-page app. Default is False.\nFalse\n\n\npyodide_version\nstr\nIf not ‘default’, tries to serve the requested pyodide version from the pyodide CDN. Only works with raw API. Versions can be found here: https://pyodide.org/en/stable/project/changelog.html Default is ‘default’ (use default pyodide version, which is linked to stlite version)\n'default'",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Packing Functions",
+      "pack.pack"
+    ]
+  },
+  {
+    "objectID": "reference/pack.pack.html#raises",
+    "href": "reference/pack.pack.html#raises",
+    "title": "pack.pack",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the specified app_file does not exist.\n\n\n\nValueError\nIf requirements is not a list or a valid requirements file path.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Packing Functions",
+      "pack.pack"
+    ]
+  },
+  {
+    "objectID": "reference/pack.pack.html#notes",
+    "href": "reference/pack.pack.html#notes",
+    "title": "pack.pack",
+    "section": "",
+    "text": "Currently supports only single-page Streamlit apps.\nFuture versions will support multi-page apps, additional resources, and GitHub Pages deployment automation.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Packing Functions",
+      "pack.pack"
+    ]
+  },
+  {
+    "objectID": "reference/pack.pack.html#examples",
+    "href": "reference/pack.pack.html#examples",
+    "title": "pack.pack",
+    "section": "",
+    "text": "Pack an app using a requirements file:\n&gt;&gt;&gt; from stlitepack import pack\n&gt;&gt;&gt; pack(\"app.py\", requirements=\"requirements.txt\", title=\"My App\")\nPack an app with inline requirements:\n&gt;&gt;&gt; pack(\"app.py\", requirements=[\"pandas\", \"numpy\"], title=\"Data Explorer\")\nThe resulting HTML file will be written to dist/index.html by default.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Packing Functions",
+      "pack.pack"
     ]
   },
   {
@@ -130,178 +315,53 @@
     ]
   },
   {
-    "objectID": "reference/pack.pack.html",
-    "href": "reference/pack.pack.html",
-    "title": "pack.pack",
+    "objectID": "stlitepack_docs/stlitepack_quickstart.html",
+    "href": "stlitepack_docs/stlitepack_quickstart.html",
+    "title": "stlitepack Quickstart Guide",
     "section": "",
-    "text": "pack.pack(\n    app_file,\n    extra_files=None,\n    requirements=None,\n    title='App',\n    output_dir='docs',\n    output_file='index.html',\n    stylesheet_version='0.84.1',\n    js_bundle_version='0.84.1',\n    use_raw_api=False,\n    pyodide_version='default',\n)\nPack a Streamlit app into a stlite-compatible index.html file.\nThis function reads a Streamlit Python script, injects it into an HTML template compatible with stlite, and writes the output as index.html. The resulting HTML can be served as static content (e.g., via GitHub Pages).\nIf additional pages are found in a ‘pages’ folder at the same level as the main app file, these will be added in as additional files.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\napp_file\nstr\nPath to the main Streamlit application file (entrypoint) (e.g., \"app.py\").\nrequired\n\n\nextra_files\nlist[str]\nAdditional files to mount into the app (e.g. .streamlit/config.toml).\nNone\n\n\nrequirements\nstr or list of str\nEither: - Path to a requirements.txt file (str), or - A list of required Python packages (list of str).\nNone\n\n\ntitle\nstr\nTitle to insert into the HTML &lt;title&gt; tag. Default is \"stlite app\".\n'App'\n\n\noutput_dir\nstr\nDirectory where the generated index.html will be written. Default is \"dist\".\n'docs'\n\n\nuse_raw_api\nbool\nIf True, will use the version of the template that calls the mount() API explicitly. Multi-page apps are not currently supported with the raw API, so set this to False if you wish to create a multi-page app. Default is False.\nFalse\n\n\npyodide_version\nstr\nIf not ‘default’, tries to serve the requested pyodide version from the pyodide CDN. Only works with raw API. Versions can be found here: https://pyodide.org/en/stable/project/changelog.html Default is ‘default’ (use default pyodide version, which is linked to stlite version)\n'default'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the specified app_file does not exist.\n\n\n\nValueError\nIf requirements is not a list or a valid requirements file path.\n\n\n\n\n\n\n\nCurrently supports only single-page Streamlit apps.\nFuture versions will support multi-page apps, additional resources, and GitHub Pages deployment automation.\n\n\n\n\nPack an app using a requirements file:\n&gt;&gt;&gt; from stlitepack import pack\n&gt;&gt;&gt; pack(\"app.py\", requirements=\"requirements.txt\", title=\"My App\")\nPack an app with inline requirements:\n&gt;&gt;&gt; pack(\"app.py\", requirements=[\"pandas\", \"numpy\"], title=\"Data Explorer\")\nThe resulting HTML file will be written to dist/index.html by default.",
+    "text": "This guide walks you through packaging a Streamlit app into a static stlite app and publishing it on GitHub Pages.\nStlite is a WebAssembly-powered reimplementation of Streamlit that runs entirely in the browser using Pyodide. This means Streamlit apps can be distributed as static HTML files without requiring a Python backend server.\nThe stlitepack package helps automate the process of packaging your existing Streamlit apps into a stlite-compatible format, so you can publish and share them easily while writing and previewing your Streamlit apps like normal.\nCompared to traditional server-deployed Streamlit apps, where the actual computation happens on a web server somewhere, and hosting options for such apps like Streamlit Community Cloud, Pyodide-powered stlite apps offer some unique advantages:",
     "crumbs": [
-      "stlitepack Function Reference",
-      "Packing Functions",
-      "pack.pack"
+      "Quickstart Guide"
     ]
   },
   {
-    "objectID": "reference/pack.pack.html#parameters",
-    "href": "reference/pack.pack.html#parameters",
-    "title": "pack.pack",
-    "section": "",
-    "text": "Name\nType\nDescription\nDefault\n\n\n\n\napp_file\nstr\nPath to the main Streamlit application file (entrypoint) (e.g., \"app.py\").\nrequired\n\n\nextra_files\nlist[str]\nAdditional files to mount into the app (e.g. .streamlit/config.toml).\nNone\n\n\nrequirements\nstr or list of str\nEither: - Path to a requirements.txt file (str), or - A list of required Python packages (list of str).\nNone\n\n\ntitle\nstr\nTitle to insert into the HTML &lt;title&gt; tag. Default is \"stlite app\".\n'App'\n\n\noutput_dir\nstr\nDirectory where the generated index.html will be written. Default is \"dist\".\n'docs'\n\n\nuse_raw_api\nbool\nIf True, will use the version of the template that calls the mount() API explicitly. Multi-page apps are not currently supported with the raw API, so set this to False if you wish to create a multi-page app. Default is False.\nFalse\n\n\npyodide_version\nstr\nIf not ‘default’, tries to serve the requested pyodide version from the pyodide CDN. Only works with raw API. Versions can be found here: https://pyodide.org/en/stable/project/changelog.html Default is ‘default’ (use default pyodide version, which is linked to stlite version)\n'default'",
+    "objectID": "stlitepack_docs/stlitepack_quickstart.html#installation",
+    "href": "stlitepack_docs/stlitepack_quickstart.html#installation",
+    "title": "stlitepack Quickstart Guide",
+    "section": "Installation",
+    "text": "Installation\nstlitepack is available on pypi (conda forge coming soon!)\npip install stlitepack",
     "crumbs": [
-      "stlitepack Function Reference",
-      "Packing Functions",
-      "pack.pack"
+      "Quickstart Guide"
     ]
   },
   {
-    "objectID": "reference/pack.pack.html#raises",
-    "href": "reference/pack.pack.html#raises",
-    "title": "pack.pack",
-    "section": "",
-    "text": "Name\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the specified app_file does not exist.\n\n\n\nValueError\nIf requirements is not a list or a valid requirements file path.",
+    "objectID": "stlitepack_docs/stlitepack_quickstart.html#packing-your-app",
+    "href": "stlitepack_docs/stlitepack_quickstart.html#packing-your-app",
+    "title": "stlitepack Quickstart Guide",
+    "section": "Packing Your App",
+    "text": "Packing Your App\nThe pack function converts a Streamlit app into a single index.html file that can be served as a static website.\n\nExample\nfrom stlitepack import pack\n\npack(\n    app_file=\"streamlit_app.py\"\n)\nThis will create:\nindex.html\nAlternatively, you may wish for the output index.html file to be placed in a different subfolder to keep your repository tidy, or if your chosen static hosting site expects it to be somewhere else.\nfrom stlitepack import pack\n\npack(\n    app_file=\"streamlit_app.py\",\n    requirements=[\"matplotlib\", \"numpy\"],\n    title=\"My Demo App\",\n    output_dir=\"docs\"\n)\nThis will create:\ndocs/\n  └── index.html\n\n\n\n\n\n\nTip\n\n\n\nNote that if you are hosting on github pages and enabling this via the repository settings, there are only two options for where the index.html file can be stored\n\nyour repository’s ‘root’ folder (i.e. the top-level folder you see when you first open up your repository on github)\nthe docs folder, which must be directly within the root folder\n\n\n\n\n\n\nKey Parameters\nTo package up a Python app, the minimum we need to provide is the name of the main Streamlit app file (which is also known as the ‘entrypoint’). This can be called anything, but must be a .py file.\nIf your app has multiple additional pages stored in a pages subfolder at the same level as your main app file, then they will automatically be included in the output file.\n\nMain Optional Parameters\n\nrequirements\nYou may wish to install some additional python packages.\n\na list of Python package names ([\"pandas\", \"numpy\"]), or\na path to a requirements.txt file.\n\ne.g.\nfrom stlitepack import pack\n\npack(\n    app_file=\"streamlit_app.py\",\n    requirements=[\"matplotlib\", \"numpy\"],\n)\nor\nfrom stlitepack import pack\n\npack(\n    app_file=\"streamlit_app.py\",\n    requirements=\"requirements.txt\",\n)\nIf omitted, no extra packages are installed.\n\n\n\n\n\n\nWarning\n\n\n\n*Note that due to the way packages are managed in stlite, using pyodide and micropip, you may not be able to ‘pin’ dependencies in the way you are used to with streamlit apps. More detail about this will be added soon.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nIn particular, it’s not possible to specify a version of the Streamlit package - this will be ignored by stlite!\n\n\n\n\ntitle\nThis controls the name of the app that will be displayed when a user has it open in a web browser, showing up as the name of the tab.\nfrom stlitepack import pack\n\npack(\n    app_file=\"streamlit_app.py\",\n    title=\"My Amazing App\"\n)\n\n\nstylesheet_version / js_bundle_version\nVersion numbers of the stlite JavaScript and CSS bundles. Must be valid versions from the stlite releases page. This will control the Streamlit version that is used too.\nfrom stlitepack import pack\n\npack(\n    app_file=\"streamlit_app.py\",\n    stylesheet_version=\"0.84.1\",\n    js_bundle_version=\"0.84.1\"\n)\nIf you want to see the list of valid stlite versions:\nfrom stlitepack.pack import get_stlite_versions\n\nget_stlite_versions()\n\n\nuse_raw_api\nst-lite provides two ways of wrapping apps. If this parameter is set to True, use stlite’s raw mount() API instead of the &lt;streamlit-app&gt; block. The main reason for doing this is if you want to specify a particular pyodide version.\n\n\npyodide_version\nSpecify the Pyodide version to use. Ignored if use_raw_api=False.\n\n\nextra_files\nExtra files (relative paths) to mount inside the app, e.g. a .streamlit/config.toml or extra helper scripts. Note that this must be passed as a list of strings (even if you’re only adding one extra file this way).\nAlso note that you don’t need to manually add extra app pages from your pages subfolder this way - they will automatically be picked up when you pass in the path of your main/entrypoint file.\ne.g.\nfrom stlitepack import pack\n\npack(\n    app_file=\"streamlit_app.py\",\n    extra_files=[\".streamlit/config.toml\", \"data.csv\"]\n)",
     "crumbs": [
-      "stlitepack Function Reference",
-      "Packing Functions",
-      "pack.pack"
+      "Quickstart Guide"
     ]
   },
   {
-    "objectID": "reference/pack.pack.html#notes",
-    "href": "reference/pack.pack.html#notes",
-    "title": "pack.pack",
-    "section": "",
-    "text": "Currently supports only single-page Streamlit apps.\nFuture versions will support multi-page apps, additional resources, and GitHub Pages deployment automation.",
+    "objectID": "stlitepack_docs/stlitepack_quickstart.html#publishing-with-github-pages",
+    "href": "stlitepack_docs/stlitepack_quickstart.html#publishing-with-github-pages",
+    "title": "stlitepack Quickstart Guide",
+    "section": "Publishing with GitHub Pages",
+    "text": "Publishing with GitHub Pages\nUse setup_github_pages() to scaffold a GitHub Pages deployment for your packaged stlite app. It creates the necessary files and prints step-by-step instructions (also saved to PAGES_SETUP.md).\n\nPrerequisites\n\nYou have a GitHub account and a repository for your app.\nYour packaged app (e.g., docs/index.html) is committed in that repository.\nYou know which branch you’ll publish from (default: main).\n\n\n\n\n\n\n\nGitHub Basics\n\n\n\n\nRepositories are project folders hosted on GitHub. You’ll need to push your code there first.\nBranches are parallel versions of your repository (most often \"main\").\nGitHub Pages is a free hosting service for static sites from your repo.\n\n\n\n\n\nTypical workflow\nfrom stlitepack import pack, setup_github_pages\n\n# 1) Pack your app into docs/index.html (recommended for Pages)\npack(\n    app_file=\"streamlit_app.py\",\n    requirements=[\"matplotlib\"],\n    output_dir=\"docs\"\n)\n\n# 2) Scaffold GitHub Pages\nsetup_github_pages(\n    mode=\"gh-actions\",     # or \"manual\"\n    use_docs=True,         # serve from /docs (recommended)\n    only_on_index=True,    # only trigger CI when index.html changes (gh-actions mode only)\n    branch=\"main\"\n)\n\n# 3) Commit and push the changes (index.html, .nojekyll, and possibly .github/workflows/deploy.yml)\n#    Then follow the printed instructions (also saved to PAGES_SETUP.md).\n\n\nParameters\n\nmode: {\"gh-actions\", \"manual\"}\n\n\"gh-actions\": Creates a GitHub Actions workflow to deploy your Pages site. You must still go to Repo → Settings → Pages and set Source: GitHub Actions so the workflow may run.\n\"manual\": You deploy directly from a branch (no Actions). The function prints and writes setup instructions (to PAGES_SETUP.md) so you can configure Pages in repo settings.\n\nuse_docs (bool, default True)\n\nIf True, serve from the docs/ folder (i.e., your app is at docs/index.html).\nIf False, serve from the repository root (i.e., ./index.html).\n\nonly_on_index (bool, default True — gh-actions only)\n\nIf True, the workflow triggers only when index.html changes.\nIgnored in \"manual\" mode.\n\nbranch (str, default \"main\")\n\nThe source branch for GitHub Pages (and for the workflow if using Actions).\n\n\n\n\nWhat the function creates\n\nA .nojekyll file in the repo root, and also in docs/ if use_docs=True (disables Jekyll so files are served as-is).\nIf mode=\"gh-actions\":\n\nA workflow file at .github/workflows/deploy.yml.\nA PAGES_SETUP.md helper with the exact steps to enable Pages via GitHub Actions.\n\nIf mode=\"manual\":\n\nA PAGES_SETUP.md helper with exact steps to configure Deploy from a branch.\n\n\n\n\nFinishing steps (by mode)\nIf mode=\"manual\" 1. Commit index.html (and .nojekyll) into /{docs or .}/ on the chosen branch. 2. In Repo → Settings → Pages: - Build and deployment → Source: Deploy from a branch - Branch: your branch (e.g., main) - Folder: /docs (if use_docs=True) or root (if use_docs=False)\nIf mode=\"gh-actions\" 1. In Repo → Settings → Pages: - Build and deployment → Source: GitHub Actions. 2. Commit the generated files: - .github/workflows/deploy.yml - .nojekyll (root and, if applicable, docs/.nojekyll) - index.html in your target folder (docs/ if use_docs=True, else repo root). 3. Push to your repo. The workflow will build and deploy your site.\nYour app will be available at:\nhttps://&lt;your-github-username&gt;.github.io/&lt;your-repo-name&gt;/\n\nNote: It can take a few minutes for the first deployment to appear. If using Actions, ensure the workflow runs and passes; if using manual mode, double-check your Pages settings.",
     "crumbs": [
-      "stlitepack Function Reference",
-      "Packing Functions",
-      "pack.pack"
+      "Quickstart Guide"
     ]
   },
   {
-    "objectID": "reference/pack.pack.html#examples",
-    "href": "reference/pack.pack.html#examples",
-    "title": "pack.pack",
-    "section": "",
-    "text": "Pack an app using a requirements file:\n&gt;&gt;&gt; from stlitepack import pack\n&gt;&gt;&gt; pack(\"app.py\", requirements=\"requirements.txt\", title=\"My App\")\nPack an app with inline requirements:\n&gt;&gt;&gt; pack(\"app.py\", requirements=[\"pandas\", \"numpy\"], title=\"Data Explorer\")\nThe resulting HTML file will be written to dist/index.html by default.",
+    "objectID": "stlitepack_docs/stlitepack_quickstart.html#next-steps",
+    "href": "stlitepack_docs/stlitepack_quickstart.html#next-steps",
+    "title": "stlitepack Quickstart Guide",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nExperiment with adding extra files (e.g., a .streamlit/config.toml for customization).\nShare your packaged app on GitHub Pages.\nContribute back by reporting issues or suggesting improvements!",
     "crumbs": [
-      "stlitepack Function Reference",
-      "Packing Functions",
-      "pack.pack"
-    ]
-  },
-  {
-    "objectID": "reference/index.html#packing-functions",
-    "href": "reference/index.html#packing-functions",
-    "title": "All Functions",
-    "section": "Packing Functions",
-    "text": "Packing Functions\n\n\n\npack.pack\nPack a Streamlit app into a stlite-compatible index.html file.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "All Functions"
-    ]
-  },
-  {
-    "objectID": "reference/index.html#publishing-functions",
-    "href": "reference/index.html#publishing-functions",
-    "title": "All Functions",
-    "section": "Publishing Functions",
-    "text": "Publishing Functions\n\n\n\npublish.setup_github_pages\nSet up GitHub Pages deployment for a stlite app.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "All Functions"
-    ]
-  },
-  {
-    "objectID": "reference/index.html#helper-functions",
-    "href": "reference/index.html#helper-functions",
-    "title": "All Functions",
-    "section": "Helper Functions",
-    "text": "Helper Functions\n\n\n\npack.get_stlite_versions\nFetch the list of released Stlite versions from GitHub and print a nicely formatted message.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "All Functions"
-    ]
-  },
-  {
-    "objectID": "reference/pack.get_stlite_versions.html",
-    "href": "reference/pack.get_stlite_versions.html",
-    "title": "pack.get_stlite_versions",
-    "section": "",
-    "text": "pack.get_stlite_versions()\nFetch the list of released Stlite versions from GitHub and print a nicely formatted message.\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist[str]\nA list of version strings (e.g., [“0.84.1”, “0.84.0”, …]).\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nRuntimeError\nIf the GitHub API request fails.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Helper Functions",
-      "pack.get_stlite_versions"
-    ]
-  },
-  {
-    "objectID": "reference/pack.get_stlite_versions.html#returns",
-    "href": "reference/pack.get_stlite_versions.html#returns",
-    "title": "pack.get_stlite_versions",
-    "section": "",
-    "text": "Name\nType\nDescription\n\n\n\n\n\nlist[str]\nA list of version strings (e.g., [“0.84.1”, “0.84.0”, …]).",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Helper Functions",
-      "pack.get_stlite_versions"
-    ]
-  },
-  {
-    "objectID": "reference/pack.get_stlite_versions.html#raises",
-    "href": "reference/pack.get_stlite_versions.html#raises",
-    "title": "pack.get_stlite_versions",
-    "section": "",
-    "text": "Name\nType\nDescription\n\n\n\n\n\nRuntimeError\nIf the GitHub API request fails.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Helper Functions",
-      "pack.get_stlite_versions"
-    ]
-  },
-  {
-    "objectID": "reference/publish.setup_github_pages.html",
-    "href": "reference/publish.setup_github_pages.html",
-    "title": "publish.setup_github_pages",
-    "section": "",
-    "text": "publish.setup_github_pages(\n    mode='gh-actions',\n    use_docs=True,\n    only_on_index=True,\n    branch='main',\n)\nSet up GitHub Pages deployment for a stlite app.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Publishing Functions",
-      "publish.setup_github_pages"
-    ]
-  },
-  {
-    "objectID": "reference/publish.setup_github_pages.html#parameters",
-    "href": "reference/publish.setup_github_pages.html#parameters",
-    "title": "publish.setup_github_pages",
-    "section": "",
-    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Publishing Functions",
-      "publish.setup_github_pages"
-    ]
-  },
-  {
-    "objectID": "reference/publish.setup_github_pages.html#returns",
-    "href": "reference/publish.setup_github_pages.html#returns",
-    "title": "publish.setup_github_pages",
-    "section": "",
-    "text": "Name\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
-    "crumbs": [
-      "stlitepack Function Reference",
-      "Publishing Functions",
-      "publish.setup_github_pages"
-    ]
-  },
-  {
-    "objectID": "stlitepack_docs/licence.html",
-    "href": "stlitepack_docs/licence.html",
-    "title": "stlitepack",
-    "section": "",
-    "text": "Apache License\n                       Version 2.0, January 2004\n                    http://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\nDefinitions.\n“License” shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.\n“Licensor” shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.\n“Legal Entity” shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, “control” means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial ownership of such entity.\n“You” (or “Your”) shall mean an individual or Legal Entity exercising permissions granted by this License.\n“Source” form shall mean the preferred form for making modifications, including but not limited to software source code, documentation source, and configuration files.\n“Object” form shall mean any form resulting from mechanical transformation or translation of a Source form, including but not limited to compiled object code, generated documentation, and conversions to other media types.\n“Work” shall mean the work of authorship, whether in Source or Object form, made available under the License, as indicated by a copyright notice that is included in or attached to the work (an example is provided in the Appendix below).\n“Derivative Works” shall mean any work, whether in Source or Object form, that is based on (or derived from) the Work and for which the editorial revisions, annotations, elaborations, or other modifications represent, as a whole, an original work of authorship. For the purposes of this License, Derivative Works shall not include works that remain separable from, or merely link (or bind by name) to the interfaces of, the Work and Derivative Works thereof.\n“Contribution” shall mean any work of authorship, including the original version of the Work and any modifications or additions to that Work or Derivative Works thereof, that is intentionally submitted to Licensor for inclusion in the Work by the copyright owner or by an individual or Legal Entity authorized to submit on behalf of the copyright owner. For the purposes of this definition, “submitted” means any form of electronic, verbal, or written communication sent to the Licensor or its representatives, including but not limited to communication on electronic mailing lists, source code control systems, and issue tracking systems that are managed by, or on behalf of, the Licensor for the purpose of discussing and improving the Work, but excluding communication that is conspicuously marked or otherwise designated in writing by the copyright owner as “Not a Contribution.”\n“Contributor” shall mean Licensor and any individual or Legal Entity on behalf of whom a Contribution has been received by Licensor and subsequently incorporated within the Work.\nGrant of Copyright License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare Derivative Works of, publicly display, publicly perform, sublicense, and distribute the Work and such Derivative Works in Source or Object form.\nGrant of Patent License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this section) patent license to make, have made, use, offer to sell, sell, import, and otherwise transfer the Work, where such license applies only to those patent claims licensable by such Contributor that are necessarily infringed by their Contribution(s) alone or by combination of their Contribution(s) with the Work to which such Contribution(s) was submitted. If You institute patent litigation against any entity (including a cross-claim or counterclaim in a lawsuit) alleging that the Work or a Contribution incorporated within the Work constitutes direct or contributory patent infringement, then any patent licenses granted to You under this License for that Work shall terminate as of the date such litigation is filed.\nRedistribution. You may reproduce and distribute copies of the Work or Derivative Works thereof in any medium, with or without modifications, and in Source or Object form, provided that You meet the following conditions:\n\nYou must give any other recipients of the Work or Derivative Works a copy of this License; and\nYou must cause any modified files to carry prominent notices stating that You changed the files; and\nYou must retain, in the Source form of any Derivative Works that You distribute, all copyright, patent, trademark, and attribution notices from the Source form of the Work, excluding those notices that do not pertain to any part of the Derivative Works; and\nIf the Work includes a “NOTICE” text file as part of its distribution, then any Derivative Works that You distribute must include a readable copy of the attribution notices contained within such NOTICE file, excluding those notices that do not pertain to any part of the Derivative Works, in at least one of the following places: within a NOTICE text file distributed as part of the Derivative Works; within the Source form or documentation, if provided along with the Derivative Works; or, within a display generated by the Derivative Works, if and wherever such third-party notices normally appear. The contents of the NOTICE file are for informational purposes only and do not modify the License. You may add Your own attribution notices within Derivative Works that You distribute, alongside or as an addendum to the NOTICE text from the Work, provided that such additional attribution notices cannot be construed as modifying the License.\n\nYou may add Your own copyright statement to Your modifications and may provide additional or different license terms and conditions for use, reproduction, or distribution of Your modifications, or for any such Derivative Works as a whole, provided Your use, reproduction, and distribution of the Work otherwise complies with the conditions stated in this License.\nSubmission of Contributions. Unless You explicitly state otherwise, any Contribution intentionally submitted for inclusion in the Work by You to the Licensor shall be under the terms and conditions of this License, without any additional terms or conditions. Notwithstanding the above, nothing herein shall supersede or modify the terms of any separate license agreement you may have executed with Licensor regarding such Contributions.\nTrademarks. This License does not grant permission to use the trade names, trademarks, service marks, or product names of the Licensor, except as required for reasonable and customary use in describing the origin of the Work and reproducing the content of the NOTICE file.\nDisclaimer of Warranty. Unless required by applicable law or agreed to in writing, Licensor provides the Work (and each Contributor provides its Contributions) on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the appropriateness of using or redistributing the Work and assume any risks associated with Your exercise of permissions under this License.\nLimitation of Liability. In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall any Contributor be liable to You for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising as a result of this License or out of the use or inability to use the Work (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if such Contributor has been advised of the possibility of such damages.\nAccepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.\n\nEND OF TERMS AND CONDITIONS\nAPPENDIX: How to apply the Apache License to your work.\n  To apply the Apache License to your work, attach the following\n  boilerplate notice, with the fields enclosed by brackets \"[]\"\n  replaced with your own identifying information. (Don't include\n  the brackets!)  The text should be enclosed in the appropriate\n  comment syntax for the file format. We also recommend that a\n  file or class name and description of purpose be included on the\n  same \"printed page\" as the copyright notice for easier\n  identification within third-party archives.\nCopyright 2025 Sammi Rosser\nLicensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n   http://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.",
-    "crumbs": [
-      "Licence"
+      "Quickstart Guide"
     ]
   }
 ]

@@ -4,6 +4,8 @@ website:
     contents:
     - href: stlitepack_docs/index.qmd
       text: Introduction
+    - href: stlitepack_docs/stlitepack_quickstart.qmd
+      text: Quickstart Guide
     - contents:
       - reference/index.qmd
       - contents:

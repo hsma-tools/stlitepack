@@ -4,6 +4,7 @@ project:
   pre-render:
     - stlitepack_docs/make_test_index.py
     - stlitepack_docs/sync_docs.py
+    - stlitepack_docs/run_tests.py
   # render:
   # - "!docs/**"
   render:
@@ -11,6 +12,7 @@ project:
   - "!README.md"
   - "!PAGES_SETUP.md"
   - "!LICENCE.md"
+  - "!CODE_OF_CONDUCT.md"
   - "!tests/README.md"
 
 website:
@@ -54,6 +56,8 @@ quartodoc:
     contents:
       - text: "Introduction"
         href: stlitepack_docs/index.qmd
+      - text: "Quickstart Guide"
+        href: stlitepack_docs/stlitepack_quickstart.qmd
       - section: "stlitepack Function Reference"
         contents:
           - "{{ contents }}"

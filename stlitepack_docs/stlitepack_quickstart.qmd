@@ -1,0 +1,312 @@
+---
+title: "stlitepack Quickstart Guide"
+toc: true
+toc-depth: 3
+toc-expand: 3
+---
+
+This guide walks you through packaging a Streamlit app into a static **stlite** app and publishing it on GitHub Pages.
+
+Stlite is a WebAssembly-powered reimplementation of Streamlit that runs entirely in the browser using Pyodide. This means Streamlit apps can be distributed as static HTML files without requiring a Python backend server.
+
+The stlitepack package helps automate the process of packaging your existing Streamlit apps into a stlite-compatible format, so you can publish and share them easily while writing and previewing your Streamlit apps like normal.
+
+Compared to traditional server-deployed Streamlit apps, where the actual computation happens on a web server somewhere, and hosting options for such apps like  Streamlit Community Cloud, Pyodide-powered stlite apps offer some unique advantages:
+
+- they run fully client-side (no server costs, no backend setup)
+  - because of this, you also don't have to worry about managing scaling or loads to manage concurrent users (within reason!)
+- they are privacy-preserving (all data stays in the user’s browser)
+- they can be hosted on simple static file hosting services like GitHub Pages
+- they don't 'go to sleep' like apps hosted on streamlit community cloud
+
+### Why stlitepack?
+
+stlite requires saving your streamlit app code into a html file, with some additional html code before and after the app to ensure various things are loaded in.
+
+However, this makes it harder to
+
+- test your app (as you can no longer run it with `streamlit run`)
+- debug your app (as you no longer get the standard hinting, error highlighting and syntax colouring you would in a .py file)
+- manage complex apps (as growing codebases lead to very large file)
+
+When you then come to host it on a site like github pages, you have to remember extra steps like
+
+- ensuring your html file was called the right thing so github pages could find it
+- creating a `.nojekyll` file to avoid extra processing being done to your app
+
+`stlitepack` grew out of a need to be able to develop Streamlit apps as normal, and then streamline the process of getting them up and hosted as quickly as possible. With just two key commands -- `pack()` and `publish()` - you can take a streamlit app and turn it into a hosted stlite app on github pages.
+
+## Installation
+
+`stlitepack` is available on pypi (conda forge coming soon!)
+
+```bash
+pip install stlitepack
+```
+
+---
+
+## Packing Your App
+
+The `pack` function converts a Streamlit app into a single `index.html` file that can be served as a static website.
+
+### Example
+
+```python
+from stlitepack import pack
+
+pack(
+    app_file="streamlit_app.py"
+)
+```
+
+This will create:
+
+```
+index.html
+```
+
+Alternatively, you may wish for the output index.html file to be placed in a different subfolder to keep your repository tidy, or if your chosen static hosting site expects it to be somewhere else.
+
+```python
+from stlitepack import pack
+
+pack(
+    app_file="streamlit_app.py",
+    requirements=["matplotlib", "numpy"],
+    title="My Demo App",
+    output_dir="docs"
+)
+```
+
+This will create:
+
+```
+docs/
+  └── index.html
+```
+
+:::{.callout-tip}
+Note that if you are hosting on github pages and enabling this via the repository settings, there are only two options for where the index.html file can be stored
+
+- your repository's 'root' folder (i.e. the top-level folder you see when you first open up your repository on github)
+- the docs folder, which must be directly within the root folder
+:::
+
+---
+
+### Key Parameters
+
+To package up a Python app, the minimum we need to provide is the name of the main Streamlit app file (which is also known as the 'entrypoint'). This can be called anything, but must be a .py file.
+
+If your app has multiple additional pages stored in a `pages` subfolder at the same level as your main app file, then they will automatically be included in the output file.
+
+#### Main Optional Parameters
+
+##### **`requirements`**
+
+You may wish to install some additional python packages.
+
+- a list of Python package names (`["pandas", "numpy"]`), or
+- a path to a `requirements.txt` file.
+
+e.g.
+
+```python
+from stlitepack import pack
+
+pack(
+    app_file="streamlit_app.py",
+    requirements=["matplotlib", "numpy"],
+)
+```
+
+or
+
+```python
+from stlitepack import pack
+
+pack(
+    app_file="streamlit_app.py",
+    requirements="requirements.txt",
+)
+```
+
+If omitted, no extra packages are installed.
+
+:::{.callout-warning}
+
+*Note that due to the way packages are managed in stlite, using pyodide and micropip, you may not be able to 'pin' dependencies in the way you are used to with streamlit apps. More detail about this will be added soon.
+
+:::
+
+:::{.callout-warning}
+In particular, it's not possible to specify a version of the Streamlit package - this will be ignored by stlite!
+:::
+
+##### `title`
+
+This controls the name of the app that will be displayed when a user has it open in a web browser, showing up as the name of the tab.
+
+```python
+from stlitepack import pack
+
+pack(
+    app_file="streamlit_app.py",
+    title="My Amazing App"
+)
+```
+
+##### `stylesheet_version` / `js_bundle_version`
+
+Version numbers of the stlite JavaScript and CSS bundles. Must be valid versions from the stlite releases page. This will control the Streamlit version that is used too.
+
+```python
+from stlitepack import pack
+
+pack(
+    app_file="streamlit_app.py",
+    stylesheet_version="0.84.1",
+    js_bundle_version="0.84.1"
+)
+```
+
+If you want to see the list of valid stlite versions:
+
+```python
+from stlitepack.pack import get_stlite_versions
+
+get_stlite_versions()
+```
+
+##### `use_raw_api`
+
+st-lite provides two ways of wrapping apps. If this parameter is set to `True`, use stlite’s raw `mount()` API instead of the `<streamlit-app>` block.
+The main reason for doing this is if you want to specify a particular pyodide version.
+
+##### `pyodide_version`
+Specify the Pyodide version to use. **Ignored if `use_raw_api=False`.**
+
+##### `extra_files`
+Extra files (relative paths) to mount inside the app, e.g. a `.streamlit/config.toml` or extra helper scripts. Note that this must be passed as a list of strings (even if you're only adding one extra file this way).
+
+Also note that you don't need to manually add extra app pages from your `pages` subfolder this way - they will automatically be picked up when you pass in the path of your main/entrypoint file.
+
+e.g.
+
+```python
+from stlitepack import pack
+
+pack(
+    app_file="streamlit_app.py",
+    extra_files=[".streamlit/config.toml", "data.csv"]
+)
+```
+
+---
+
+
+## Publishing with GitHub Pages
+
+Use `setup_github_pages()` to scaffold a GitHub Pages deployment for your packaged stlite app.
+It creates the necessary files and prints step-by-step instructions (also saved to `PAGES_SETUP.md`).
+
+### Prerequisites
+
+- You have a GitHub account and a repository for your app.
+- Your packaged app (e.g., `docs/index.html`) is committed in that repository.
+- You know which branch you’ll publish from (default: `main`).
+
+:::{.callout-note}
+### GitHub Basics
+
+- **Repositories** are project folders hosted on GitHub. You’ll need to push your code there first.
+- **Branches** are parallel versions of your repository (most often `"main"`).
+- **GitHub Pages** is a free hosting service for static sites from your repo.
+:::
+
+### Typical workflow
+
+```python
+from stlitepack import pack, setup_github_pages
+
+# 1) Pack your app into docs/index.html (recommended for Pages)
+pack(
+    app_file="streamlit_app.py",
+    requirements=["matplotlib"],
+    output_dir="docs"
+)
+
+# 2) Scaffold GitHub Pages
+setup_github_pages(
+    mode="gh-actions",     # or "manual"
+    use_docs=True,         # serve from /docs (recommended)
+    only_on_index=True,    # only trigger CI when index.html changes (gh-actions mode only)
+    branch="main"
+)
+
+# 3) Commit and push the changes (index.html, .nojekyll, and possibly .github/workflows/deploy.yml)
+#    Then follow the printed instructions (also saved to PAGES_SETUP.md).
+```
+
+### Parameters
+
+- `mode`: `{"gh-actions", "manual"}`
+  - `"gh-actions"`: Creates a GitHub Actions workflow to deploy your Pages site.
+    You must still go to **Repo → Settings → Pages** and set **Source: GitHub Actions** so the workflow may run.
+  - `"manual"`: You deploy directly from a branch (no Actions). The function prints and writes setup instructions (to `PAGES_SETUP.md`) so you can configure Pages in repo settings.
+
+- `use_docs` *(bool, default `True`)*
+  - If `True`, serve from the `docs/` folder (i.e., your app is at `docs/index.html`).
+  - If `False`, serve from the repository root (i.e., `./index.html`).
+
+- `only_on_index` *(bool, default `True` — **gh-actions only**)*
+  - If `True`, the workflow triggers only when `index.html` changes.
+  - Ignored in `"manual"` mode.
+
+- `branch` *(str, default `"main"`)*
+  - The source branch for GitHub Pages (and for the workflow if using Actions).
+
+### What the function creates
+
+- A `.nojekyll` file in the **repo root**, and **also in `docs/`** if `use_docs=True`
+  (disables Jekyll so files are served as-is).
+- If `mode="gh-actions"`:
+  - A workflow file at **`.github/workflows/deploy.yml`**.
+  - A **`PAGES_SETUP.md`** helper with the exact steps to enable Pages via **GitHub Actions**.
+- If `mode="manual"`:
+  - A **`PAGES_SETUP.md`** helper with exact steps to configure **Deploy from a branch**.
+
+### Finishing steps (by mode)
+
+**If `mode="manual"`**
+1. Commit `index.html` (and `.nojekyll`) into `/{docs or .}/` on the chosen `branch`.
+2. In **Repo → Settings → Pages**:
+   - **Build and deployment → Source**: `Deploy from a branch`
+   - **Branch**: your branch (e.g., `main`)
+   - **Folder**: `/docs` (if `use_docs=True`) or `root` (if `use_docs=False`)
+
+**If `mode="gh-actions"`**
+1. In **Repo → Settings → Pages**:
+   - **Build and deployment → Source**: `GitHub Actions`.
+2. Commit the generated files:
+   - `.github/workflows/deploy.yml`
+   - `.nojekyll` (root and, if applicable, `docs/.nojekyll`)
+   - `index.html` in your target folder (`docs/` if `use_docs=True`, else repo root).
+3. Push to your repo. The workflow will build and deploy your site.
+
+Your app will be available at:
+
+```
+https://<your-github-username>.github.io/<your-repo-name>/
+```
+
+> Note: It can take a few minutes for the first deployment to appear. If using Actions, ensure the workflow runs and passes; if using manual mode, double-check your Pages settings.
+
+---
+
+## Next Steps
+
+- Experiment with adding extra files (e.g., a `.streamlit/config.toml` for customization).
+- Share your packaged app on GitHub Pages.
+- Contribute back by reporting issues or suggesting improvements!

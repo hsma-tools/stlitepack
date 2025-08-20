@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.84.1/build/style.css"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.84.1/build/stlite.js";
+      mount(
+        {
+          
+          requirements: [],
+          entrypoint: "simple_with_config.py",
+          files: {
+            "simple_with_config.py": `
+import streamlit as st
+
+st.header("Streamlit App")
+
+st.write("Hello World!")
+
+with st.sidebar:
+    st.subheader("I'm a sidebar")
+
+            `,
+            ".streamlit/config.toml": `
+[theme]
+base="dark"
+primaryColor="#08c770"
+backgroundColor="#f1621b"
+
+            `
+          },
+        },
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>
