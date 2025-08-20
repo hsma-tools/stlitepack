@@ -47,8 +47,8 @@ TEMPLATE_MOUNT = """<!DOCTYPE html>
   <body>
     <div id="root"></div>
     <script type="module">
-      import * as stlite from "https://cdn.jsdelivr.net/npm/@stlite/browser@{js_bundle_version}/build/stlite.js";
-      stlite.mount(
+      import {{ mount }} from "https://cdn.jsdelivr.net/npm/@stlite/browser@{js_bundle_version}/build/stlite.js";
+      mount(
         {{
           requirements: {requirements},
           entrypoint: "{entrypoint}",
@@ -71,7 +71,8 @@ def pack(
         output_file: str = "index.html",
         stylesheet_version: str = "0.84.1",
         js_bundle_version: str = "0.84.1",
-        use_raw_api: bool = False
+        use_raw_api: bool = False,
+        pyodide_version: str = "default"
         ):
     """
     Pack a Streamlit app into a stlite-compatible index.html file.
@@ -171,10 +172,8 @@ def pack(
         for f in files_to_pack:
             rel_name = f.relative_to(base_dir).as_posix()
             code = f.read_text(encoding="utf-8")
-            # indent lines by 2 spaces (for nice formatting)
-            code_indented = "\n".join("      " + line for line in code.splitlines())
             file_entries.append(
-                f'            "{rel_name}": `\n{code_indented}\n            `'
+                f'            "{rel_name}": `\n{code}\n            `'
             )
         files_js = ",\n".join(file_entries)
 
