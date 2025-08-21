@@ -1,0 +1,17 @@
+# pack.list_files_in_folders { #stlitepack.pack.list_files_in_folders }
+
+```python
+pack.list_files_in_folders(folders, recursive=False, pattern=None, invert=False)
+```
+
+Given a list of folder paths, return a list of all files inside them
+with their relative paths (including the folder name).
+
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name      | Type        | Description                                                                                    | Default    |
+|-----------|-------------|------------------------------------------------------------------------------------------------|------------|
+| folders   | list of str | List of folder paths to search in.                                                             | _required_ |
+| recursive | bool        | If True, include files in subfolders recursively.                                              | `False`    |
+| pattern   | str         | A glob pattern (e.g., "*.csv") or regex to filter file paths. If None, all files are included. | `None`     |
+| invert    | bool        | If True, include all files *except* those that match the pattern.                              | `False`    |

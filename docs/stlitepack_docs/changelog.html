@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Test Results – stlitepack</title>
+<title>changelog – stlitepack</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -241,7 +241,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../stlitepack_docs/test_outputs.html">Tests</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../stlitepack_docs/changelog.html">Changelog/Version History</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -382,7 +382,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../stlitepack_docs/test_outputs.html" class="sidebar-item-text sidebar-link active">
+  <a href="../stlitepack_docs/test_outputs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tests</span></a>
   </div>
 </li>
@@ -400,7 +400,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../stlitepack_docs/changelog.html" class="sidebar-item-text sidebar-link">
+  <a href="../stlitepack_docs/changelog.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Changelog/Version History</span></a>
   </div>
 </li>
@@ -411,67 +411,95 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Test Results</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="test-results" class="level1">
-<h1>Test Results</h1>
-<section id="multi_page_pages_subfolder_no_reqs" class="level2">
-<h2 class="anchored" data-anchor-id="multi_page_pages_subfolder_no_reqs">multi_page_pages_subfolder_no_reqs</h2>
+<section id="version-history" class="level1">
+<h1>Version History</h1>
+</section>
+<section id="history" class="level1">
+<h1>HISTORY</h1>
+<p>All notable changes to <code>stlitepack</code> are documented in this file.</p>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">[0.4.0]</h2>
+<section id="breaking-changes" class="level3">
+<h3 class="anchored" data-anchor-id="breaking-changes">BREAKING CHANGES</h3>
 <ul>
-<li><a href="..\tests\multi_page_pages_subfolder_no_reqs\raw_api\docs\index.html">raw_api</a></li>
-<li><a href="..\tests\multi_page_pages_subfolder_no_reqs\simple_api\docs\index.html">simple_api</a></li>
+<li><code>extra_files</code> parameter split to <code>extra_files_to_embed</code> and <code>extra_files_to_link</code></li>
+<li><code>use_raw_api</code> default changed from <code>False</code> to <code>True</code>.</li>
 </ul>
 </section>
-<section id="simplest" class="level2">
-<h2 class="anchored" data-anchor-id="simplest">simplest</h2>
+</section>
+<section id="added" class="level2">
+<h2 class="anchored" data-anchor-id="added">Added</h2>
 <ul>
-<li><a href="..\tests\simplest\docs\index.html">simplest</a></li>
+<li>Added ’find_</li>
 </ul>
 </section>
-<section id="simplest_different_pyodide" class="level2">
-<h2 class="anchored" data-anchor-id="simplest_different_pyodide">simplest_different_pyodide</h2>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">[0.3.1]</h2>
+<section id="fixed" class="level3">
+<h3 class="anchored" data-anchor-id="fixed">Fixed</h3>
 <ul>
-<li><a href="..\tests\simplest_different_pyodide\docs\index.html">simplest_different_pyodide</a></li>
+<li>Added missing dependency to build file (requests)</li>
 </ul>
 </section>
-<section id="single_page_extra_file" class="level2">
-<h2 class="anchored" data-anchor-id="single_page_extra_file">single_page_extra_file</h2>
+<section id="documentation" class="level3">
+<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
 <ul>
-<li><a href="..\tests\single_page_extra_file\with_config\docs\index.html">with_config</a></li>
-<li><a href="..\tests\single_page_extra_file\with_config_raw_api\docs\index.html">with_config_raw_api</a></li>
+<li>Quickstart guide in <code>.qmd</code> format, including detailed parameters for <code>pack()</code> and <code>publish()</code>.</li>
+<li>Added description of <code>stlite</code>, benefits of <code>stlitepack</code>, and Pyodide vs traditional server apps.</li>
+<li>Created contributor <code>CODE_OF_CONDUCT.md</code>.</li>
 </ul>
 </section>
-<section id="single_page_with_reqs" class="level2">
-<h2 class="anchored" data-anchor-id="single_page_with_reqs">single_page_with_reqs</h2>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">[0.3.0]</h2>
+</section>
+<section id="fixed-1" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-1">Fixed</h2>
 <ul>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file\docs\index.html">from_reqs_file</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file_loose\docs\index.html">from_reqs_file_loose</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file_loose_raw_api\docs\index.html">from_reqs_file_loose_raw_api</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file_raw_api\docs\index.html">from_reqs_file_raw_api</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file_strict\docs\index.html">from_reqs_file_strict</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file_strict_raw_api\docs\index.html">from_reqs_file_strict_raw_api</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_list\docs\index.html">from_reqs_list</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_list_raw_api\docs\index.html">from_reqs_list_raw_api</a></li>
+<li>GitHub Pages <code>setup_github_pages</code> documentation corrected.</li>
+</ul>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">[0.2.0]</h2>
+<section id="added-1" class="level3">
+<h3 class="anchored" data-anchor-id="added-1">Added</h3>
+<ul>
+<li>Support for <code>raw</code> API with multipage apps.</li>
+<li>Conditional configuration and <code>extra_files</code> mounting.</li>
+<li>Support for relative paths in app file mounting.</li>
+<li>Function to fetch valid Stlite versions from GitHub.</li>
+<li>Terminal-friendly messages for version info.</li>
+<li>Warning if <code>pyodide_version</code> is set while using the raw API.</li>
+</ul>
+</section>
+<section id="changed" class="level3">
+<h3 class="anchored" data-anchor-id="changed">Changed</h3>
+<ul>
+<li><code>pack()</code> function now accepts <code>app_file</code> as main entrypoint and maintains relative path handling.</li>
+<li><code>publish()</code> / GitHub Pages workflow documentation clarified.</li>
+<li>Raw API template updated to support <code>streamlitConfig</code> and multipage apps.</li>
+<li>Version checks added for <code>stylesheet_version</code> and <code>js_bundle_version</code> (must be &gt;= 0.76.0).</li>
+</ul>
+</section>
+<section id="fixed-2" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-2">Fixed</h3>
+<ul>
+<li>Path handling in the raw API HTML template to work across OSes (forward slashes normalized).</li>
+</ul>
+</section>
+</section>
+<section id="initial-release" class="level2">
+<h2 class="anchored" data-anchor-id="initial-release">[0.1.0] - Initial release</h2>
+<ul>
+<li>Basic <code>pack()</code> function for packaging Streamlit apps to Stlite.</li>
+<li>GitHub Pages deployment support with <code>setup_github_pages()</code>.</li>
+<li>Raw API HTML template for single-file apps.</li>
 </ul>
 
 

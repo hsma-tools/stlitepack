@@ -3,7 +3,10 @@ from pathlib import Path
 from packaging import version
 import requests
 import warnings
-
+import re
+import os
+import base64
+import fnmatch
 
 TEMPLATE = """<!doctype html>
 <html>
@@ -65,16 +68,28 @@ TEMPLATE_MOUNT = """<!DOCTYPE html>
   </body>
 </html>"""
 
+def _read_file_flexibly(path: Path):
+  try:
+      # Try reading as UTF-8 text
+      return path.read_text(encoding="utf-8")
+  except UnicodeDecodeError:
+      # Fallback: read as bytes and encode as base64
+      binary_content = path.read_bytes()
+      return base64.b64encode(binary_content).decode("utf-8")
+
 def pack(
         app_file: str,
-        extra_files: list[str] | None = None,
+        extra_files_to_embed: list[str] | None = None,
+        extra_files_to_link: list[str] | dict | None = None,
+        prepend_github_path: str | None = None,
+        github_branch: str = "main",
         requirements: list[str] | None = None,
         title: str = "App",
         output_dir: str = "docs",
         output_file: str = "index.html",
         stylesheet_version: str = "0.84.1",
         js_bundle_version: str = "0.84.1",
-        use_raw_api: bool = False,
+        use_raw_api: bool = True,
         pyodide_version: str = "default"
         ):
     """
@@ -91,8 +106,32 @@ def pack(
     ----------
     app_file : str
         Path to the main Streamlit application file (entrypoint) (e.g., ``"app.py"``).
-    extra_files : list[str], optional
-        Additional files to mount into the app (e.g. .streamlit/config.toml).
+        If additional pages are found in a 'pages' folder at the same level as this main app file,
+        these will be added in as additional files.
+    extra_files_to_embed : list[str], optional
+        Additional files to mount directly into the app (e.g. .streamlit/config.toml).
+        These must be additional files that are primarily text-based (e.g. .py, .toml, .csv).
+        If binary files are provided,
+    extra_files_to_link : list[str] or dict, optional
+        Additional files to hyperlink to.
+        - If passed as a list, must be used with the argument 'prepend_github_path'.
+          The list must be a list of relative filepaths.
+        - If passed as a dict, expects key:value pairs of relative_filepath: url
+        Can only be used with the raw API (use_raw_api=True).
+        Defaults to None
+    prepend_github_path : str, optional
+        If files to be linked are stored on github, you can pass them as relative paths in the
+        extra_files_to
+        Needs to passed in the format username/reponam
+        Ignored if 'extra_files_to_link' is None.
+        Can only be used with the raw API (use_raw_api=True).
+        Defaults to None
+    github_branch: str, optional
+        If files to be linked to on Github need to come from a branch other than main, provide
+        the name of the desired branch here.
+        Ignored if 'extra_files_to_link' is None or prepend_github_path is None.
+        Can only be used with the raw API (use_raw_api=True).
+        Defaults to 'main'
     requirements : str or list of str
         Either:
           - Path to a ``requirements.txt`` file (str), or
@@ -104,9 +143,7 @@ def pack(
         Default is ``"dist"``.
     use_raw_api : bool, optional
         If True, will use the version of the template that calls the `mount()` API explicitly.
-        Multi-page apps are not currently supported with the raw API, so set this to False if you
-        wish to create a multi-page app.
-        Default is `False`.
+        Default is `True`.
     pyodide_version: str, optional
         If not 'default', tries to serve the requested pyodide version from the pyodide CDN.
         Only works with raw API.
@@ -158,8 +195,8 @@ def pack(
         files_to_pack.extend(sorted(pages_dir.glob("*.py")))
 
     # Add extra files explicitly
-    if extra_files:
-        files_to_pack.extend(Path(f) for f in extra_files)
+    if extra_files_to_embed:
+        files_to_pack.extend(Path(f) for f in extra_files_to_embed)
 
     # Normalize requirements
     if requirements is None:
@@ -179,10 +216,30 @@ def pack(
         file_entries = []
         for f in files_to_pack:
             rel_name = f.relative_to(base_dir).as_posix()
-            code = f.read_text(encoding="utf-8")
+            content = _read_file_flexibly(f)
             file_entries.append(
-                f'            "{rel_name}": `\n{code}\n            `'
+                f'"{rel_name}": `\n{content}\n            `'
             )
+        # NOTE - Here will add in the step of including any additional linked files
+        # where instead of embedding the code
+        if isinstance(extra_files_to_link, dict):
+            for k, v in extra_files_to_link.items():
+                file_entries.append(
+                    f'"{k}": {{\nurl: "{v}"\n}}'
+                )
+        elif isinstance(extra_files_to_link, list) and prepend_github_path is not None:
+            for f in extra_files_to_link:
+                file_entries.append(
+                    f'"{f}": {{\nurl: "https://raw.githubusercontent.com/{prepend_github_path}/refs/heads/{github_branch}/{f}"\n}}'
+                )
+        elif isinstance(extra_files_to_link, list) and prepend_github_path is None:
+            warnings.warn(
+                  "pyodide_version is ignored when use_raw_api=False. "
+                  "The simple API uses Pyodide version linked to the chosen stlite release.",
+                  UserWarning
+                )
+
+        # Finalise the string of additional files
         files_js = ",\n".join(file_entries)
 
         if pyodide_version != "default":
@@ -286,3 +343,60 @@ def get_stlite_versions():
     print("=======================\n")
 
     return versions
+
+def list_files_in_folders(folders, recursive=False, pattern=None, invert=False):
+    """
+    Given a list of folder paths, return a list of all files inside them
+    with their relative paths (including the folder name).
+
+    Parameters
+    ----------
+    folders : list of str
+        List of folder paths to search in.
+    recursive : bool, default=False
+        If True, include files in subfolders recursively.
+    pattern : str, optional
+        A glob pattern (e.g., "*.csv") or regex to filter file paths.
+        If None, all files are included.
+    invert : bool, default=False
+        If True, include all files *except* those that match the pattern.
+    """
+    all_files = []
+
+    # Convert glob to regex if needed
+    if pattern:
+        # Simple heuristic: treat pattern as glob if it contains *, ?, or []
+        if any(char in pattern for char in "*?[]"):
+            regex = re.compile(fnmatch.translate(pattern))
+        else:
+            regex = re.compile(pattern)
+    else:
+        regex = None
+
+    for folder in folders:
+        folder = os.path.abspath(folder)  # normalize path
+        if recursive:
+            for root, _, files in os.walk(folder):
+                for file in files:
+                    rel_path = os.path.relpath(os.path.join(root, file), start=os.path.dirname(folder))
+                    rel_path = rel_path.replace(os.sep, "/")
+                    if regex:
+                        match = bool(regex.search(rel_path))
+                        if match != invert:
+                            all_files.append(rel_path)
+                    else:
+                        all_files.append(rel_path)
+        else:
+            for file in os.listdir(folder):
+                full_path = os.path.join(folder, file)
+                if os.path.isfile(full_path):
+                    rel_path = os.path.relpath(full_path, start=os.path.dirname(folder))
+                    rel_path = rel_path.replace(os.sep, "/")
+                    if regex:
+                        match = bool(regex.search(rel_path))
+                        if match != invert:
+                            all_files.append(rel_path)
+                    else:
+                        all_files.append(rel_path)
+
+    return all_files

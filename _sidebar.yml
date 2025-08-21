@@ -10,6 +10,7 @@ website:
       - reference/index.qmd
       - contents:
         - reference/pack.pack.qmd
+        - reference/pack.list_files_in_folders.qmd
         section: Packing Functions
       - contents:
         - reference/publish.setup_github_pages.qmd
@@ -24,6 +25,8 @@ website:
       text: Licence
     - href: stlitepack_docs/code_of_conduct.qmd
       text: Contributor Code of Conduct
+    - href: stlitepack_docs/changelog.qmd
+      text: Changelog/Version History
     id: reference
     search: true
     style: docked

@@ -20,7 +20,7 @@
           requirements: [],
           entrypoint: "simple_with_config.py",
           files: {
-            "simple_with_config.py": `
+"simple_with_config.py": `
 import streamlit as st
 
 st.header("Streamlit App")
@@ -29,13 +29,6 @@ st.write("Hello World!")
 
 with st.sidebar:
     st.subheader("I'm a sidebar")
-
-            `,
-            ".streamlit/config.toml": `
-[theme]
-base="dark"
-primaryColor="#08c770"
-backgroundColor="#f1621b"
 
             `
           },

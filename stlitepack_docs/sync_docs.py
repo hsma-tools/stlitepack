@@ -7,7 +7,8 @@ docs = root / "stlitepack_docs"
 files = {
     "README.md": "index.qmd",
     "LICENCE.md": "licence.qmd",
-    "CODE_OF_CONDUCT.md": "code_of_conduct.qmd"
+    "CODE_OF_CONDUCT.md": "code_of_conduct.qmd",
+    "HISTORY.md": "changelog.qmd"
 }
 
 for src, dest in files.items():

@@ -1,30 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>App</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.84.1/build/stlite.css"
+      href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.84.1/build/style.css"
     />
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@stlite/browser@0.84.1/build/stlite.js"
-    ></script>
   </head>
   <body>
-    <streamlit-app>
-  <app-file name="simplest.py" entrypoint>
-    import streamlit as st
-    
-    st.write("Hello World!")
-  </app-file>
+    <div id="root"></div>
+    <script type="module">
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.84.1/build/stlite.js";
+      mount(
+        {
+          
+          requirements: [],
+          entrypoint: "simplest.py",
+          files: {
+"simplest.py": `
+import streamlit as st
 
-    </streamlit-app>
+st.write("Hello World!")
+
+            `
+          },
+        },
+        document.getElementById("root")
+      );
+    </script>
   </body>
 </html>

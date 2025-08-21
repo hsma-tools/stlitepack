@@ -26,10 +26,13 @@ Usage Example
 
 The generated app will be available at ``docs/index.html`` by default.
 """
-__version__ = '0.3.1'
+__version__ = '0.4.0'
 __author__ = 'Sammi Rosser'
 
-from .pack import pack
+from . import pack as _pack_module  # import the module itself
 from .publish import setup_github_pages
+
+# Expose the main function under a different name
+pack = _pack_module.pack  # now `stlitepack.pack` refers to the function
 
 __all__ = ["pack", "setup_github_pages"]

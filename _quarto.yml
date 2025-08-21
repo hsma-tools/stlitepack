@@ -12,6 +12,7 @@ project:
   - "!README.md"
   - "!PAGES_SETUP.md"
   - "!LICENCE.md"
+  - "!HISTORY.md"
   - "!CODE_OF_CONDUCT.md"
   - "!tests/README.md"
 
@@ -67,12 +68,15 @@ quartodoc:
         href: stlitepack_docs/licence.qmd
       - text: "Contributor Code of Conduct"
         href: stlitepack_docs/code_of_conduct.qmd
+      - text: "Changelog/Version History"
+        href: stlitepack_docs/changelog.qmd
 
   sections:
     - title: Packing Functions
       desc: ""
       contents:
         - pack.pack
+        - pack.list_files_in_folders
     - title: Publishing Functions
       desc: ""
       contents:

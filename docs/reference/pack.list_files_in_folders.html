@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Test Results – stlitepack</title>
+<title>pack.list_files_in_folders – stlitepack</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -241,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../stlitepack_docs/test_outputs.html">Tests</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">stlitepack Function Reference</a></li><li class="breadcrumb-item"><a href="../reference/pack.pack.html">Packing Functions</a></li><li class="breadcrumb-item"><a href="../reference/pack.list_files_in_folders.html">pack.list_files_in_folders</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -323,13 +358,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Packing Functions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/pack.pack.html" class="sidebar-item-text sidebar-link">
@@ -338,7 +373,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/pack.list_files_in_folders.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/pack.list_files_in_folders.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">pack.list_files_in_folders</span></a>
   </div>
 </li>
@@ -382,7 +417,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../stlitepack_docs/test_outputs.html" class="sidebar-item-text sidebar-link active">
+  <a href="../stlitepack_docs/test_outputs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tests</span></a>
   </div>
 </li>
@@ -411,68 +446,60 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Test Results</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">stlitepack Function Reference</a></li><li class="breadcrumb-item"><a href="../reference/pack.pack.html">Packing Functions</a></li><li class="breadcrumb-item"><a href="../reference/pack.list_files_in_folders.html">pack.list_files_in_folders</a></li></ol></nav></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="test-results" class="level1">
-<h1>Test Results</h1>
-<section id="multi_page_pages_subfolder_no_reqs" class="level2">
-<h2 class="anchored" data-anchor-id="multi_page_pages_subfolder_no_reqs">multi_page_pages_subfolder_no_reqs</h2>
-<ul>
-<li><a href="..\tests\multi_page_pages_subfolder_no_reqs\raw_api\docs\index.html">raw_api</a></li>
-<li><a href="..\tests\multi_page_pages_subfolder_no_reqs\simple_api\docs\index.html">simple_api</a></li>
-</ul>
-</section>
-<section id="simplest" class="level2">
-<h2 class="anchored" data-anchor-id="simplest">simplest</h2>
-<ul>
-<li><a href="..\tests\simplest\docs\index.html">simplest</a></li>
-</ul>
-</section>
-<section id="simplest_different_pyodide" class="level2">
-<h2 class="anchored" data-anchor-id="simplest_different_pyodide">simplest_different_pyodide</h2>
-<ul>
-<li><a href="..\tests\simplest_different_pyodide\docs\index.html">simplest_different_pyodide</a></li>
-</ul>
-</section>
-<section id="single_page_extra_file" class="level2">
-<h2 class="anchored" data-anchor-id="single_page_extra_file">single_page_extra_file</h2>
-<ul>
-<li><a href="..\tests\single_page_extra_file\with_config\docs\index.html">with_config</a></li>
-<li><a href="..\tests\single_page_extra_file\with_config_raw_api\docs\index.html">with_config_raw_api</a></li>
-</ul>
-</section>
-<section id="single_page_with_reqs" class="level2">
-<h2 class="anchored" data-anchor-id="single_page_with_reqs">single_page_with_reqs</h2>
-<ul>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file\docs\index.html">from_reqs_file</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file_loose\docs\index.html">from_reqs_file_loose</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file_loose_raw_api\docs\index.html">from_reqs_file_loose_raw_api</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file_raw_api\docs\index.html">from_reqs_file_raw_api</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file_strict\docs\index.html">from_reqs_file_strict</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_file_strict_raw_api\docs\index.html">from_reqs_file_strict_raw_api</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_list\docs\index.html">from_reqs_list</a></li>
-<li><a href="..\tests\single_page_with_reqs\from_reqs_list_raw_api\docs\index.html">from_reqs_list_raw_api</a></li>
-</ul>
+<section id="stlitepack.pack.list_files_in_folders" class="level1">
+<h1>pack.list_files_in_folders</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pack.list_files_in_folders(folders, recursive<span class="op">=</span><span class="va">False</span>, pattern<span class="op">=</span><span class="va">None</span>, invert<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Given a list of folder paths, return a list of all files inside them with their relative paths (including the folder name).</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 72%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>folders</td>
+<td>list of str</td>
+<td>List of folder paths to search in.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>recursive</td>
+<td>bool</td>
+<td>If True, include files in subfolders recursively.</td>
+<td><code>False</code></td>
+</tr>
+<tr class="odd">
+<td>pattern</td>
+<td>str</td>
+<td>A glob pattern (e.g., “*.csv”) or regex to filter file paths. If None, all files are included.</td>
+<td><code>None</code></td>
+</tr>
+<tr class="even">
+<td>invert</td>
+<td>bool</td>
+<td>If True, include all files <em>except</em> those that match the pattern.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

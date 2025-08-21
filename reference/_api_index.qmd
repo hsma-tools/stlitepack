@@ -7,6 +7,7 @@
 | | |
 | --- | --- |
 | [pack.pack](pack.pack.qmd#stlitepack.pack.pack) | Pack a Streamlit app into a stlite-compatible index.html file. |
+| [pack.list_files_in_folders](pack.list_files_in_folders.qmd#stlitepack.pack.list_files_in_folders) | Given a list of folder paths, return a list of all files inside them |
 
 ## Publishing Functions
 

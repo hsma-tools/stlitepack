@@ -154,4 +154,4 @@ To complete setup:
             )
 
     else:
-        raise ValueError("mode must be 'gh-pages' or 'main'")
+        raise ValueError("mode must be 'gh-actions' or 'main'")

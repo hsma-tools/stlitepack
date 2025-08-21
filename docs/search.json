@@ -140,63 +140,63 @@
     ]
   },
   {
-    "objectID": "reference/pack.pack.html",
-    "href": "reference/pack.pack.html",
-    "title": "pack.pack",
+    "objectID": "reference/publish.setup_github_pages.html",
+    "href": "reference/publish.setup_github_pages.html",
+    "title": "publish.setup_github_pages",
     "section": "",
-    "text": "pack.pack(\n    app_file,\n    extra_files=None,\n    requirements=None,\n    title='App',\n    output_dir='docs',\n    output_file='index.html',\n    stylesheet_version='0.84.1',\n    js_bundle_version='0.84.1',\n    use_raw_api=False,\n    pyodide_version='default',\n)\nPack a Streamlit app into a stlite-compatible index.html file.\nThis function reads a Streamlit Python script, injects it into an HTML template compatible with stlite, and writes the output as index.html. The resulting HTML can be served as static content (e.g., via GitHub Pages).\nIf additional pages are found in a ‘pages’ folder at the same level as the main app file, these will be added in as additional files.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\napp_file\nstr\nPath to the main Streamlit application file (entrypoint) (e.g., \"app.py\").\nrequired\n\n\nextra_files\nlist[str]\nAdditional files to mount into the app (e.g. .streamlit/config.toml).\nNone\n\n\nrequirements\nstr or list of str\nEither: - Path to a requirements.txt file (str), or - A list of required Python packages (list of str).\nNone\n\n\ntitle\nstr\nTitle to insert into the HTML &lt;title&gt; tag. Default is \"stlite app\".\n'App'\n\n\noutput_dir\nstr\nDirectory where the generated index.html will be written. Default is \"dist\".\n'docs'\n\n\nuse_raw_api\nbool\nIf True, will use the version of the template that calls the mount() API explicitly. Multi-page apps are not currently supported with the raw API, so set this to False if you wish to create a multi-page app. Default is False.\nFalse\n\n\npyodide_version\nstr\nIf not ‘default’, tries to serve the requested pyodide version from the pyodide CDN. Only works with raw API. Versions can be found here: https://pyodide.org/en/stable/project/changelog.html Default is ‘default’ (use default pyodide version, which is linked to stlite version)\n'default'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the specified app_file does not exist.\n\n\n\nValueError\nIf requirements is not a list or a valid requirements file path.\n\n\n\n\n\n\n\nCurrently supports only single-page Streamlit apps.\nFuture versions will support multi-page apps, additional resources, and GitHub Pages deployment automation.\n\n\n\n\nPack an app using a requirements file:\n&gt;&gt;&gt; from stlitepack import pack\n&gt;&gt;&gt; pack(\"app.py\", requirements=\"requirements.txt\", title=\"My App\")\nPack an app with inline requirements:\n&gt;&gt;&gt; pack(\"app.py\", requirements=[\"pandas\", \"numpy\"], title=\"Data Explorer\")\nThe resulting HTML file will be written to dist/index.html by default.",
+    "text": "publish.setup_github_pages(\n    mode='gh-actions',\n    use_docs=True,\n    only_on_index=True,\n    branch='main',\n)\nSet up GitHub Pages deployment for a stlite app.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
     "crumbs": [
       "stlitepack Function Reference",
-      "Packing Functions",
-      "pack.pack"
+      "Publishing Functions",
+      "publish.setup_github_pages"
     ]
   },
   {
-    "objectID": "reference/pack.pack.html#parameters",
-    "href": "reference/pack.pack.html#parameters",
-    "title": "pack.pack",
+    "objectID": "reference/publish.setup_github_pages.html#parameters",
+    "href": "reference/publish.setup_github_pages.html#parameters",
+    "title": "publish.setup_github_pages",
     "section": "",
-    "text": "Name\nType\nDescription\nDefault\n\n\n\n\napp_file\nstr\nPath to the main Streamlit application file (entrypoint) (e.g., \"app.py\").\nrequired\n\n\nextra_files\nlist[str]\nAdditional files to mount into the app (e.g. .streamlit/config.toml).\nNone\n\n\nrequirements\nstr or list of str\nEither: - Path to a requirements.txt file (str), or - A list of required Python packages (list of str).\nNone\n\n\ntitle\nstr\nTitle to insert into the HTML &lt;title&gt; tag. Default is \"stlite app\".\n'App'\n\n\noutput_dir\nstr\nDirectory where the generated index.html will be written. Default is \"dist\".\n'docs'\n\n\nuse_raw_api\nbool\nIf True, will use the version of the template that calls the mount() API explicitly. Multi-page apps are not currently supported with the raw API, so set this to False if you wish to create a multi-page app. Default is False.\nFalse\n\n\npyodide_version\nstr\nIf not ‘default’, tries to serve the requested pyodide version from the pyodide CDN. Only works with raw API. Versions can be found here: https://pyodide.org/en/stable/project/changelog.html Default is ‘default’ (use default pyodide version, which is linked to stlite version)\n'default'",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'",
     "crumbs": [
       "stlitepack Function Reference",
-      "Packing Functions",
-      "pack.pack"
+      "Publishing Functions",
+      "publish.setup_github_pages"
     ]
   },
   {
-    "objectID": "reference/pack.pack.html#raises",
-    "href": "reference/pack.pack.html#raises",
-    "title": "pack.pack",
+    "objectID": "reference/publish.setup_github_pages.html#returns",
+    "href": "reference/publish.setup_github_pages.html#returns",
+    "title": "publish.setup_github_pages",
     "section": "",
-    "text": "Name\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the specified app_file does not exist.\n\n\n\nValueError\nIf requirements is not a list or a valid requirements file path.",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
     "crumbs": [
       "stlitepack Function Reference",
-      "Packing Functions",
-      "pack.pack"
+      "Publishing Functions",
+      "publish.setup_github_pages"
     ]
   },
   {
-    "objectID": "reference/pack.pack.html#notes",
-    "href": "reference/pack.pack.html#notes",
-    "title": "pack.pack",
+    "objectID": "reference/pack.list_files_in_folders.html",
+    "href": "reference/pack.list_files_in_folders.html",
+    "title": "pack.list_files_in_folders",
     "section": "",
-    "text": "Currently supports only single-page Streamlit apps.\nFuture versions will support multi-page apps, additional resources, and GitHub Pages deployment automation.",
+    "text": "pack.list_files_in_folders(folders, recursive=False, pattern=None, invert=False)\nGiven a list of folder paths, return a list of all files inside them with their relative paths (including the folder name).\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nfolders\nlist of str\nList of folder paths to search in.\nrequired\n\n\nrecursive\nbool\nIf True, include files in subfolders recursively.\nFalse\n\n\npattern\nstr\nA glob pattern (e.g., “*.csv”) or regex to filter file paths. If None, all files are included.\nNone\n\n\ninvert\nbool\nIf True, include all files except those that match the pattern.\nFalse",
     "crumbs": [
       "stlitepack Function Reference",
       "Packing Functions",
-      "pack.pack"
+      "pack.list_files_in_folders"
     ]
   },
   {
-    "objectID": "reference/pack.pack.html#examples",
-    "href": "reference/pack.pack.html#examples",
-    "title": "pack.pack",
+    "objectID": "reference/pack.list_files_in_folders.html#parameters",
+    "href": "reference/pack.list_files_in_folders.html#parameters",
+    "title": "pack.list_files_in_folders",
     "section": "",
-    "text": "Pack an app using a requirements file:\n&gt;&gt;&gt; from stlitepack import pack\n&gt;&gt;&gt; pack(\"app.py\", requirements=\"requirements.txt\", title=\"My App\")\nPack an app with inline requirements:\n&gt;&gt;&gt; pack(\"app.py\", requirements=[\"pandas\", \"numpy\"], title=\"Data Explorer\")\nThe resulting HTML file will be written to dist/index.html by default.",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nfolders\nlist of str\nList of folder paths to search in.\nrequired\n\n\nrecursive\nbool\nIf True, include files in subfolders recursively.\nFalse\n\n\npattern\nstr\nA glob pattern (e.g., “*.csv”) or regex to filter file paths. If None, all files are included.\nNone\n\n\ninvert\nbool\nIf True, include all files except those that match the pattern.\nFalse",
     "crumbs": [
       "stlitepack Function Reference",
       "Packing Functions",
-      "pack.pack"
+      "pack.list_files_in_folders"
     ]
   },
   {
@@ -204,7 +204,7 @@
     "href": "reference/index.html#packing-functions",
     "title": "All Functions",
     "section": "Packing Functions",
-    "text": "Packing Functions\n\n\n\npack.pack\nPack a Streamlit app into a stlite-compatible index.html file.",
+    "text": "Packing Functions\n\n\n\npack.pack\nPack a Streamlit app into a stlite-compatible index.html file.\n\n\npack.list_files_in_folders\nGiven a list of folder paths, return a list of all files inside them",
     "crumbs": [
       "stlitepack Function Reference",
       "All Functions"
@@ -269,39 +269,133 @@
     ]
   },
   {
-    "objectID": "reference/publish.setup_github_pages.html",
-    "href": "reference/publish.setup_github_pages.html",
-    "title": "publish.setup_github_pages",
+    "objectID": "reference/pack.pack.html",
+    "href": "reference/pack.pack.html",
+    "title": "pack.pack",
     "section": "",
-    "text": "publish.setup_github_pages(\n    mode='gh-actions',\n    use_docs=True,\n    only_on_index=True,\n    branch='main',\n)\nSet up GitHub Pages deployment for a stlite app.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
+    "text": "pack.pack(\n    app_file,\n    extra_files_to_embed=None,\n    extra_files_to_link=None,\n    prepend_github_path=None,\n    github_branch='main',\n    requirements=None,\n    title='App',\n    output_dir='docs',\n    output_file='index.html',\n    stylesheet_version='0.84.1',\n    js_bundle_version='0.84.1',\n    use_raw_api=True,\n    pyodide_version='default',\n)\nPack a Streamlit app into a stlite-compatible index.html file.\nThis function reads a Streamlit Python script, injects it into an HTML template compatible with stlite, and writes the output as index.html. The resulting HTML can be served as static content (e.g., via GitHub Pages).\nIf additional pages are found in a ‘pages’ folder at the same level as the main app file, these will be added in as additional files.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\napp_file\nstr\nPath to the main Streamlit application file (entrypoint) (e.g., \"app.py\"). If additional pages are found in a ‘pages’ folder at the same level as this main app file, these will be added in as additional files.\nrequired\n\n\nextra_files_to_embed\nlist[str]\nAdditional files to mount directly into the app (e.g. .streamlit/config.toml). These must be additional files that are primarily text-based (e.g. .py, .toml, .csv). If binary files are provided,\nNone\n\n\nextra_files_to_link\nlist[str] or dict\nAdditional files to hyperlink to. - If passed as a list, must be used with the argument ‘prepend_github_path’. The list must be a list of relative filepaths. - If passed as a dict, expects key:value pairs of relative_filepath: url Can only be used with the raw API (use_raw_api=True). Defaults to None\nNone\n\n\nprepend_github_path\nstr\nIf files to be linked are stored on github, you can pass them as relative paths in the extra_files_to Needs to passed in the format username/reponam Ignored if ‘extra_files_to_link’ is None. Can only be used with the raw API (use_raw_api=True). Defaults to None\nNone\n\n\ngithub_branch\nstr\nIf files to be linked to on Github need to come from a branch other than main, provide the name of the desired branch here. Ignored if ‘extra_files_to_link’ is None or prepend_github_path is None. Can only be used with the raw API (use_raw_api=True). Defaults to ‘main’\n'main'\n\n\nrequirements\nstr or list of str\nEither: - Path to a requirements.txt file (str), or - A list of required Python packages (list of str).\nNone\n\n\ntitle\nstr\nTitle to insert into the HTML &lt;title&gt; tag. Default is \"stlite app\".\n'App'\n\n\noutput_dir\nstr\nDirectory where the generated index.html will be written. Default is \"dist\".\n'docs'\n\n\nuse_raw_api\nbool\nIf True, will use the version of the template that calls the mount() API explicitly. Default is True.\nTrue\n\n\npyodide_version\nstr\nIf not ‘default’, tries to serve the requested pyodide version from the pyodide CDN. Only works with raw API. Versions can be found here: https://pyodide.org/en/stable/project/changelog.html Default is ‘default’ (use default pyodide version, which is linked to stlite version)\n'default'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the specified app_file does not exist.\n\n\n\nValueError\nIf requirements is not a list or a valid requirements file path.\n\n\n\n\n\n\n\nCurrently supports only single-page Streamlit apps.\nFuture versions will support multi-page apps, additional resources, and GitHub Pages deployment automation.\n\n\n\n\nPack an app using a requirements file:\n&gt;&gt;&gt; from stlitepack import pack\n&gt;&gt;&gt; pack(\"app.py\", requirements=\"requirements.txt\", title=\"My App\")\nPack an app with inline requirements:\n&gt;&gt;&gt; pack(\"app.py\", requirements=[\"pandas\", \"numpy\"], title=\"Data Explorer\")\nThe resulting HTML file will be written to dist/index.html by default.",
     "crumbs": [
       "stlitepack Function Reference",
-      "Publishing Functions",
-      "publish.setup_github_pages"
+      "Packing Functions",
+      "pack.pack"
     ]
   },
   {
-    "objectID": "reference/publish.setup_github_pages.html#parameters",
-    "href": "reference/publish.setup_github_pages.html#parameters",
-    "title": "publish.setup_github_pages",
+    "objectID": "reference/pack.pack.html#parameters",
+    "href": "reference/pack.pack.html#parameters",
+    "title": "pack.pack",
     "section": "",
-    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nmode\n(gh - actions, manual)\nDeployment mode. - “gh-actions”: Deploys from a branch with GitHub Actions. Mostly hands-off, though note that you will still need to go to your repos settings –&gt; pages –&gt; Github Actions so that the generated workflow has permission to run. - “manual”: Deploy directly from a branch - manual github pages settings required. This will still generate some additional required files, but you will need to follow the provided instructions to get the files to build.\n\"gh-actions\"\n\n\nuse_docs\nbool\nIf True, serve from the docs/ folder. Otherwise serve from the repo root.\nTrue\n\n\nonly_on_index\nbool\nIf True, trigger deployment only when index.html changes (gh-actions mode only).\nTrue\n\n\nbranch\nstr\nBranch to use as source. Defaults to main.\n'main'",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\napp_file\nstr\nPath to the main Streamlit application file (entrypoint) (e.g., \"app.py\"). If additional pages are found in a ‘pages’ folder at the same level as this main app file, these will be added in as additional files.\nrequired\n\n\nextra_files_to_embed\nlist[str]\nAdditional files to mount directly into the app (e.g. .streamlit/config.toml). These must be additional files that are primarily text-based (e.g. .py, .toml, .csv). If binary files are provided,\nNone\n\n\nextra_files_to_link\nlist[str] or dict\nAdditional files to hyperlink to. - If passed as a list, must be used with the argument ‘prepend_github_path’. The list must be a list of relative filepaths. - If passed as a dict, expects key:value pairs of relative_filepath: url Can only be used with the raw API (use_raw_api=True). Defaults to None\nNone\n\n\nprepend_github_path\nstr\nIf files to be linked are stored on github, you can pass them as relative paths in the extra_files_to Needs to passed in the format username/reponam Ignored if ‘extra_files_to_link’ is None. Can only be used with the raw API (use_raw_api=True). Defaults to None\nNone\n\n\ngithub_branch\nstr\nIf files to be linked to on Github need to come from a branch other than main, provide the name of the desired branch here. Ignored if ‘extra_files_to_link’ is None or prepend_github_path is None. Can only be used with the raw API (use_raw_api=True). Defaults to ‘main’\n'main'\n\n\nrequirements\nstr or list of str\nEither: - Path to a requirements.txt file (str), or - A list of required Python packages (list of str).\nNone\n\n\ntitle\nstr\nTitle to insert into the HTML &lt;title&gt; tag. Default is \"stlite app\".\n'App'\n\n\noutput_dir\nstr\nDirectory where the generated index.html will be written. Default is \"dist\".\n'docs'\n\n\nuse_raw_api\nbool\nIf True, will use the version of the template that calls the mount() API explicitly. Default is True.\nTrue\n\n\npyodide_version\nstr\nIf not ‘default’, tries to serve the requested pyodide version from the pyodide CDN. Only works with raw API. Versions can be found here: https://pyodide.org/en/stable/project/changelog.html Default is ‘default’ (use default pyodide version, which is linked to stlite version)\n'default'",
     "crumbs": [
       "stlitepack Function Reference",
-      "Publishing Functions",
-      "publish.setup_github_pages"
+      "Packing Functions",
+      "pack.pack"
     ]
   },
   {
-    "objectID": "reference/publish.setup_github_pages.html#returns",
-    "href": "reference/publish.setup_github_pages.html#returns",
-    "title": "publish.setup_github_pages",
+    "objectID": "reference/pack.pack.html#raises",
+    "href": "reference/pack.pack.html#raises",
+    "title": "pack.pack",
     "section": "",
-    "text": "Name\nType\nDescription\n\n\n\n\n\nPath or None\nPath to created workflow file (gh-actions mode), or Path to helper instructions file (main mode). In both cases, a .nojekyll file will be created in the repo root and in the docs folder if it is present. In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to the provided file. This folder will be created if it does not exist.",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the specified app_file does not exist.\n\n\n\nValueError\nIf requirements is not a list or a valid requirements file path.",
     "crumbs": [
       "stlitepack Function Reference",
-      "Publishing Functions",
-      "publish.setup_github_pages"
+      "Packing Functions",
+      "pack.pack"
+    ]
+  },
+  {
+    "objectID": "reference/pack.pack.html#notes",
+    "href": "reference/pack.pack.html#notes",
+    "title": "pack.pack",
+    "section": "",
+    "text": "Currently supports only single-page Streamlit apps.\nFuture versions will support multi-page apps, additional resources, and GitHub Pages deployment automation.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Packing Functions",
+      "pack.pack"
+    ]
+  },
+  {
+    "objectID": "reference/pack.pack.html#examples",
+    "href": "reference/pack.pack.html#examples",
+    "title": "pack.pack",
+    "section": "",
+    "text": "Pack an app using a requirements file:\n&gt;&gt;&gt; from stlitepack import pack\n&gt;&gt;&gt; pack(\"app.py\", requirements=\"requirements.txt\", title=\"My App\")\nPack an app with inline requirements:\n&gt;&gt;&gt; pack(\"app.py\", requirements=[\"pandas\", \"numpy\"], title=\"Data Explorer\")\nThe resulting HTML file will be written to dist/index.html by default.",
+    "crumbs": [
+      "stlitepack Function Reference",
+      "Packing Functions",
+      "pack.pack"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/changelog.html#section",
+    "href": "stlitepack_docs/changelog.html#section",
+    "title": "Version History",
+    "section": "[0.4.0]",
+    "text": "[0.4.0]\n\nBREAKING CHANGES\n\nextra_files parameter split to extra_files_to_embed and extra_files_to_link\nuse_raw_api default changed from False to True.",
+    "crumbs": [
+      "Changelog/Version History"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/changelog.html#added",
+    "href": "stlitepack_docs/changelog.html#added",
+    "title": "Version History",
+    "section": "Added",
+    "text": "Added\n\nAdded ’find_",
+    "crumbs": [
+      "Changelog/Version History"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/changelog.html#section-1",
+    "href": "stlitepack_docs/changelog.html#section-1",
+    "title": "Version History",
+    "section": "[0.3.1]",
+    "text": "[0.3.1]\n\nFixed\n\nAdded missing dependency to build file (requests)\n\n\n\nDocumentation\n\nQuickstart guide in .qmd format, including detailed parameters for pack() and publish().\nAdded description of stlite, benefits of stlitepack, and Pyodide vs traditional server apps.\nCreated contributor CODE_OF_CONDUCT.md.",
+    "crumbs": [
+      "Changelog/Version History"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/changelog.html#section-2",
+    "href": "stlitepack_docs/changelog.html#section-2",
+    "title": "Version History",
+    "section": "[0.3.0]",
+    "text": "[0.3.0]",
+    "crumbs": [
+      "Changelog/Version History"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/changelog.html#fixed-1",
+    "href": "stlitepack_docs/changelog.html#fixed-1",
+    "title": "Version History",
+    "section": "Fixed",
+    "text": "Fixed\n\nGitHub Pages setup_github_pages documentation corrected.",
+    "crumbs": [
+      "Changelog/Version History"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/changelog.html#section-3",
+    "href": "stlitepack_docs/changelog.html#section-3",
+    "title": "Version History",
+    "section": "[0.2.0]",
+    "text": "[0.2.0]\n\nAdded\n\nSupport for raw API with multipage apps.\nConditional configuration and extra_files mounting.\nSupport for relative paths in app file mounting.\nFunction to fetch valid Stlite versions from GitHub.\nTerminal-friendly messages for version info.\nWarning if pyodide_version is set while using the raw API.\n\n\n\nChanged\n\npack() function now accepts app_file as main entrypoint and maintains relative path handling.\npublish() / GitHub Pages workflow documentation clarified.\nRaw API template updated to support streamlitConfig and multipage apps.\nVersion checks added for stylesheet_version and js_bundle_version (must be &gt;= 0.76.0).\n\n\n\nFixed\n\nPath handling in the raw API HTML template to work across OSes (forward slashes normalized).",
+    "crumbs": [
+      "Changelog/Version History"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/changelog.html#initial-release",
+    "href": "stlitepack_docs/changelog.html#initial-release",
+    "title": "Version History",
+    "section": "[0.1.0] - Initial release",
+    "text": "[0.1.0] - Initial release\n\nBasic pack() function for packaging Streamlit apps to Stlite.\nGitHub Pages deployment support with setup_github_pages().\nRaw API HTML template for single-file apps.",
+    "crumbs": [
+      "Changelog/Version History"
     ]
   },
   {
