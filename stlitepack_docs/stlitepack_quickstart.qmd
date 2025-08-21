@@ -93,6 +93,39 @@ Note that if you are hosting on github pages and enabling this via the repositor
 - the docs folder, which must be directly within the root folder
 :::
 
+
+:::{.callout-warning}
+### ⚠️ Important Note for Local Testing
+If you open index.html directly in your browser (i.e. via file://), you may see errors like:
+
+```
+Failed to execute 'pushState' on 'History'
+```
+
+```
+GET http://stlite.invalid/... net::ERR_NAME_NOT_RESOLVED
+```
+
+Don’t worry! These errors are caused by browser security restrictions and do not indicate a problem with the app.
+
+To run the app correctly, you need to serve it over HTTP/HTTPS. For example, to test locally:
+
+```{=bash}
+# From the root of the packaged app
+python -m http.server 8000
+# Then open in your browser:
+http://localhost:8000/docs/index.html
+```
+
+Once served over HTTP, navigation and media files will work as expected.
+
+Optional: you could also include a note about GitHub Pages:
+
+Deploying the app to GitHub Pages or any web server will automatically avoid these errors.
+
+
+:::
+
 ---
 
 ### Key Parameters
@@ -202,6 +235,8 @@ pack(
     extra_files=[".streamlit/config.toml", "data.csv"]
 )
 ```
+
+
 
 ---
 

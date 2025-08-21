@@ -7,7 +7,6 @@ import re
 import os
 import base64
 import fnmatch
-from stlitepack.session_state import _get_session_state_shim_code
 
 TEMPLATE = """<!doctype html>
 <html>

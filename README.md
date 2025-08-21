@@ -27,6 +27,25 @@ pack("app.py")
 
 This will create an `index.html` file with all of the required stlite additions, which you can then serve as a static file using a hosting platform such as github pages.
 
+
+### ⚠️ Heads Up!
+Opening index.html directly in your browser may show navigation or media errors if you use session state in multi-page apps or if you are loading in external file. This is normal — it only happens when using file:// URLs.
+
+Fix: Serve the app over HTTP (e.g., python -m http.server) or deploy to GitHub Pages.
+
+Everything will work correctly once served via a web server!
+
+For local testing prior to deployment, try running
+
+```bash
+python -m http.server 8000
+```
+
+from the root of your local repository.
+
+Then open http://localhost:8000/index.html
+(or change the path to reflect the final location of your created index.html file - e.g. http://localhost:8000/docs/index.html)
+
 ## Documentation
 
 Check out the quickstart guide at [sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart](http://sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart).
