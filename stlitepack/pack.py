@@ -7,6 +7,7 @@ import re
 import os
 import base64
 import fnmatch
+from stlitepack.session_state import _get_session_state_shim_code
 
 TEMPLATE = """<!doctype html>
 <html>
@@ -90,7 +91,8 @@ def pack(
         stylesheet_version: str = "0.84.1",
         js_bundle_version: str = "0.84.1",
         use_raw_api: bool = True,
-        pyodide_version: str = "default"
+        pyodide_version: str = "default",
+        patch_session_state: bool = True
         ):
     """
     Pack a Streamlit app into a stlite-compatible index.html file.
@@ -149,6 +151,12 @@ def pack(
         Only works with raw API.
         Versions can be found here: https://pyodide.org/en/stable/project/changelog.html
         Default is 'default' (use default pyodide version, which is linked to stlite version)
+    patch_session_state: bool, optional
+        Attempts to mimic streamlit's session state via a workaround.
+        Will automatically include the workaround code and inject the required import at the start
+        of the entrypoint file.
+        Limitation is that this form of session state will only work with serializable objects.
+        Default is `True`
 
     Raises
     ------
@@ -178,7 +186,8 @@ def pack(
     """
     # --- Version check ---
     min_version = version.parse("0.76.0")
-    for v_name, v_str in [("stylesheet_version", stylesheet_version), ("js_bundle_version", js_bundle_version)]:
+    for v_name, v_str in [("stylesheet_version", stylesheet_version),
+                          ("js_bundle_version", js_bundle_version)]:
         if version.parse(v_str) < min_version:
             raise ValueError(f"{v_name} must be >= 0.76.0, got {v_str}")
 
@@ -214,12 +223,27 @@ def pack(
     # Build for raw API
     if use_raw_api:
         file_entries = []
+        # Pack main files
         for f in files_to_pack:
             rel_name = f.relative_to(base_dir).as_posix()
             content = _read_file_flexibly(f)
+            # If we are patching state, add the extra import statement to the start of the file
+            if rel_name==app_file and patch_session_state:
+                content = f"""
+import stlite_session_state
+
+{content}
+"""
             file_entries.append(
                 f'"{rel_name}": `\n{content}\n            `'
             )
+
+        if patch_session_state:
+            # If including session state patching, embed the required code
+            file_entries.append(
+                f'"stlite_session_state.py": `{_get_session_state_shim_code()}` '
+            )
+
         # NOTE - Here will add in the step of including any additional linked files
         # where instead of embedding the code
         if isinstance(extra_files_to_link, dict):
