@@ -29,7 +29,6 @@ The generated app will be available at ``docs/index.html`` by default.
 __version__ = '0.4.0'
 __author__ = 'Sammi Rosser'
 
-from .session_state import _get_session_state_shim_code
 from . import pack as _pack_module  # import the module itself
 from .publish import setup_github_pages
 

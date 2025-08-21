@@ -92,7 +92,7 @@ def pack(
         js_bundle_version: str = "0.84.1",
         use_raw_api: bool = True,
         pyodide_version: str = "default",
-        patch_session_state: bool = True
+        # patch_session_state: bool = True
         ):
     """
     Pack a Streamlit app into a stlite-compatible index.html file.
@@ -227,21 +227,8 @@ def pack(
         for f in files_to_pack:
             rel_name = f.relative_to(base_dir).as_posix()
             content = _read_file_flexibly(f)
-            # If we are patching state, add the extra import statement to the start of the file
-            if rel_name==app_file and patch_session_state:
-                content = f"""
-import stlite_session_state
-
-{content}
-"""
             file_entries.append(
                 f'"{rel_name}": `\n{content}\n            `'
-            )
-
-        if patch_session_state:
-            # If including session state patching, embed the required code
-            file_entries.append(
-                f'"stlite_session_state.py": `{_get_session_state_shim_code()}` '
             )
 
         # NOTE - Here will add in the step of including any additional linked files

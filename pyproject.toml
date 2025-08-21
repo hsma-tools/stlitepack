@@ -22,9 +22,8 @@ classifiers = [
 
 ]
 dependencies = [
-    "requests>=2.22.0,<3.0",
-    "streamlit>=1.16.0"
-]
+    "requests>=2.22.0,<3.0"
+    ]
 
 [project.urls]
 Homepage = "https://github.com/Bergam0t/stlitepack"
