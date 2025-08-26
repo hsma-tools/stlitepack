@@ -224,7 +224,8 @@ def pack(
         replace_df_with_table: bool = False,
         force_redownload_material_icons: bool = False,
         print_preview_message: bool = True,
-        run_preview_server: bool = False
+        run_preview_server: bool = False,
+        automated_stlite_fixes: bool = True
         ):
     """
     Pack a Streamlit app into a stlite-compatible index.html file.
@@ -297,6 +298,11 @@ def pack(
         If True, starts a small server previewing the output file.
         Supersedes print_preview_message. If both are True, only the preview server will be started.
         Default is `True`.
+    automated_stlite_fixes: bool, optional
+        If True, applies some automated fixes for common stlite issues
+        - Inserts an await statement at the start of any st.spinner blocks to ensure the code in
+        the spinner is non-blocking and also that the spinner itself is displayed
+        - [PLANNED] Replace time.sleep with async equivalent
 
     Raises
     ------
@@ -361,26 +367,51 @@ def pack(
         req_list = requirements
 
     def code_replacements(code_str, replace_df_with_table=False):
-        pattern = r'^([ \t]*)(with st\.spinner\(.*\):)'
 
-        def replacer_spinner(match):
-            base_indent = match.group(1)  # indentation of the 'with' line
-            spinner_line = match.group(2)
-            # Add 4 spaces to the base indent for lines inside the block
-            inner_indent = base_indent + '    '
-            # Note stlite recommends 0.1 but in testing this doesn't actually allow the spinner
-            # to show up!
-            # 1 second seems to be sufficient.
-            extra_lines = f'\n{inner_indent}import asyncio\n{inner_indent}await asyncio.sleep(1)'
-            return f'{base_indent}{spinner_line}{extra_lines}'
+        def replace_spinner(code_str):
+            lines = code_str.splitlines()
+            new_lines = []
+            i = 0
+            while i < len(lines):
+                line = lines[i]
+                stripped = line.lstrip()
+                if stripped.startswith("with st.spinner"):
+                    new_lines.append(line)  # keep spinner line
+                    base_indent = line[:len(line)-len(stripped)]
 
-        code_str = re.sub(pattern, replacer_spinner, code_str, flags=re.MULTILINE)
+                    # Find the indentation of the first line inside the spinner block
+                    block_indent = None
+                    j = i + 1
+                    while j < len(lines):
+                        next_line = lines[j]
+                        if next_line.strip() == '':
+                            j += 1
+                            continue
+                        next_line_indent = len(next_line) - len(next_line.lstrip())
+                        if next_line_indent > len(base_indent):
+                            block_indent = next_line[:next_line_indent]
+                        break
+
+                    # If the block is empty, use 4 spaces deeper than spinner
+                    if block_indent is None:
+                        block_indent = base_indent + '    '
+
+                    # Insert extra lines with correct indentation
+                    new_lines.append(f"{block_indent}import asyncio")
+                    new_lines.append(f"{block_indent}await asyncio.sleep(1)")
+
+                    i += 1
+                else:
+                    new_lines.append(line)
+                    i += 1
+            return "\n".join(new_lines)
+
+        code_str = replace_spinner(code_str=code_str)
 
         if replace_df_with_table:
             code_str = re.sub(r'st\.dataframe', 'st.table', code_str)
 
         return code_str
-
 
     # Build for raw API
     if use_raw_api:
@@ -390,7 +421,7 @@ def pack(
             rel_name = f.relative_to(base_dir).as_posix()
             content = _read_file_flexibly(f)
             file_entries.append(
-                f'"{rel_name}": `\n{code_replacements(content, replace_df_with_table=replace_df_with_table)}\n            `'
+                f'"{rel_name}": `\n{code_replacements(content, replace_df_with_table=replace_df_with_table) if automated_stlite_fixes else content}\n            `'
             )
 
         # NOTE - Here will add in the step of including any additional linked files
@@ -445,7 +476,7 @@ def pack(
         app_file_blocks = []
         for f in files_to_pack:
             code = f.read_text(encoding="utf-8")
-            code = code_replacements(code, replace_df_with_table=replace_df_with_table)
+            code = code_replacements(code, replace_df_with_table=replace_df_with_table) if automated_stlite_fixes else code
             rel_name = f.relative_to(base_dir).as_posix()
             entry_attr = " entrypoint" if f == app_path else ""
             app_file_blocks.append(
@@ -479,7 +510,7 @@ def pack(
     print(f"Packed app written to {outfile}")
 
     if run_preview_server:
-        _run_preview_server(start_page=f"{outfile}", dir_to_change_to=output_dir)
+        _run_preview_server(start_page=f"{outfile}", dir_to_change_to="" if output_dir == "docs" else output_dir)
     elif print_preview_message:
         print("Preview your app by running")
         print("python -m http.server 8000")

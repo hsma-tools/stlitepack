@@ -472,7 +472,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    force_redownload_material_icons<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    print_preview_message<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    run_preview_server<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    automated_stlite_fixes<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Pack a Streamlit app into a stlite-compatible index.html file.</p>
 <p>This function reads a Streamlit Python script, injects it into an HTML template compatible with stlite, and writes the output as <code>index.html</code>. The resulting HTML can be served as static content (e.g., via GitHub Pages).</p>
 <p>If additional pages are found in a ‘pages’ folder at the same level as the main app file, these will be added in as additional files.</p>
@@ -571,6 +572,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>bool</td>
 <td>If True, starts a small server previewing the output file. Supersedes print_preview_message. If both are True, only the preview server will be started. Default is <code>True</code>.</td>
 <td><code>False</code></td>
+</tr>
+<tr class="even">
+<td>automated_stlite_fixes</td>
+<td>bool</td>
+<td>If True, applies some automated fixes for common stlite issues - Inserts an await statement at the start of any st.spinner blocks to ensure the code in the spinner is non-blocking and also that the spinner itself is displayed - [PLANNED] Replace time.sleep with async equivalent</td>
+<td><code>True</code></td>
 </tr>
 </tbody>
 </table>

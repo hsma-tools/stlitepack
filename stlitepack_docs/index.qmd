@@ -54,16 +54,21 @@ You can also find the full reference for each function at [sammirosser.com/stlit
 
 ## 🔮 Roadmap
 
-- ✅ v0.1: Single-page app packing
-- ✅ v0.2: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)
-- ✅ v0.3: Multi-page app support (for [`pages/` subfolder](https://webapps.hsma.co.uk/multipage.html#method-2-pages-subfolder) method) and simple additional file inclusion
-- v0.4: Better support for resource bundling (images, CSVs, assets, config files etc.) of local or web-based files
-- v0.5: Better multi-page app support (for [`st.navigation()`](https://webapps.hsma.co.uk/multipage.html#method-1-st.page-and-st.navigation) method)
-- v0.6: Auto-handling of stlite-specific required changes (e.g. asyncio vs sleep)
-- v0.7: Add support for generating the required package.json for [desktop app bundling](https://github.com/whitphx/stlite/tree/main/packages/desktop)
-- v0.8: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache
-- v0.9: TOML or YAML file support as optional alternative to the packing function
-- v1.0: Full toolkit for packaging, deploying, and managing stlite apps
+- ✅ v0.1.0: Single-page app packing
+- ✅ v0.2.0: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)
+- ✅ v0.3.0: Multi-page app support (for [`pages/` subfolder](https://webapps.hsma.co.uk/multipage.html#method-2-pages-subfolder) method) and simple additional file inclusion
+- ✅ v0.4.0: Lots of improvements!
+    - Better support for resource bundling (images, CSVs, assets, config files etc.) of local or web-based file, also leading to multi-page app support via [`st.navigation()`](https://webapps.hsma.co.uk/multipage.html#method-1-st.page-and-st.navigation) method
+    - Starting to automate changes of known stlite/streamlit differences (e.g. `await asyncio.sleep(1)` being required when using `st.spinner`)
+    - Optional automatic spinning up of a preview server for the deployed app
+    - Support for material icons
+- v0.4.1: Bugfix for asyncio code
+- v0.4.2: Better documentation of v0.4 features
+- v0.5.0: Further auto-handling of stlite-specific required changes
+- v0.6.0: Add support for generating the required package.json for [desktop app bundling](https://github.com/whitphx/stlite/tree/main/packages/desktop)
+- v0.7.0: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache
+- v0.8.0: TOML or YAML file support as optional alternative to the packing function
+- v1.0.0: Full toolkit for packaging, deploying, and managing stlite apps
 
 ## Examples of Use
 

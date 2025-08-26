@@ -426,7 +426,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Please note that prior to version 1.0, breaking API changes may occur at any time. The API should not be considered stable until the 1.0 release. After the version 1 release, all breaking changes will only occur on major version increments (e.g.&nbsp;version 1 –&gt; version 2).</p>
 <p>During the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.</p>
 <section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">[0.4.0]</h2>
+<h2 class="anchored" data-anchor-id="section">[0.4.1]</h2>
+</section>
+<section id="fixes" class="level2">
+<h2 class="anchored" data-anchor-id="fixes">Fixes</h2>
+<ul>
+<li>Fix bug where indendation level of subsequent code may be incorrect when async fixes are applied to spinner usage</li>
+<li>Prevent directory change for preview server if just putting the folder in docs (smarter handling of this planned in the future!)</li>
+</ul>
+</section>
+<section id="added" class="level2">
+<h2 class="anchored" data-anchor-id="added">Added</h2>
+<ul>
+<li>Added option to toggle automatic stlite fixes on and off with <code>automated_stlite_fixes</code> parameter in pack.</li>
+</ul>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">[0.4.0]</h2>
 <section id="breaking-changes" class="level3">
 <h3 class="anchored" data-anchor-id="breaking-changes">BREAKING CHANGES</h3>
 <ul>
@@ -440,8 +456,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="added" class="level2">
-<h2 class="anchored" data-anchor-id="added">Added</h2>
+<section id="added-1" class="level2">
+<h2 class="anchored" data-anchor-id="added-1">Added</h2>
 <ul>
 <li>Added automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution
 <ul>
@@ -455,8 +471,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Add more flexibility in where the output files will go (better at handling cases where app is contained within e.g.&nbsp;app subfolder of repo)</li>
 </ul>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">[0.3.1]</h2>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">[0.3.1]</h2>
 <section id="fixed" class="level3">
 <h3 class="anchored" data-anchor-id="fixed">Fixed</h3>
 <ul>
@@ -472,8 +488,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">[0.3.0]</h2>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">[0.3.0]</h2>
 </section>
 <section id="fixed-1" class="level2">
 <h2 class="anchored" data-anchor-id="fixed-1">Fixed</h2>
@@ -481,10 +497,10 @@ ul.task-list li input[type="checkbox"] {
 <li>GitHub Pages <code>setup_github_pages</code> documentation corrected.</li>
 </ul>
 </section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3">[0.2.0]</h2>
-<section id="added-1" class="level3">
-<h3 class="anchored" data-anchor-id="added-1">Added</h3>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">[0.2.0]</h2>
+<section id="added-2" class="level3">
+<h3 class="anchored" data-anchor-id="added-2">Added</h3>
 <ul>
 <li>Support for <code>raw</code> API with multipage apps.</li>
 <li>Conditional configuration and <code>extra_files</code> mounting.</li>

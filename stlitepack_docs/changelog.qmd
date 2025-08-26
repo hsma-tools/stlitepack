@@ -10,6 +10,17 @@ only occur on major version increments (e.g. version 1 --> version 2).
 
 During the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.
 
+## [0.4.1]
+
+## Fixes
+
+- Fix bug where indendation level of subsequent code may be incorrect when async fixes are applied to spinner usage
+- Prevent directory change for preview server if just putting the folder in docs (smarter handling of this planned in the future!)
+
+## Added
+
+- Added option to toggle automatic stlite fixes on and off with `automated_stlite_fixes` parameter in pack.
+
 ## [0.4.0]
 
 ### BREAKING CHANGES
