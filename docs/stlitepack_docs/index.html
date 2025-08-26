@@ -486,8 +486,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<p>Check out the quickstart guide at <a href="http://sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart">sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart</a>.</p>
-<p>You can also find the full reference for each function at <a href="http://sammirosser.com/stlitepack/reference/">sammirosser.com/stlitepack/reference/</a>.</p>
+<p>Check out the quickstart guide at <a href="http://hsma-tools.github.io/stlitepack/stlitepack_docs/stlitepack_quickstart">hsma-tools.github.io/stlitepack/stlitepack_docs/stlitepack_quickstart</a>.</p>
+<p>You can also find the full reference for each function at <a href="http://hsma-tools.github.io/stlitepack/reference/">hsma-tools.github.io/stlitepack/reference/</a>.</p>
 </section>
 <section id="roadmap" class="level2">
 <h2 class="anchored" data-anchor-id="roadmap">🔮 Roadmap</h2>
@@ -502,8 +502,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Optional automatic spinning up of a preview server for the deployed app</li>
 <li>Support for material icons</li>
 </ul></li>
-<li>v0.4.1: Bugfix for asyncio code</li>
-<li>v0.4.2: Better documentation of v0.4 features</li>
+<li>✅ v0.4.1: Bugfix for asyncio code</li>
+<li>v0.4.2: Automatic creation of a 404 redirect page</li>
+<li>v0.4.3: Better documentation and testing of v0.4 features</li>
 <li>v0.5.0: Further auto-handling of stlite-specific required changes</li>
 <li>v0.6.0: Add support for generating the required package.json for <a href="https://github.com/whitphx/stlite/tree/main/packages/desktop">desktop app bundling</a></li>
 <li>v0.7.0: Add helpers for generating files for additional deployment options e.g.&nbsp;Docker, Caddy, Nginx, Apache</li>
@@ -530,7 +531,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>stlite Repository: <a href="https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation">github.com/Bergam0t/hr_Non-Elective-Flow-Simulation</a></li>
 <li>Original Repository: <a href="https://github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation">github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation</a></li>
 <li>Packing script: <a href="https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py">github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py</a></li>
-<li>Hosted stlite app: <a href="sammirosser.com/hr_Non-Elective-Flow-Simulation/">http://sammirosser.com/hr_Non-Elective-Flow-Simulation/</a></li>
+<li>Hosted stlite app: <a href="http://sammirosser.com/hr_Non-Elective-Flow-Simulation/">sammirosser.com/hr_Non-Elective-Flow-Simulation/</a></li>
+</ul>
+</section>
+<section id="treatment-centre-simulation-model" class="level3">
+<h3 class="anchored" data-anchor-id="treatment-centre-simulation-model">Treatment Centre Simulation Model</h3>
+<p>All credits go to <a href="https://github.com/TomMonks">Tom Monks</a> and <a href="https://github.com/amyheather">Amy Heather</a> for the original repository!</p>
+<ul>
+<li>stlite Repository: <a href="https://github.com/Bergam0t/stars-streamlit-example-stlitepack">github.com/Bergam0t/stars-streamlit-example-stlitepack</a></li>
+<li>Original Repository: <a href="https://github.com/pythonhealthdatascience/stars-streamlit-example">github.com/pythonhealthdatascience/stars-streamlit-example</a></li>
+<li>Packing script: <a href="https://github.com/Bergam0t/stars-streamlit-example-stlitepack/blob/main/pack_to_stlite.py">github.com/Bergam0t/stars-streamlit-example-stlitepack/blob/main/pack_to_stlite.py</a></li>
+<li>Hosted stlite app: <a href="http://sammirosser.com/stars-streamlit-example-stlitepack/">sammirosser.com/stars-streamlit-example-stlitepack/</a></li>
 </ul>
 </section>
 </section>
@@ -549,9 +560,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://github.com/whitphx">whitphx</a> for creating the amazing <a href="https://github.com/whitphx/stlite">stlite</a> framework!</li>
 </ul>
 </section>
+<section id="alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="alternatives">Alternatives</h2>
+<p>Towards the end of the initial phase of development, I stumbled across a mention of Luke Fullard’s <a href="https://github.com/LukeAFullard/script2stlite">script2stlite</a></p>
+<p>Check that out if stlitepack doesn’t meet your needs (or if you just want to see which approach you prefer!)</p>
+<p>It’s got some really nice features like support for embedding more types of files rather than requiring linking out to them on the web, and an approach using a config file instead of a packing function.</p>
+</section>
 <section id="generative-ai-use-disclosure" class="level2">
 <h2 class="anchored" data-anchor-id="generative-ai-use-disclosure">Generative AI Use Disclosure</h2>
-<p>This package was developed with the assistance of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner. All code and design decisions were reviewed and finalized by a human, and ChatGPT’s output was used as a foundation rather than a final product.</p>
+<p>This package was developed with the <em>assistance</em> of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner. Google Gemini Pro 2.5 was also used. All code and design decisions were reviewed and finalized by a human, and any LLM output was used as a foundation rather than a final product.</p>
 
 
 </section>

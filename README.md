@@ -48,9 +48,9 @@ Then open http://localhost:8000/index.html
 
 ## Documentation
 
-Check out the quickstart guide at [sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart](http://sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart).
+Check out the quickstart guide at [hsma-tools.github.io/stlitepack/stlitepack_docs/stlitepack_quickstart](http://hsma-tools.github.io/stlitepack/stlitepack_docs/stlitepack_quickstart).
 
-You can also find the full reference for each function at [sammirosser.com/stlitepack/reference/](http://sammirosser.com/stlitepack/reference/).
+You can also find the full reference for each function at [hsma-tools.github.io/stlitepack/reference/](http://hsma-tools.github.io/stlitepack/reference/).
 
 ## 🔮 Roadmap
 
@@ -62,8 +62,9 @@ You can also find the full reference for each function at [sammirosser.com/stlit
     - Starting to automate changes of known stlite/streamlit differences (e.g. `await asyncio.sleep(1)` being required when using `st.spinner`)
     - Optional automatic spinning up of a preview server for the deployed app
     - Support for material icons
-- v0.4.1: Bugfix for asyncio code
-- v0.4.2: Better documentation of v0.4 features
+- ✅ v0.4.1: Bugfix for asyncio code
+- v0.4.2: Automatic creation of a 404 redirect page
+- v0.4.3: Better documentation and testing of v0.4 features
 - v0.5.0: Further auto-handling of stlite-specific required changes
 - v0.6.0: Add support for generating the required package.json for [desktop app bundling](https://github.com/whitphx/stlite/tree/main/packages/desktop)
 - v0.7.0: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache
@@ -88,7 +89,17 @@ All credits go to [Helena Robinson](https://github.com/helenajr) and collaborato
 - stlite Repository: [github.com/Bergam0t/hr_Non-Elective-Flow-Simulation](https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation)
 - Original Repository: [github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation](https://github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation)
 - Packing script: [github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py](https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py)
-- Hosted stlite app: [http://sammirosser.com/hr_Non-Elective-Flow-Simulation/](sammirosser.com/hr_Non-Elective-Flow-Simulation/)
+- Hosted stlite app: [sammirosser.com/hr_Non-Elective-Flow-Simulation/](http://sammirosser.com/hr_Non-Elective-Flow-Simulation/)
+
+### Treatment Centre Simulation Model
+
+All credits go to [Tom Monks](https://github.com/TomMonks) and [Amy Heather](https://github.com/amyheather) for the original repository!
+
+- stlite Repository: [github.com/Bergam0t/stars-streamlit-example-stlitepack](https://github.com/Bergam0t/stars-streamlit-example-stlitepack)
+- Original Repository: [github.com/pythonhealthdatascience/stars-streamlit-example](https://github.com/pythonhealthdatascience/stars-streamlit-example)
+- Packing script: [github.com/Bergam0t/stars-streamlit-example-stlitepack/blob/main/pack_to_stlite.py](https://github.com/Bergam0t/stars-streamlit-example-stlitepack/blob/main/pack_to_stlite.py)
+- Hosted stlite app: [sammirosser.com/stars-streamlit-example-stlitepack/](http://sammirosser.com/stars-streamlit-example-stlitepack/)
+
 
 ## 🤝 Contributing
 Contributions, feature requests, and feedback are welcome!
@@ -102,7 +113,15 @@ Apache 2.0 License. See LICENSE for details.
 
 - [whitphx](https://github.com/whitphx) for creating the amazing [stlite](https://github.com/whitphx/stlite) framework!
 
+## Alternatives
+
+Towards the end of the initial phase of development, I stumbled across a mention of Luke Fullard's [script2stlite](https://github.com/LukeAFullard/script2stlite)
+
+Check that out if stlitepack doesn't meet your needs (or if you just want to see which approach you prefer!)
+
+It's got some really nice features like support for embedding more types of files rather than requiring linking out to them on the web, and an approach using a config file instead of a packing function.
+
 ## Generative AI Use Disclosure
 
-This package was developed with the assistance of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner.
-All code and design decisions were reviewed and finalized by a human, and ChatGPT’s output was used as a foundation rather than a final product.
+This package was developed with the *assistance* of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner. Google Gemini Pro 2.5 was also used.
+All code and design decisions were reviewed and finalized by a human, and any LLM output was used as a foundation rather than a final product.

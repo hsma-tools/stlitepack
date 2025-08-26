@@ -21,8 +21,10 @@ format: html
 
 ## single_page_extra_file
 
-  - [with_config](..\tests\single_page_extra_file\with_config\docs\index.html)
-  - [with_config_raw_api](..\tests\single_page_extra_file\with_config_raw_api\docs\index.html)
+  - [with_config_embed](..\tests\single_page_extra_file\with_config_embed\docs\index.html)
+  - [with_config_link](..\tests\single_page_extra_file\with_config_link\docs\index.html)
+  - [with_config_raw_api_embed](..\tests\single_page_extra_file\with_config_raw_api_embed\docs\index.html)
+  - [with_config_raw_api_link](..\tests\single_page_extra_file\with_config_raw_api_link\docs\index.html)
 
 ## single_page_with_reqs
 
