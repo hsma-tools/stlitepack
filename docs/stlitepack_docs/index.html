@@ -482,6 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> http.server 8000</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>from the root of your local repository.</p>
 <p>Then open http://localhost:8000/index.html (or change the path to reflect the final location of your created index.html file - e.g.&nbsp;http://localhost:8000/docs/index.html)</p>
+<p>Alternatively, you can try setting <code>run_preview_server=True</code> in your <code>pack()</code> function call - this will try to spin up a server that points at the right document automatically, though this can be a bit temperamental with complex folder structures.</p>
 </section>
 </section>
 <section id="documentation" class="level2">

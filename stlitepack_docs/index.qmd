@@ -46,6 +46,9 @@ from the root of your local repository.
 Then open http://localhost:8000/index.html
 (or change the path to reflect the final location of your created index.html file - e.g. http://localhost:8000/docs/index.html)
 
+
+Alternatively, you can try setting `run_preview_server=True` in your `pack()` function call - this will try to spin up a server that points at the right document automatically, though this can be a bit temperamental with complex folder structures.
+
 ## Documentation
 
 Check out the quickstart guide at [hsma-tools.github.io/stlitepack/stlitepack_docs/stlitepack_quickstart](http://hsma-tools.github.io/stlitepack/stlitepack_docs/stlitepack_quickstart).

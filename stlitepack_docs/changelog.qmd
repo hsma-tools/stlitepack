@@ -19,7 +19,7 @@ During the pre v1 phase, all breaking changes will be clearly highlighted in the
 
 ## Added
 
-- Added option to toggle automatic stlite fixes on and off with `automated_stlite_fixes` parameter in pack.
+- Added option to toggle automatic stlite fixes (like adding async await to spinner) on and off with `automated_stlite_fixes` parameter in pack.
 
 ## [0.4.0]
 
