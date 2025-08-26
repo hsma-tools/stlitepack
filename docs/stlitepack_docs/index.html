@@ -473,6 +473,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pack your Streamlit app (e.g., "app.py") into a stlite bundle</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pack(<span class="st">"app.py"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will create an <code>index.html</code> file with all of the required stlite additions, which you can then serve as a static file using a hosting platform such as github pages.</p>
+<section id="heads-up" class="level3">
+<h3 class="anchored" data-anchor-id="heads-up">⚠️ Heads Up!</h3>
+<p>Opening index.html directly in your browser may show navigation or media errors if you use session state in multi-page apps or if you are loading in external file. This is normal — it only happens when using file:// URLs.</p>
+<p>Fix: Serve the app over HTTP (e.g., python -m http.server) or deploy to GitHub Pages.</p>
+<p>Everything will work correctly once served via a web server!</p>
+<p>For local testing prior to deployment, try running</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> http.server 8000</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>from the root of your local repository.</p>
+<p>Then open http://localhost:8000/index.html (or change the path to reflect the final location of your created index.html file - e.g.&nbsp;http://localhost:8000/docs/index.html)</p>
+</section>
 </section>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
@@ -493,6 +503,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>v0.9: TOML or YAML file support as optional alternative to the packing function</li>
 <li>v1.0: Full toolkit for packaging, deploying, and managing stlite apps</li>
 </ul>
+</section>
+<section id="examples-of-use" class="level2">
+<h2 class="anchored" data-anchor-id="examples-of-use">Examples of Use</h2>
+<section id="efit-tool" class="level3">
+<h3 class="anchored" data-anchor-id="efit-tool">eFIT-tool</h3>
+<p>All credits go to <a href="https://github.com/pete4nhs">Peter Saiu</a> and collaborators for the original repository!</p>
+<ul>
+<li>stlite Repository: <a href="https://github.com/Bergam0t/eFIT-tool-stlitepack">github.com/Bergam0t/eFIT-tool-stlitepack</a></li>
+<li>Original Repository: <a href="https://github.com/pete4nhs/eFIT-tool">github.com/pete4nhs/eFIT-tool</a></li>
+<li>Packing script: <a href="https://github.com/Bergam0t/eFIT-tool-stlitepack/blob/main/pack_to_stlite.py">github.com/Bergam0t/eFIT-tool-stlitepack/blob/main/pack_to_stlite.py</a></li>
+<li>Hosted stlite app: <a href="http://sammirosser.com/eFIT-tool-stlitepack/">sammirosser.com/eFIT-tool-stlitepack/</a></li>
+</ul>
+</section>
+<section id="non-elective-flow-simulation" class="level3">
+<h3 class="anchored" data-anchor-id="non-elective-flow-simulation">Non-elective Flow Simulation</h3>
+<p>All credits go to <a href="https://github.com/helenajr">Helena Robinson</a> and collaborators for the original repository!</p>
+<ul>
+<li>stlite Repository: <a href="https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation">github.com/Bergam0t/hr_Non-Elective-Flow-Simulation</a></li>
+<li>Original Repository: <a href="https://github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation">github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation</a></li>
+<li>Packing script: <a href="https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py">github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py</a></li>
+<li>Hosted stlite app: <a href="sammirosser.com/hr_Non-Elective-Flow-Simulation/">http://sammirosser.com/hr_Non-Elective-Flow-Simulation/</a></li>
+</ul>
+</section>
 </section>
 <section id="contributing" class="level2">
 <h2 class="anchored" data-anchor-id="contributing">🤝 Contributing</h2>

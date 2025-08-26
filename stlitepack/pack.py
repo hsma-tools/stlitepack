@@ -7,6 +7,12 @@ import re
 import os
 import base64
 import fnmatch
+import subprocess
+import webbrowser
+import sys
+import time
+
+
 
 TEMPLATE = """<!doctype html>
 <html>
@@ -26,6 +32,7 @@ TEMPLATE = """<!doctype html>
       type="module"
       src="https://cdn.jsdelivr.net/npm/@stlite/browser@{js_bundle_version}/build/stlite.js"
     ></script>
+    {material_icons_style}
   </head>
   <body>
     <streamlit-app>
@@ -48,6 +55,7 @@ TEMPLATE_MOUNT = """<!DOCTYPE html>
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@stlite/browser@{stylesheet_version}/build/style.css"
     />
+  {material_icons_style}
   </head>
   <body>
     <div id="root"></div>
@@ -77,6 +85,128 @@ def _read_file_flexibly(path: Path):
       binary_content = path.read_bytes()
       return base64.b64encode(binary_content).decode("utf-8")
 
+def _material_icons_style(version: str = "Rounded", force_download: bool = False) -> str:
+    """
+    Get Material Icons CSS with embedded base64 font.
+    Caches the font locally to avoid repeated downloads.
+
+    Parameters
+    ----------
+    version: str, optional
+        Valid versions are 'Rounded', 'Outlined', 'Sharp'.
+    force_download : bool, optional
+        If True, always re-download the font from GitHub.
+
+    Returns
+    -------
+    str
+        A <style> block containing the Material Icons font embedded as base64.
+    """
+    if version not in ["Rounded", "Outlined", "Sharp"]:
+        raise ValueError(f"Valid values for version are 'Rounded', 'Outlined' or 'Sharp'. You entered {version}.")
+
+    try:
+      # Cache directory (cross-platform)
+      cache_dir = Path.home() / ".cache" / "material_icons"
+      cache_dir.mkdir(parents=True, exist_ok=True)
+      font_path = cache_dir / "MaterialIcons-Regular.woff2"
+
+      # Download font if not cached or if forced
+      if not font_path.exists() or force_download:
+          url = f"https://raw.githubusercontent.com/google/material-design-icons/refs/heads/master/variablefont/MaterialSymbols{version}%5BFILL%2CGRAD%2Copsz%2Cwght%5D.woff2"
+          resp = requests.get(url)
+          resp.raise_for_status()
+          font_path.write_bytes(resp.content)
+
+      # Load from cache
+      font_bytes = font_path.read_bytes()
+      font_b64 = base64.b64encode(font_bytes).decode("utf-8")
+
+      # Build CSS
+      css = f"""
+      <style>
+      @font-face {{
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: url(data:font/woff2;base64,{font_b64}) format('woff2');
+      }}
+
+      .material-icons {{
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        white-space: nowrap;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: 'liga';
+      }}
+
+      [data-testid="stIconMaterial"] {{
+        font-family: 'Material Icons' !important;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;  /* adjust as needed */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        white-space: nowrap;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: 'liga';
+      }}
+
+      </style>
+      """
+
+      return css
+    except:
+        print("Error retrieving material icons font file")
+        return ""
+
+def _run_preview_server(
+        port: int = 8000,
+        dir_to_change_to: str = "",
+        start_page: str = "docs/index.html"):
+    """Start a simple HTTP server and open the browser to the given page."""
+    url = f"http://localhost:{port}/{start_page}"
+
+    if dir_to_change_to != "":
+        print(f"Changing directory to: {dir_to_change_to}")
+        os.chdir(dir_to_change_to)
+
+    # Start the server in a subprocess
+    process = subprocess.Popen(
+        [sys.executable, "-m", "http.server", str(port)],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE
+    )
+
+    # Give the server a moment to start
+    time.sleep(1)
+
+    # Open the browser
+    webbrowser.open(url)
+
+    print(f"Serving at {url}")
+    print("Press Ctrl+C to stop the server.")
+
+    try:
+        process.wait()  # Keep running until interrupted
+    except KeyboardInterrupt:
+        print("\nStopping server...")
+        process.terminate()
+
 def pack(
         app_file: str,
         extra_files_to_embed: list[str] | None = None,
@@ -91,7 +221,10 @@ def pack(
         js_bundle_version: str = "0.84.1",
         use_raw_api: bool = True,
         pyodide_version: str = "default",
-        # patch_session_state: bool = True
+        replace_df_with_table: bool = False,
+        force_redownload_material_icons: bool = False,
+        print_preview_message: bool = True,
+        run_preview_server: bool = False
         ):
     """
     Pack a Streamlit app into a stlite-compatible index.html file.
@@ -150,12 +283,20 @@ def pack(
         Only works with raw API.
         Versions can be found here: https://pyodide.org/en/stable/project/changelog.html
         Default is 'default' (use default pyodide version, which is linked to stlite version)
-    patch_session_state: bool, optional
-        Attempts to mimic streamlit's session state via a workaround.
-        Will automatically include the workaround code and inject the required import at the start
-        of the entrypoint file.
-        Limitation is that this form of session state will only work with serializable objects.
-        Default is `True`
+    replace_df_with_table: bool, optional
+        Some versions of streamlit and stlite seem to have issues with displaying tables that should
+        be shown with st.dataframe.
+        This option will replace all instances of st.dataframe with st.table, removing interactivity
+        from the tables but ensuring they do at least display.
+        Default is `False`.
+    print_preview_message: bool, optional
+        If True, prints a message explaining how to start a preview server.
+        Ignored if run_preview_server is True.
+        Default is `True`.
+    run_preview_server: bool, optional
+        If True, starts a small server previewing the output file.
+        Supersedes print_preview_message. If both are True, only the preview server will be started.
+        Default is `True`.
 
     Raises
     ------
@@ -219,6 +360,28 @@ def pack(
     else:
         req_list = requirements
 
+    def code_replacements(code_str, replace_df_with_table=False):
+        pattern = r'^([ \t]*)(with st\.spinner\(.*\):)'
+
+        def replacer_spinner(match):
+            base_indent = match.group(1)  # indentation of the 'with' line
+            spinner_line = match.group(2)
+            # Add 4 spaces to the base indent for lines inside the block
+            inner_indent = base_indent + '    '
+            # Note stlite recommends 0.1 but in testing this doesn't actually allow the spinner
+            # to show up!
+            # 1 second seems to be sufficient.
+            extra_lines = f'\n{inner_indent}import asyncio\n{inner_indent}await asyncio.sleep(1)'
+            return f'{base_indent}{spinner_line}{extra_lines}'
+
+        code_str = re.sub(pattern, replacer_spinner, code_str, flags=re.MULTILINE)
+
+        if replace_df_with_table:
+            code_str = re.sub(r'st\.dataframe', 'st.table', code_str)
+
+        return code_str
+
+
     # Build for raw API
     if use_raw_api:
         file_entries = []
@@ -227,7 +390,7 @@ def pack(
             rel_name = f.relative_to(base_dir).as_posix()
             content = _read_file_flexibly(f)
             file_entries.append(
-                f'"{rel_name}": `\n{content}\n            `'
+                f'"{rel_name}": `\n{code_replacements(content, replace_df_with_table=replace_df_with_table)}\n            `'
             )
 
         # NOTE - Here will add in the step of including any additional linked files
@@ -272,7 +435,8 @@ def pack(
             requirements=json.dumps(req_list),
             entrypoint=app_path.relative_to(base_dir).as_posix(),
             files=files_js,
-            pyodide_version=pyodide_version_string
+            pyodide_version=pyodide_version_string,
+            material_icons_style = _material_icons_style(force_download=force_redownload_material_icons)
         )
 
     # Build for <streamlit-app> template
@@ -281,6 +445,7 @@ def pack(
         app_file_blocks = []
         for f in files_to_pack:
             code = f.read_text(encoding="utf-8")
+            code = code_replacements(code, replace_df_with_table=replace_df_with_table)
             rel_name = f.relative_to(base_dir).as_posix()
             entry_attr = " entrypoint" if f == app_path else ""
             app_file_blocks.append(
@@ -302,6 +467,7 @@ def pack(
             requirements=reqs,
             stylesheet_version=stylesheet_version,
             js_bundle_version=js_bundle_version,
+            material_icons_style = _material_icons_style(force_download=force_redownload_material_icons)
         )
 
     # Write to output dir
@@ -311,6 +477,16 @@ def pack(
     outfile.write_text(html, encoding="utf-8")
 
     print(f"Packed app written to {outfile}")
+
+    if run_preview_server:
+        _run_preview_server(start_page=f"{outfile}", dir_to_change_to=output_dir)
+    elif print_preview_message:
+        print("Preview your app by running")
+        print("python -m http.server 8000")
+        print("and navigating to the index.html file.")
+        print(f"e.g. http://localhost:8000/index.html")
+        print("or http://localhost:8000/docs/index.html")
+
 
 def get_stlite_versions():
     """

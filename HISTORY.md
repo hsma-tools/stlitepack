@@ -4,16 +4,33 @@
 
 All notable changes to `stlitepack` are documented in this file.
 
+Please note that prior to version 1.0, breaking API changes may occur at any time. The API should
+not be considered stable until the 1.0 release. After the version 1 release, all breaking changes will
+only occur on major version increments (e.g. version 1 --> version 2).
+
+During the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.
+
 ## [0.4.0]
 
 ### BREAKING CHANGES
 
 - `extra_files` parameter split to `extra_files_to_embed` and `extra_files_to_link`
+- added `prepend_github_path` parameter to allow users to quickly point to hosted files
+- added `list_files_in_folders` helper for quick gathering of files meeting criteria to either link or embed
 - `use_raw_api` default changed from `False` to `True`.
+    - Too many features are not available within the simplified (non-mount) API. Therefore, swiching
+    to the mount API as default ensures other parameters will work as expected. Turning this to
+    'False' should now be considered a step for advanced users only.
 
 ## Added
 
-- Added 'find_
+- Added automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution
+    - This is achieved by automatically inserting an `await async.sleep(1) block in the relevant part of the code
+- Add fix for material icon display
+    - This is achieved via embedding of material icon font. Bonus feature - you can select your preferred material font style.
+- Add ability to automatically start a preview server after packing the app
+- Add more flexibility in where the output files will go (better at handling cases where app is contained within e.g. app subfolder of repo)
+
 
 ## [0.3.1]
 

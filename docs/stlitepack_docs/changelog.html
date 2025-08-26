@@ -423,20 +423,36 @@ ul.task-list li input[type="checkbox"] {
 <section id="history" class="level1">
 <h1>HISTORY</h1>
 <p>All notable changes to <code>stlitepack</code> are documented in this file.</p>
+<p>Please note that prior to version 1.0, breaking API changes may occur at any time. The API should not be considered stable until the 1.0 release. After the version 1 release, all breaking changes will only occur on major version increments (e.g.&nbsp;version 1 –&gt; version 2).</p>
+<p>During the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.</p>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section">[0.4.0]</h2>
 <section id="breaking-changes" class="level3">
 <h3 class="anchored" data-anchor-id="breaking-changes">BREAKING CHANGES</h3>
 <ul>
 <li><code>extra_files</code> parameter split to <code>extra_files_to_embed</code> and <code>extra_files_to_link</code></li>
-<li><code>use_raw_api</code> default changed from <code>False</code> to <code>True</code>.</li>
+<li>added <code>prepend_github_path</code> parameter to allow users to quickly point to hosted files</li>
+<li>added <code>list_files_in_folders</code> helper for quick gathering of files meeting criteria to either link or embed</li>
+<li><code>use_raw_api</code> default changed from <code>False</code> to <code>True</code>.
+<ul>
+<li>Too many features are not available within the simplified (non-mount) API. Therefore, swiching to the mount API as default ensures other parameters will work as expected. Turning this to ‘False’ should now be considered a step for advanced users only.</li>
+</ul></li>
 </ul>
 </section>
 </section>
 <section id="added" class="level2">
 <h2 class="anchored" data-anchor-id="added">Added</h2>
 <ul>
-<li>Added ’find_</li>
+<li>Added automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution
+<ul>
+<li>This is achieved by automatically inserting an `await async.sleep(1) block in the relevant part of the code</li>
+</ul></li>
+<li>Add fix for material icon display
+<ul>
+<li>This is achieved via embedding of material icon font. Bonus feature - you can select your preferred material font style.</li>
+</ul></li>
+<li>Add ability to automatically start a preview server after packing the app</li>
+<li>Add more flexibility in where the output files will go (better at handling cases where app is contained within e.g.&nbsp;app subfolder of repo)</li>
 </ul>
 </section>
 <section id="section-1" class="level2">

@@ -27,6 +27,25 @@ pack("app.py")
 
 This will create an `index.html` file with all of the required stlite additions, which you can then serve as a static file using a hosting platform such as github pages.
 
+
+### ⚠️ Heads Up!
+Opening index.html directly in your browser may show navigation or media errors if you use session state in multi-page apps or if you are loading in external file. This is normal — it only happens when using file:// URLs.
+
+Fix: Serve the app over HTTP (e.g., python -m http.server) or deploy to GitHub Pages.
+
+Everything will work correctly once served via a web server!
+
+For local testing prior to deployment, try running
+
+```bash
+python -m http.server 8000
+```
+
+from the root of your local repository.
+
+Then open http://localhost:8000/index.html
+(or change the path to reflect the final location of your created index.html file - e.g. http://localhost:8000/docs/index.html)
+
 ## Documentation
 
 Check out the quickstart guide at [sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart](http://sammirosser.com/stlitepack/stlitepack_docs/stlitepack_quickstart).
@@ -45,6 +64,26 @@ You can also find the full reference for each function at [sammirosser.com/stlit
 - v0.8: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache
 - v0.9: TOML or YAML file support as optional alternative to the packing function
 - v1.0: Full toolkit for packaging, deploying, and managing stlite apps
+
+## Examples of Use
+
+### eFIT-tool
+
+All credits go to [Peter Saiu](https://github.com/pete4nhs) and collaborators for the original repository!
+
+- stlite Repository: [github.com/Bergam0t/eFIT-tool-stlitepack](https://github.com/Bergam0t/eFIT-tool-stlitepack)
+- Original Repository: [github.com/pete4nhs/eFIT-tool](https://github.com/pete4nhs/eFIT-tool)
+- Packing script: [github.com/Bergam0t/eFIT-tool-stlitepack/blob/main/pack_to_stlite.py](https://github.com/Bergam0t/eFIT-tool-stlitepack/blob/main/pack_to_stlite.py)
+- Hosted stlite app: [sammirosser.com/eFIT-tool-stlitepack/](http://sammirosser.com/eFIT-tool-stlitepack/)
+
+### Non-elective Flow Simulation
+
+All credits go to [Helena Robinson](https://github.com/helenajr) and collaborators for the original repository!
+
+- stlite Repository: [github.com/Bergam0t/hr_Non-Elective-Flow-Simulation](https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation)
+- Original Repository: [github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation](https://github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation)
+- Packing script: [github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py](https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py)
+- Hosted stlite app: [http://sammirosser.com/hr_Non-Elective-Flow-Simulation/](sammirosser.com/hr_Non-Elective-Flow-Simulation/)
 
 ## 🤝 Contributing
 Contributions, feature requests, and feedback are welcome!

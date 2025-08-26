@@ -65,6 +65,26 @@ You can also find the full reference for each function at [sammirosser.com/stlit
 - v0.9: TOML or YAML file support as optional alternative to the packing function
 - v1.0: Full toolkit for packaging, deploying, and managing stlite apps
 
+## Examples of Use
+
+### eFIT-tool
+
+All credits go to [Peter Saiu](https://github.com/pete4nhs) and collaborators for the original repository!
+
+- stlite Repository: [github.com/Bergam0t/eFIT-tool-stlitepack](https://github.com/Bergam0t/eFIT-tool-stlitepack)
+- Original Repository: [github.com/pete4nhs/eFIT-tool](https://github.com/pete4nhs/eFIT-tool)
+- Packing script: [github.com/Bergam0t/eFIT-tool-stlitepack/blob/main/pack_to_stlite.py](https://github.com/Bergam0t/eFIT-tool-stlitepack/blob/main/pack_to_stlite.py)
+- Hosted stlite app: [sammirosser.com/eFIT-tool-stlitepack/](http://sammirosser.com/eFIT-tool-stlitepack/)
+
+### Non-elective Flow Simulation
+
+All credits go to [Helena Robinson](https://github.com/helenajr) and collaborators for the original repository!
+
+- stlite Repository: [github.com/Bergam0t/hr_Non-Elective-Flow-Simulation](https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation)
+- Original Repository: [github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation](https://github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation)
+- Packing script: [github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py](https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py)
+- Hosted stlite app: [http://sammirosser.com/hr_Non-Elective-Flow-Simulation/](sammirosser.com/hr_Non-Elective-Flow-Simulation/)
+
 ## 🤝 Contributing
 Contributions, feature requests, and feedback are welcome!
 

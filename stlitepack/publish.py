@@ -8,14 +8,21 @@ def _create_nojekyll(output_dir: str = "."):
     return out_path
 
 
-def _create_workflow(use_docs: bool = True,
+def _create_workflow(output_dir = "current_dir",
+                     use_docs: bool = True,
                      only_on_index: bool = True,
                      print_only: bool = False,
                      branch: str = "main"):
     """Internal helper to create a gh-pages workflow file."""
-    workflow_dir = Path(".github/workflows")
+
+    # Determine where to put the workflow file
+    if output_dir == "current_dir":
+        workflow_dir = Path(".github/workflows")
+    else:
+        workflow_dir = output_dir / Path(".github/workflows")
+
     workflow_dir.mkdir(parents=True, exist_ok=True)
-    target_dir = "docs" if use_docs else "."
+    target_dir = "docs" if use_docs else ""
 
     on_push = f"""
 on:
@@ -25,7 +32,7 @@ on:
 """
     if only_on_index:
         on_push += f"""    paths:
-      - '{target_dir}/index.html'
+      - '{target_dir}{"/" if target_dir != "" else ""}index.html'
 """
 
     workflow = f"""name: Deploy to GitHub Pages
@@ -50,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: {target_dir}
+          path: {"docs" if use_docs else "."}
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -68,7 +75,9 @@ def setup_github_pages(
     mode: str = "gh-actions",
     use_docs: bool = True,
     only_on_index: bool = True,
-    branch: str = "main"
+    branch: str = "main",
+    output_dir: str = "current_dir",
+    create_nojekyll: bool = True
 ):
     """
 Set up GitHub Pages deployment for a stlite app.
@@ -89,6 +98,14 @@ only_on_index : bool, optional
     If True, trigger deployment only when `index.html` changes (gh-actions mode only).
 branch: str, optional
     Branch to use as source. Defaults to main.
+output_dir: str, optional
+    Determine whether to move to a different directory prior to creation of outputs.
+    Should only be needed if folder packing file is being run from is not the repository root.
+    Default is 'current_dir'.
+create_nojekyll: bool, optional
+    Determines whether to create a .nojekyll file, which will prevent the deployed app from being
+    run through post-processing steps on Github.
+    Default is True.
 
 Returns
 -------
@@ -101,12 +118,23 @@ Path or None
     In gh-actions model, a deploy.yml will be created in the .github/workflows folder, relative to
     the provided file. This folder will be created if it does not exist.
     """
-    target_dir = "docs" if use_docs else "."
+    if output_dir == "current_dir":
+        target_dir = "docs" if use_docs else "."
+    else:
+        target_dir = f"{output_dir}/docs" if use_docs else output_dir
     # Create nojekyll file in both docs and target dir
-    _create_nojekyll(".")
 
-    if target_dir != ".":
-        _create_nojekyll(target_dir)
+    if create_nojekyll:
+      try:
+        _create_nojekyll(".")
+      except: # TODO: Limit valid exceptions here
+          print("Issues creating nojekyll file in root folder")
+
+      if target_dir != ".":
+          try:
+            _create_nojekyll(target_dir)
+          except: # TODO: Limit valid exceptions here
+            print(f"Issues creating nojekyll file in {target_dir}")
 
     if mode == "manual":
         # no workflow, just helper message
@@ -124,7 +152,10 @@ To complete setup:
 No GitHub Actions workflow is required.
 """
         print(msg)
-        helpfile = Path("PAGES_SETUP.md")
+        if output_dir == "current_dir":
+            helpfile = Path("PAGES_SETUP.md")
+        else:
+            helpfile = Path(f"{output_dir}/PAGES_SETUP.md")
         helpfile.write_text(msg.strip() + "\n")
         return helpfile
 
@@ -144,13 +175,17 @@ To complete setup:
 
             """
         print(msg)
-        helpfile = Path("PAGES_SETUP.md")
+        if output_dir == "current_dir":
+            helpfile = Path("PAGES_SETUP.md")
+        else:
+            helpfile = Path(f"{output_dir}/PAGES_SETUP.md")
         helpfile.write_text(msg.strip() + "\n")
 
         return _create_workflow(
             use_docs=use_docs,
             only_on_index=only_on_index,
-            branch=branch
+            branch=branch,
+            output_dir=output_dir
             )
 
     else:
