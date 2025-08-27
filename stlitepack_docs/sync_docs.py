@@ -13,3 +13,19 @@ files = {
 
 for src, dest in files.items():
     shutil.copy(root / src, docs / dest)
+
+# YAML front matter to prepend
+yaml_header = """---
+format:
+    html:
+        toc: true
+        toc-expand: 3
+---
+
+"""
+
+# Files to prepend YAML to
+for qmd_file in ["index.qmd", "changelog.qmd"]:
+    file_path = docs / qmd_file
+    content = file_path.read_text(encoding="utf-8")
+    file_path.write_text(yaml_header + content, encoding="utf-8")

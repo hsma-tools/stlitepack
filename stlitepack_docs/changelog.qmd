@@ -1,3 +1,10 @@
+---
+format:
+    html:
+        toc: true
+        toc-expand: 3
+---
+
 # Version History
 
 # HISTORY

@@ -1,3 +1,10 @@
+---
+format:
+    html:
+        toc: true
+        toc-expand: 3
+---
+
 # stlitepack
 
 [<img src="https://img.shields.io/pypi/v/stlitepack?label=pypi%20package">](https://pypi.org/project/stlitepack/)
