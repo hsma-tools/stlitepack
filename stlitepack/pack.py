@@ -11,8 +11,8 @@ import subprocess
 import webbrowser
 import sys
 import time
-
-
+import random
+import socket
 
 TEMPLATE = """<!doctype html>
 <html>
@@ -174,11 +174,28 @@ def _material_icons_style(version: str = "Rounded", force_download: bool = False
         print("Error retrieving material icons font file")
         return ""
 
+
+def _get_free_port(start=8000, end=8999, max_tries=20):
+    """Find a free TCP port between start and end, or fall back to OS-assigned."""
+    for _ in range(max_tries):
+        port = random.randint(start, end)
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            try:
+                s.bind(("localhost", port))
+                return port
+            except OSError:
+                continue  # port in use, try another
+    # Fallback: let OS assign any free port
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind(("localhost", 0))
+        return s.getsockname()[1]
+
+
 def _run_preview_server(
-        port: int = 8000,
-        dir_to_change_to: str = "",
-        start_page: str = "docs/index.html"):
+    port, dir_to_change_to: str = "", start_page: str = "docs/index.html"
+):
     """Start a simple HTTP server and open the browser to the given page."""
+
     url = f"http://localhost:{port}/{start_page}"
 
     if dir_to_change_to != "":
@@ -189,7 +206,7 @@ def _run_preview_server(
     process = subprocess.Popen(
         [sys.executable, "-m", "http.server", str(port)],
         stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE
+        stderr=subprocess.PIPE,
     )
 
     # Give the server a moment to start
@@ -207,26 +224,29 @@ def _run_preview_server(
         print("\nStopping server...")
         process.terminate()
 
+
 def pack(
-        app_file: str,
-        extra_files_to_embed: list[str] | None = None,
-        extra_files_to_link: list[str] | dict | None = None,
-        prepend_github_path: str | None = None,
-        github_branch: str = "main",
-        requirements: list[str] | None = None,
-        title: str = "App",
-        output_dir: str = "docs",
-        output_file: str = "index.html",
-        stylesheet_version: str = "0.84.1",
-        js_bundle_version: str = "0.84.1",
-        use_raw_api: bool = True,
-        pyodide_version: str = "default",
-        replace_df_with_table: bool = False,
-        force_redownload_material_icons: bool = False,
-        print_preview_message: bool = True,
-        run_preview_server: bool = False,
-        automated_stlite_fixes: bool = True
-        ):
+    app_file: str,
+    extra_files_to_embed: list[str] | None = None,
+    extra_files_to_link: list[str] | dict | None = None,
+    prepend_github_path: str | None = None,
+    github_branch: str = "main",
+    requirements: list[str] | None = None,
+    title: str = "App",
+    output_dir: str = "docs",
+    output_file: str = "index.html",
+    stylesheet_version: str = "0.84.1",
+    js_bundle_version: str = "0.84.1",
+    use_raw_api: bool = True,
+    pyodide_version: str = "default",
+    replace_df_with_table: bool = False,
+    force_redownload_material_icons: bool = False,
+    print_preview_message: bool = True,
+    run_preview_server: bool = False,
+    randomise_preview_port: bool = True,
+    port: int = 8000,
+    automated_stlite_fixes: bool = True,
+):
     """
     Pack a Streamlit app into a stlite-compatible index.html file.
 
@@ -298,6 +318,16 @@ def pack(
         If True, starts a small server previewing the output file.
         Supersedes print_preview_message. If both are True, only the preview server will be started.
         Default is `True`.
+    randomise_preview_port: bool, optional
+        If True, this will choose a different port from 8000-8999 each time.
+        This can prevent clashes - for example, if you pack two apps and accidentally leave one
+        running...
+        Ignored if run_preview_server is False
+        Default is True
+    port: int, optional
+        If randomise_preview_port is False, will use the port provided here.
+        Ignored if run_preview_server is False
+        Default is 8000
     automated_stlite_fixes: bool, optional
         If True, applies some automated fixes for common stlite issues
         - Inserts an await statement at the start of any st.spinner blocks to ensure the code in
@@ -510,12 +540,23 @@ def pack(
     print(f"Packed app written to {outfile}")
 
     if run_preview_server:
-        _run_preview_server(start_page=f"{outfile}", dir_to_change_to="" if output_dir == "docs" else output_dir)
+        if randomise_preview_port:
+            _run_preview_server(
+                port=_get_free_port(),
+                start_page=f"{output_file}",
+                dir_to_change_to="" if output_dir == "docs" else output_dir,
+            )
+        else:
+            _run_preview_server(
+                port=8000,
+                start_page=f"{output_file}",
+                dir_to_change_to="" if output_dir == "docs" else output_dir,
+            )
     elif print_preview_message:
         print("Preview your app by running")
         print("python -m http.server 8000")
         print("and navigating to the index.html file.")
-        print(f"e.g. http://localhost:8000/index.html")
+        print("e.g. http://localhost:8000/index.html")
         print("or http://localhost:8000/docs/index.html")
 
 
