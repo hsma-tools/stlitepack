@@ -379,15 +379,18 @@ setup_github_pages(
 
 ### Finishing steps (by mode)
 
-**If `mode="manual"`**
+These are also given in `PAGES_SETUP.md`, but are reproduced here for simplicity
 
-1. Commit `index.html` (and `.nojekyll`) into `/{docs or .}/` on the chosen `branch`.
+#### If `mode="manual"`
+
+1. Commit `index.html`, `.nojekyll` and `404.html`
+
 2. In **Repo → Settings → Pages**:
    - **Build and deployment → Source**: `Deploy from a branch`
    - **Branch**: your branch (e.g., `main`)
    - **Folder**: `/docs` (if `use_docs=True`) or `root` (if `use_docs=False`)
 
-**If `mode="gh-actions"`**
+#### If `mode="gh-actions"`
 
 1. In **Repo → Settings → Pages**:
    - **Build and deployment → Source**: `GitHub Actions`.
@@ -404,7 +407,10 @@ to `index.html` and committing/pushing that change.
    - `.nojekyll`
    - `404.html`
    - `index.html` in your target folder (`docs/` if `use_docs=True`, else repo root).
+
 3. Push to your repo. The workflow will build and deploy your site.
+
+#### Both
 
 Your app will be available at:
 
@@ -413,6 +419,28 @@ https://<your-github-username>.github.io/<your-repo-name>/
 ```
 
 > Note: It can take a few minutes for the first deployment to appear. If using Actions, ensure the workflow runs and passes; if using manual mode, double-check your Pages settings.
+
+##### Optional - add a link to your deployed app to the 'About' section of your repository
+
+Once you have followed the instructions, head over to the 'about' section of your repository and click on the cog.
+
+![](../assets/2025-08-27-13-01-53.png)
+
+Tick 'Use your GitHub Pages website' - your will likely take the form 'https://your-username.github.io/your-repository-name'
+
+![](../assets/2025-08-27-13-02-18.png)
+
+Then click 'save changes'
+
+![](../assets/2025-08-27-13-03-16.png)
+
+You can then click the link to head to your hosted app.
+
+![](../assets/2025-08-27-13-03-42.png)
+
+If the app has built successfully, there will be a green tick next to your last commit message:
+
+![](../assets/2025-08-27-13-04-19.png)
 
 ---
 

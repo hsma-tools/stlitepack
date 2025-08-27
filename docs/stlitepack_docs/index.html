@@ -515,16 +515,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>a custom 404 page to make users redirect smoothly when your app is refreshed or shared</li>
 <li>a PAGES_SETUP.md file with instructions of how to enable github pages on your repository</li>
 </ul>
-<p>Once you have followed the instructions in PAGES_SETUP.md, head over to the ‘about’ section of your repostiory and click on the cog.</p>
-<p><img src="assets/2025-08-27-13-01-53.png" class="img-fluid"></p>
-<p>Tick ‘Use your GitHub Pages website’ - your will likely take the form ‘https://your-username.github.io/your-repository-name’</p>
-<p><img src="assets/2025-08-27-13-02-18.png" class="img-fluid"></p>
-<p>Then click ‘save changes’</p>
-<p><img src="assets/2025-08-27-13-03-16.png" class="img-fluid"></p>
-<p>You can then click the link to head to your hosted app.</p>
-<p><img src="assets/2025-08-27-13-03-42.png" class="img-fluid"></p>
-<p>If the app has built successfully, there will be a green tick next to your last commit message:</p>
-<p><img src="assets/2025-08-27-13-04-19.png" class="img-fluid"></p>
+<p>Once you have followed the instructions in PAGES_SETUP.md, your app should be available at https://<your-github-username>.github.io/<your-repo-name>/</your-repo-name></your-github-username></p>
+<blockquote class="blockquote">
+<p>Note: It can take a few minutes for the first deployment to appear. If using Actions, ensure the workflow runs and passes; if using manual mode, double-check your Pages settings.</p>
+</blockquote>
 <section id="heads-up" class="level3">
 <h3 class="anchored" data-anchor-id="heads-up">⚠️ Heads Up!</h3>
 <p>Opening index.html directly in your browser may show navigation or media errors if you use session state in multi-page apps or if you are loading in external file. This is normal — it only happens when using file:// URLs.</p>
@@ -544,7 +538,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The two key functions are</p>
 <ul>
 <li><a href="https://hsma-tools.github.io/stlitepack/reference/pack.pack.html">pack</a></li>
-<li><a href="https://hsma-tools.github.io/stlitepack/reference/publish.setup_github_pages.html">publish</a></li>
+<li><a href="https://hsma-tools.github.io/stlitepack/reference/publish.setup_github_pages.html">setup_github_pages</a></li>
 </ul>
 </section>
 <section id="roadmap" class="level2">

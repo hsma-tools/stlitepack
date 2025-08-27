@@ -42,26 +42,9 @@ This will generate
 - a custom 404 page to make users redirect smoothly when your app is refreshed or shared
 - a PAGES_SETUP.md file with instructions of how to enable github pages on your repository
 
-Once you have followed the instructions in PAGES_SETUP.md, head over to the 'about' section of your repostiory and click on the cog.
+Once you have followed the instructions in PAGES_SETUP.md, your app should be available at https://<your-github-username>.github.io/<your-repo-name>/
 
-![](assets/2025-08-27-13-01-53.png)
-
-Tick 'Use your GitHub Pages website' - your will likely take the form 'https://your-username.github.io/your-repository-name'
-
-![](assets/2025-08-27-13-02-18.png)
-
-Then click 'save changes'
-
-![](assets/2025-08-27-13-03-16.png)
-
-You can then click the link to head to your hosted app.
-
-![](assets/2025-08-27-13-03-42.png)
-
-If the app has built successfully, there will be a green tick next to your last commit message:
-
-![](assets/2025-08-27-13-04-19.png)
-
+> Note: It can take a few minutes for the first deployment to appear. If using Actions, ensure the workflow runs and passes; if using manual mode, double-check your Pages settings.
 
 ### ⚠️ Heads Up!
 Opening index.html directly in your browser may show navigation or media errors if you use session state in multi-page apps or if you are loading in external file. This is normal — it only happens when using file:// URLs.
@@ -93,7 +76,7 @@ You can also find the full reference for each function at [hsma-tools.github.io/
 The two key functions are
 
 - [pack](https://hsma-tools.github.io/stlitepack/reference/pack.pack.html)
-- [publish](https://hsma-tools.github.io/stlitepack/reference/publish.setup_github_pages.html)
+- [setup_github_pages](https://hsma-tools.github.io/stlitepack/reference/publish.setup_github_pages.html)
 
 ## 🔮 Roadmap
 

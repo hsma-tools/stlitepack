@@ -857,17 +857,21 @@ GitHub Basics
 </section>
 <section id="finishing-steps-by-mode" class="level3">
 <h3 class="anchored" data-anchor-id="finishing-steps-by-mode">Finishing steps (by mode)</h3>
-<p><strong>If <code>mode="manual"</code></strong></p>
+<p>These are also given in <code>PAGES_SETUP.md</code>, but are reproduced here for simplicity</p>
+<section id="if-modemanual" class="level4">
+<h4 class="anchored" data-anchor-id="if-modemanual">If <code>mode="manual"</code></h4>
 <ol type="1">
-<li>Commit <code>index.html</code> (and <code>.nojekyll</code>) into <code>/{docs or .}/</code> on the chosen <code>branch</code>.</li>
-<li>In <strong>Repo → Settings → Pages</strong>:
+<li><p>Commit <code>index.html</code>, <code>.nojekyll</code> and <code>404.html</code></p></li>
+<li><p>In <strong>Repo → Settings → Pages</strong>:</p>
 <ul>
 <li><strong>Build and deployment → Source</strong>: <code>Deploy from a branch</code></li>
 <li><strong>Branch</strong>: your branch (e.g., <code>main</code>)</li>
 <li><strong>Folder</strong>: <code>/docs</code> (if <code>use_docs=True</code>) or <code>root</code> (if <code>use_docs=False</code>)</li>
 </ul></li>
 </ol>
-<p><strong>If <code>mode="gh-actions"</code></strong></p>
+</section>
+<section id="if-modegh-actions" class="level4">
+<h4 class="anchored" data-anchor-id="if-modegh-actions">If <code>mode="gh-actions"</code></h4>
 <ol type="1">
 <li>In <strong>Repo → Settings → Pages</strong>:
 <ul>
@@ -898,12 +902,29 @@ Warning
 </ul></li>
 <li>Push to your repo. The workflow will build and deploy your site.</li>
 </ol>
+</section>
+<section id="both" class="level4">
+<h4 class="anchored" data-anchor-id="both">Both</h4>
 <p>Your app will be available at:</p>
 <pre><code>https://&lt;your-github-username&gt;.github.io/&lt;your-repo-name&gt;/</code></pre>
 <blockquote class="blockquote">
 <p>Note: It can take a few minutes for the first deployment to appear. If using Actions, ensure the workflow runs and passes; if using manual mode, double-check your Pages settings.</p>
 </blockquote>
+<section id="optional---add-a-link-to-your-deployed-app-to-the-about-section-of-your-repository" class="level5">
+<h5 class="anchored" data-anchor-id="optional---add-a-link-to-your-deployed-app-to-the-about-section-of-your-repository">Optional - add a link to your deployed app to the ‘About’ section of your repository</h5>
+<p>Once you have followed the instructions, head over to the ‘about’ section of your repository and click on the cog.</p>
+<p><img src="../assets/2025-08-27-13-01-53.png" class="img-fluid"></p>
+<p>Tick ‘Use your GitHub Pages website’ - your will likely take the form ‘https://your-username.github.io/your-repository-name’</p>
+<p><img src="../assets/2025-08-27-13-02-18.png" class="img-fluid"></p>
+<p>Then click ‘save changes’</p>
+<p><img src="../assets/2025-08-27-13-03-16.png" class="img-fluid"></p>
+<p>You can then click the link to head to your hosted app.</p>
+<p><img src="../assets/2025-08-27-13-03-42.png" class="img-fluid"></p>
+<p>If the app has built successfully, there will be a green tick next to your last commit message:</p>
+<p><img src="../assets/2025-08-27-13-04-19.png" class="img-fluid"></p>
 <hr>
+</section>
+</section>
 </section>
 </section>
 <section id="next-steps" class="level2">
