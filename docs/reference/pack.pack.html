@@ -464,8 +464,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'App'</span>,</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">'docs'</span>,</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    output_file<span class="op">=</span><span class="st">'index.html'</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    stylesheet_version<span class="op">=</span><span class="st">'0.84.1'</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    js_bundle_version<span class="op">=</span><span class="st">'0.84.1'</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    stylesheet_version<span class="op">=</span><span class="st">'0.80.5'</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    js_bundle_version<span class="op">=</span><span class="st">'0.80.5'</span>,</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    use_raw_api<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    pyodide_version<span class="op">=</span><span class="st">'default'</span>,</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    replace_df_with_table<span class="op">=</span><span class="va">False</span>,</span>
@@ -479,14 +479,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Pack a Streamlit app into a stlite-compatible index.html file.</p>
 <p>This function reads a Streamlit Python script, injects it into an HTML template compatible with stlite, and writes the output as <code>index.html</code>. The resulting HTML can be served as static content (e.g., via GitHub Pages).</p>
 <p>If additional pages are found in a ‘pages’ folder at the same level as the main app file, these will be added in as additional files.</p>
+<p>Note that the package will access the internet to download the latest version of Google’s material UI font. This is necessary to ensure all standard streamlit icons display correctly, as well as allowing the use of material icons elsewhere in the app where streamlit supports this.</p>
 <section id="parameters" class="level2 doc-section doc-section-parameters">
 <h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 5%">
-<col style="width: 84%">
 <col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 92%">
+<col style="width: 1%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -506,25 +507,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td>extra_files_to_embed</td>
 <td>list[str]</td>
-<td>Additional files to mount directly into the app (e.g.&nbsp;.streamlit/config.toml). These must be additional files that are primarily text-based (e.g.&nbsp;.py, .toml, .csv). If binary files are provided,</td>
+<td>Additional files to mount directly into the app (e.g.&nbsp;.streamlit/config.toml). This will work best with files that are primarily text-based (e.g.&nbsp;.py, .toml, .csv). If binary files (e.g.&nbsp;.png, .jpg, .mp4) are provided, the script will attempt to convert them to base64 encoded representations that can live entirely within your file. However, this can massively increase the size of your resulting index.html file, and is currently experimental. For binary files it is recommended that you pass them using the ‘extra_files_to_link’ option instead.</td>
 <td><code>None</code></td>
 </tr>
 <tr class="odd">
 <td>extra_files_to_link</td>
 <td>list[str] or dict</td>
-<td>Additional files to hyperlink to. - If passed as a list, must be used with the argument ‘prepend_github_path’. The list must be a list of relative filepaths. - If passed as a dict, expects key:value pairs of relative_filepath: url Can only be used with the raw API (use_raw_api=True). Defaults to None</td>
+<td>Additional files to hyperlink to. - If passed as a list, must be used with the argument ‘prepend_github_path’. The list must be a list of relative filepaths. - If passed as a dict, expects key:value pairs of relative_filepath: url e.g.&nbsp;{‘img/my_img.png’: ’https://raw.githubusercontent.com/your-github-username/your-github-repository/refs/heads/main/img/my_img.png} Can only be used with the raw API (use_raw_api=True). Defaults to None</td>
 <td><code>None</code></td>
 </tr>
 <tr class="even">
 <td>prepend_github_path</td>
 <td>str</td>
-<td>If files to be linked are stored on github, you can pass them as relative paths in the extra_files_to Needs to passed in the format username/reponam Ignored if ‘extra_files_to_link’ is None. Can only be used with the raw API (use_raw_api=True). Defaults to None</td>
+<td>If files to be linked are stored on github, you can pass them as relative paths in the ‘extra_files_to_link’ argument, and then use this argument to automatically generate the url links to the files in your repository. Needs to passed in the format “username/reponame” e.g.&nbsp;a username of Bergam0t with a reponame of my-streamlit-app would be “Bergam0t/my-streamlit-app” Then, for example, if you passed a list of [‘img/my_img.png’] to the ‘extra_files_to_link’ argument, it would automatically generate the url of https://raw.githubusercontent.com/Bergam0t/my-streamlit-app/refs/heads/main/img/my_img.png Ignored if ‘extra_files_to_link’ is None. Can only be used with the raw API (use_raw_api=True). Defaults to None</td>
 <td><code>None</code></td>
 </tr>
 <tr class="odd">
 <td>github_branch</td>
 <td>str</td>
-<td>If files to be linked to on Github need to come from a branch other than main, provide the name of the desired branch here. Ignored if ‘extra_files_to_link’ is None or prepend_github_path is None. Can only be used with the raw API (use_raw_api=True). Defaults to ‘main’</td>
+<td>If files to be linked to on Github need to come from a branch other than main, provide the name of the desired branch here. e.g.&nbsp;a username of Bergam0t with a reponame of my-streamlit-app would be “Bergam0t/my-streamlit-app” If you passed ‘dev’ as your branch to this argument, and then passed a list of [‘img/my_img.png’] to the ‘extra_files_to_link’ argument, it would automatically generate the url of https://raw.githubusercontent.com/Bergam0t/my-streamlit-app/refs/heads/dev/img/my_img.png Ignored if ‘extra_files_to_link’ is None or prepend_github_path is None. Can only be used with the raw API (use_raw_api=True). Defaults to ‘main’</td>
 <td><code>'main'</code></td>
 </tr>
 <tr class="even">

@@ -244,8 +244,8 @@ def pack(
     title: str = "App",
     output_dir: str = "docs",
     output_file: str = "index.html",
-    stylesheet_version: str = "0.84.1",
-    js_bundle_version: str = "0.84.1",
+    stylesheet_version: str = "0.80.5",
+    js_bundle_version: str = "0.80.5",
     use_raw_api: bool = True,
     pyodide_version: str = "default",
     replace_df_with_table: bool = False,
@@ -266,6 +266,11 @@ def pack(
     If additional pages are found in a 'pages' folder at the same level as the main app file,
     these will be added in as additional files.
 
+    Note that the package will access the internet to download the latest version
+    of Google's material UI font. This is necessary to ensure all standard streamlit icons
+    display correctly, as well as allowing the use of material icons elsewhere in the app where
+    streamlit supports this.
+
     Parameters
     ----------
     app_file : str
@@ -274,25 +279,43 @@ def pack(
         these will be added in as additional files.
     extra_files_to_embed : list[str], optional
         Additional files to mount directly into the app (e.g. .streamlit/config.toml).
-        These must be additional files that are primarily text-based (e.g. .py, .toml, .csv).
-        If binary files are provided,
+        This will work best with files that are primarily text-based (e.g. .py, .toml, .csv).
+        If binary files (e.g. .png, .jpg, .mp4) are provided, the script will attempt to convert
+        them to base64 encoded representations that can live entirely within your file.
+        However, this can massively increase the size of your resulting index.html file,
+        and is currently experimental.
+        For binary files it is recommended that you pass them using the 'extra_files_to_link'
+        option instead.
     extra_files_to_link : list[str] or dict, optional
         Additional files to hyperlink to.
         - If passed as a list, must be used with the argument 'prepend_github_path'.
           The list must be a list of relative filepaths.
         - If passed as a dict, expects key:value pairs of relative_filepath: url
+        e.g. {'img/my_img.png': 'https://raw.githubusercontent.com/your-github-username/your-github-repository/refs/heads/main/img/my_img.png}
         Can only be used with the raw API (use_raw_api=True).
         Defaults to None
     prepend_github_path : str, optional
         If files to be linked are stored on github, you can pass them as relative paths in the
-        extra_files_to
-        Needs to passed in the format username/reponam
+        'extra_files_to_link' argument, and then use this argument to automatically generate the url
+        links to the files in your repository.
+        Needs to passed in the format "username/reponame"
+        e.g. a username of Bergam0t with a reponame of my-streamlit-app would be
+        "Bergam0t/my-streamlit-app"
+        Then, for example, if you passed a list of ['img/my_img.png'] to the 'extra_files_to_link'
+        argument, it would automatically generate the url of
+        https://raw.githubusercontent.com/Bergam0t/my-streamlit-app/refs/heads/main/img/my_img.png
         Ignored if 'extra_files_to_link' is None.
         Can only be used with the raw API (use_raw_api=True).
         Defaults to None
     github_branch: str, optional
         If files to be linked to on Github need to come from a branch other than main, provide
         the name of the desired branch here.
+        e.g. a username of Bergam0t with a reponame of my-streamlit-app would be
+        "Bergam0t/my-streamlit-app"
+        If you passed 'dev' as your branch to this argument, and then passed a list
+        of ['img/my_img.png'] to the 'extra_files_to_link' argument, it would automatically
+        generate the url of
+        https://raw.githubusercontent.com/Bergam0t/my-streamlit-app/refs/heads/dev/img/my_img.png
         Ignored if 'extra_files_to_link' is None or prepend_github_path is None.
         Can only be used with the raw API (use_raw_api=True).
         Defaults to 'main'
