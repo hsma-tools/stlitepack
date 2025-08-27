@@ -329,31 +329,21 @@
     ]
   },
   {
+    "objectID": "stlitepack_docs/changelog.html",
+    "href": "stlitepack_docs/changelog.html",
+    "title": "Version History",
+    "section": "",
+    "text": "All notable changes to stlitepack are documented in this file.\nPlease note that prior to version 1.0, breaking API changes may occur at any time. The API should not be considered stable until the 1.0 release. After the version 1 release, all breaking changes will only occur on major version increments (e.g. version 1 –&gt; version 2).\nDuring the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.\n\n\n\n\n\nAutomatic creation of a 404 redirect page when publishing, with either ‘relative’ option, or option to pass an absolute URL to redirect to.\n\n\n\n\n\n[BREAKING] Some publish steps now rely on passing the relative or absolute path to the root of the repository instead of a less clear ‘output_dir’ parameter.\nPorts for preview server now default to a random free port in the range 8000-8999. A fixed port can still be set if preferred.\nLinting of key files with ruff\nChanged how directories are handled by the preview server so that change of directories doesn’t persist for subsequent steps in packing script\n\n\n\n\n\n\n\n\nFix bug where indendation level of subsequent code may be incorrect when async fixes are applied to spinner usage\nPrevent directory change for preview server if just putting the folder in docs (smarter handling of this planned in the future!)\n\n\n\n\n\nAdded option to toggle automatic stlite fixes (like adding async await to spinner) on and off with automated_stlite_fixes parameter in pack.\n\n\n\n\n\n\n\n\nextra_files parameter split to extra_files_to_embed and extra_files_to_link\nadded prepend_github_path parameter to allow users to quickly point to hosted files\nadded list_files_in_folders helper for quick gathering of files meeting criteria to either link or embed\nuse_raw_api default changed from False to True.\n\nToo many features are not available within the simplified (non-mount) API. Therefore, swiching to the mount API as default ensures other parameters will work as expected. Turning this to ‘False’ should now be considered a step for advanced users only.\n\n\n\n\n\n\nAdded automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution\n\nThis is achieved by automatically inserting an `await async.sleep(1) block in the relevant part of the code\n\nAdd fix for material icon display\n\nThis is achieved via embedding of material icon font. Bonus feature - you can select your preferred material font style.\n\nAdd ability to automatically start a preview server after packing the app\nAdd more flexibility in where the output files will go (better at handling cases where app is contained within e.g. app subfolder of repo)\n\n\n\n\n\n\n\n\nAdded missing dependency to build file (requests)\n\n\n\n\n\nQuickstart guide in .qmd format, including detailed parameters for pack() and publish().\nAdded description of stlite, benefits of stlitepack, and Pyodide vs traditional server apps.\nCreated contributor CODE_OF_CONDUCT.md.\n\n\n\n\n\n\n\n\nGitHub Pages setup_github_pages documentation corrected.\n\n\n\n\n\n\n\n\nSupport for raw API with multipage apps.\nConditional configuration and extra_files mounting.\nSupport for relative paths in app file mounting.\nFunction to fetch valid Stlite versions from GitHub.\nTerminal-friendly messages for version info.\nWarning if pyodide_version is set while using the raw API.\n\n\n\n\n\npack() function now accepts app_file as main entrypoint and maintains relative path handling.\npublish() / GitHub Pages workflow documentation clarified.\nRaw API template updated to support streamlitConfig and multipage apps.\nVersion checks added for stylesheet_version and js_bundle_version (must be &gt;= 0.76.0).\n\n\n\n\n\nPath handling in the raw API HTML template to work across OSes (forward slashes normalized).\n\n\n\n\n\n\nBasic pack() function for packaging Streamlit apps to Stlite.\nGitHub Pages deployment support with setup_github_pages().\nRaw API HTML template for single-file apps.",
+    "crumbs": [
+      "Changelog/Version History"
+    ]
+  },
+  {
     "objectID": "stlitepack_docs/changelog.html#section",
     "href": "stlitepack_docs/changelog.html#section",
     "title": "Version History",
-    "section": "[0.4.2]",
-    "text": "[0.4.2]",
-    "crumbs": [
-      "Changelog/Version History"
-    ]
-  },
-  {
-    "objectID": "stlitepack_docs/changelog.html#added",
-    "href": "stlitepack_docs/changelog.html#added",
-    "title": "Version History",
-    "section": "Added",
-    "text": "Added\n\nAutomatic creation of a 404 redirect page when publishing, with either ‘relative’ option, or option to pass an absolute URL to redirect to.",
-    "crumbs": [
-      "Changelog/Version History"
-    ]
-  },
-  {
-    "objectID": "stlitepack_docs/changelog.html#improved",
-    "href": "stlitepack_docs/changelog.html#improved",
-    "title": "Version History",
-    "section": "Improved",
-    "text": "Improved\n\n[BREAKING] Some publish steps now rely on passing the relative or absolute path to the root of the repository instead of a less clear ‘output_dir’ parameter.\nPorts for preview server now default to a random free port in the range 8000-8999. A fixed port can still be set if preferred.\nLinting of key files with ruff\nChanged how directories are handled by the preview server so that change of directories doesn’t persist for subsequent steps in packing script",
+    "section": "",
+    "text": "Automatic creation of a 404 redirect page when publishing, with either ‘relative’ option, or option to pass an absolute URL to redirect to.\n\n\n\n\n\n[BREAKING] Some publish steps now rely on passing the relative or absolute path to the root of the repository instead of a less clear ‘output_dir’ parameter.\nPorts for preview server now default to a random free port in the range 8000-8999. A fixed port can still be set if preferred.\nLinting of key files with ruff\nChanged how directories are handled by the preview server so that change of directories doesn’t persist for subsequent steps in packing script",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -362,28 +352,8 @@
     "objectID": "stlitepack_docs/changelog.html#section-1",
     "href": "stlitepack_docs/changelog.html#section-1",
     "title": "Version History",
-    "section": "[0.4.1]",
-    "text": "[0.4.1]",
-    "crumbs": [
-      "Changelog/Version History"
-    ]
-  },
-  {
-    "objectID": "stlitepack_docs/changelog.html#fixes",
-    "href": "stlitepack_docs/changelog.html#fixes",
-    "title": "Version History",
-    "section": "Fixes",
-    "text": "Fixes\n\nFix bug where indendation level of subsequent code may be incorrect when async fixes are applied to spinner usage\nPrevent directory change for preview server if just putting the folder in docs (smarter handling of this planned in the future!)",
-    "crumbs": [
-      "Changelog/Version History"
-    ]
-  },
-  {
-    "objectID": "stlitepack_docs/changelog.html#added-1",
-    "href": "stlitepack_docs/changelog.html#added-1",
-    "title": "Version History",
-    "section": "Added",
-    "text": "Added\n\nAdded option to toggle automatic stlite fixes (like adding async await to spinner) on and off with automated_stlite_fixes parameter in pack.",
+    "section": "",
+    "text": "Fix bug where indendation level of subsequent code may be incorrect when async fixes are applied to spinner usage\nPrevent directory change for preview server if just putting the folder in docs (smarter handling of this planned in the future!)\n\n\n\n\n\nAdded option to toggle automatic stlite fixes (like adding async await to spinner) on and off with automated_stlite_fixes parameter in pack.",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -392,18 +362,8 @@
     "objectID": "stlitepack_docs/changelog.html#section-2",
     "href": "stlitepack_docs/changelog.html#section-2",
     "title": "Version History",
-    "section": "[0.4.0]",
-    "text": "[0.4.0]\n\nBREAKING CHANGES\n\nextra_files parameter split to extra_files_to_embed and extra_files_to_link\nadded prepend_github_path parameter to allow users to quickly point to hosted files\nadded list_files_in_folders helper for quick gathering of files meeting criteria to either link or embed\nuse_raw_api default changed from False to True.\n\nToo many features are not available within the simplified (non-mount) API. Therefore, swiching to the mount API as default ensures other parameters will work as expected. Turning this to ‘False’ should now be considered a step for advanced users only.",
-    "crumbs": [
-      "Changelog/Version History"
-    ]
-  },
-  {
-    "objectID": "stlitepack_docs/changelog.html#added-2",
-    "href": "stlitepack_docs/changelog.html#added-2",
-    "title": "Version History",
-    "section": "Added",
-    "text": "Added\n\nAdded automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution\n\nThis is achieved by automatically inserting an `await async.sleep(1) block in the relevant part of the code\n\nAdd fix for material icon display\n\nThis is achieved via embedding of material icon font. Bonus feature - you can select your preferred material font style.\n\nAdd ability to automatically start a preview server after packing the app\nAdd more flexibility in where the output files will go (better at handling cases where app is contained within e.g. app subfolder of repo)",
+    "section": "",
+    "text": "extra_files parameter split to extra_files_to_embed and extra_files_to_link\nadded prepend_github_path parameter to allow users to quickly point to hosted files\nadded list_files_in_folders helper for quick gathering of files meeting criteria to either link or embed\nuse_raw_api default changed from False to True.\n\nToo many features are not available within the simplified (non-mount) API. Therefore, swiching to the mount API as default ensures other parameters will work as expected. Turning this to ‘False’ should now be considered a step for advanced users only.\n\n\n\n\n\n\nAdded automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution\n\nThis is achieved by automatically inserting an `await async.sleep(1) block in the relevant part of the code\n\nAdd fix for material icon display\n\nThis is achieved via embedding of material icon font. Bonus feature - you can select your preferred material font style.\n\nAdd ability to automatically start a preview server after packing the app\nAdd more flexibility in where the output files will go (better at handling cases where app is contained within e.g. app subfolder of repo)",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -412,8 +372,8 @@
     "objectID": "stlitepack_docs/changelog.html#section-3",
     "href": "stlitepack_docs/changelog.html#section-3",
     "title": "Version History",
-    "section": "[0.3.1]",
-    "text": "[0.3.1]\n\nFixed\n\nAdded missing dependency to build file (requests)\n\n\n\nDocumentation\n\nQuickstart guide in .qmd format, including detailed parameters for pack() and publish().\nAdded description of stlite, benefits of stlitepack, and Pyodide vs traditional server apps.\nCreated contributor CODE_OF_CONDUCT.md.",
+    "section": "",
+    "text": "Added missing dependency to build file (requests)\n\n\n\n\n\nQuickstart guide in .qmd format, including detailed parameters for pack() and publish().\nAdded description of stlite, benefits of stlitepack, and Pyodide vs traditional server apps.\nCreated contributor CODE_OF_CONDUCT.md.",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -422,18 +382,8 @@
     "objectID": "stlitepack_docs/changelog.html#section-4",
     "href": "stlitepack_docs/changelog.html#section-4",
     "title": "Version History",
-    "section": "[0.3.0]",
-    "text": "[0.3.0]",
-    "crumbs": [
-      "Changelog/Version History"
-    ]
-  },
-  {
-    "objectID": "stlitepack_docs/changelog.html#fixed-1",
-    "href": "stlitepack_docs/changelog.html#fixed-1",
-    "title": "Version History",
-    "section": "Fixed",
-    "text": "Fixed\n\nGitHub Pages setup_github_pages documentation corrected.",
+    "section": "",
+    "text": "GitHub Pages setup_github_pages documentation corrected.",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -442,8 +392,8 @@
     "objectID": "stlitepack_docs/changelog.html#section-5",
     "href": "stlitepack_docs/changelog.html#section-5",
     "title": "Version History",
-    "section": "[0.2.0]",
-    "text": "[0.2.0]\n\nAdded\n\nSupport for raw API with multipage apps.\nConditional configuration and extra_files mounting.\nSupport for relative paths in app file mounting.\nFunction to fetch valid Stlite versions from GitHub.\nTerminal-friendly messages for version info.\nWarning if pyodide_version is set while using the raw API.\n\n\n\nChanged\n\npack() function now accepts app_file as main entrypoint and maintains relative path handling.\npublish() / GitHub Pages workflow documentation clarified.\nRaw API template updated to support streamlitConfig and multipage apps.\nVersion checks added for stylesheet_version and js_bundle_version (must be &gt;= 0.76.0).\n\n\n\nFixed\n\nPath handling in the raw API HTML template to work across OSes (forward slashes normalized).",
+    "section": "",
+    "text": "Support for raw API with multipage apps.\nConditional configuration and extra_files mounting.\nSupport for relative paths in app file mounting.\nFunction to fetch valid Stlite versions from GitHub.\nTerminal-friendly messages for version info.\nWarning if pyodide_version is set while using the raw API.\n\n\n\n\n\npack() function now accepts app_file as main entrypoint and maintains relative path handling.\npublish() / GitHub Pages workflow documentation clarified.\nRaw API template updated to support streamlitConfig and multipage apps.\nVersion checks added for stylesheet_version and js_bundle_version (must be &gt;= 0.76.0).\n\n\n\n\n\nPath handling in the raw API HTML template to work across OSes (forward slashes normalized).",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -452,8 +402,8 @@
     "objectID": "stlitepack_docs/changelog.html#initial-release",
     "href": "stlitepack_docs/changelog.html#initial-release",
     "title": "Version History",
-    "section": "[0.1.0] - Initial release",
-    "text": "[0.1.0] - Initial release\n\nBasic pack() function for packaging Streamlit apps to Stlite.\nGitHub Pages deployment support with setup_github_pages().\nRaw API HTML template for single-file apps.",
+    "section": "",
+    "text": "Basic pack() function for packaging Streamlit apps to Stlite.\nGitHub Pages deployment support with setup_github_pages().\nRaw API HTML template for single-file apps.",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -463,7 +413,7 @@
     "href": "stlitepack_docs/index.html",
     "title": "stlitepack",
     "section": "",
-    "text": "stlitepack is a Python utility that helps you turn your existing Streamlit apps into stlite apps — lightweight, browser-only Streamlit apps that run entirely in the client without a server.\nWith stlitepack, you can:\n\n📦 Pack your Streamlit app into a stlite-ready format\n🗂️ Include additional resources like config.toml\n🚀 Generate GitHub Actions workflows to (almost) auto-deploy your app to GitHub Pages\n\n\n\npip install stlitepack\n\n\n\nfrom stlitepack import pack\n\n# Pack your Streamlit app (e.g., \"app.py\") into a stlite bundle\npack(\"app.py\")\nThis will create an index.html file with all of the required stlite additions, which you can then serve as a static file using a hosting platform such as github pages.\n\n\nOpening index.html directly in your browser may show navigation or media errors if you use session state in multi-page apps or if you are loading in external file. This is normal — it only happens when using file:// URLs.\nFix: Serve the app over HTTP (e.g., python -m http.server) or deploy to GitHub Pages.\nEverything will work correctly once served via a web server!\nFor local testing prior to deployment, try running\npython -m http.server 8000\nfrom the root of your local repository.\nThen open http://localhost:8000/index.html (or change the path to reflect the final location of your created index.html file - e.g. http://localhost:8000/docs/index.html)\nAlternatively, you can try setting run_preview_server=True in your pack() function call - this will try to spin up a server that points at the right document automatically, though this can be a bit temperamental with complex folder structures.\n\n\n\n\nCheck out the quickstart guide at hsma-tools.github.io/stlitepack/stlitepack_docs/stlitepack_quickstart.\nYou can also find the full reference for each function at hsma-tools.github.io/stlitepack/reference/.\n\n\n\n\n✅ v0.1.0: Single-page app packing\n✅ v0.2.0: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)\n✅ v0.3.0: Multi-page app support (for pages/ subfolder method) and simple additional file inclusion\n✅ v0.4.0: Lots of improvements!\n\nBetter support for resource bundling (images, CSVs, assets, config files etc.) of local or web-based file, also leading to multi-page app support via st.navigation() method\nStarting to automate changes of known stlite/streamlit differences (e.g. await asyncio.sleep(1) being required when using st.spinner)\nOptional automatic spinning up of a preview server for the deployed app\nSupport for material icons\n\n✅ v0.4.1: Bugfix for asyncio code\n✅ v0.4.2: Automatic creation of a 404 redirect page\nv0.4.3: Better documentation and testing of v0.4 features\nv0.5.0: Further auto-handling of stlite-specific required changes\nv0.6.0: Add support for generating the required package.json for desktop app bundling\nv0.7.0: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache\nv0.8.0: TOML or YAML file support as optional alternative to the packing function\nv1.0.0: Full toolkit for packaging, deploying, and managing stlite apps\n\n\n\n\n\n\nAn example with an app in the root directory which uses the ‘pages’ subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder\nAll credits go to Peter Saiu and collaborators for the original repository!\n\nstlite Repository: github.com/Bergam0t/eFIT-tool-stlitepack\nOriginal Repository: github.com/pete4nhs/eFIT-tool\nPacking script: github.com/Bergam0t/eFIT-tool-stlitepack/blob/main/pack_to_stlite.py\nHosted stlite app: sammirosser.com/eFIT-tool-stlitepack/\n\n\n\n\nAn example with an app in an ‘apps’ subfolder, which uses the ‘st.navigation’ method for a multipage streamlit app, and outputs the html file to the root of the repository\nAll credits go to Helena Robinson and collaborators for the original repository!\n\nstlite Repository: github.com/Bergam0t/hr_Non-Elective-Flow-Simulation\nOriginal Repository: github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation\nPacking script: github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py\nHosted stlite app: sammirosser.com/hr_Non-Elective-Flow-Simulation/\n\n\n\n\nAnother example with an app in the root directory which uses the ‘pages’ subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder\nAll credits go to Tom Monks and Amy Heather for the original repository!\n\nstlite Repository: github.com/Bergam0t/stars-streamlit-example-stlitepack\nOriginal Repository: github.com/pythonhealthdatascience/stars-streamlit-example\nPacking script: github.com/Bergam0t/stars-streamlit-example-stlitepack/blob/main/pack_to_stlite.py\nHosted stlite app: sammirosser.com/stars-streamlit-example-stlitepack/\n\n\n\n\n\nContributions, feature requests, and feedback are welcome!\nOpen an issue or submit a pull request to help improve stlitepack.\n\n\nTo run tests, use\npytest\nTo generate a code coverage report, run\npytest --cov-report xml:cov.xml --cov .\n\n\n\n\nApache 2.0 License. See LICENSE for details.\n\n\n\n\nwhitphx for creating the amazing stlite framework!\n\n\n\n\nTowards the end of the initial phase of development, I stumbled across a mention of Luke Fullard’s script2stlite\nCheck that out if stlitepack doesn’t meet your needs (or if you just want to see which approach you prefer!)\nIt’s got some really nice features like support for embedding more types of files rather than requiring linking out to them on the web, and an approach using a config file instead of a packing function.\n\n\n\nThis package was developed with the assistance of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner. Google Gemini Pro 2.5 was also used. All code and design decisions were reviewed and finalized by a human, and any LLM output was used as a foundation rather than a final product.",
+    "text": "stlitepack is a Python utility that helps you turn your existing Streamlit apps into stlite apps — lightweight, browser-only Streamlit apps that run entirely in the client without a server.\nWith stlitepack, you can:\n\n📦 Pack your Streamlit app into a stlite-ready format\n🗂️ Include additional resources like config.toml\n🚀 Generate GitHub Actions workflows to (almost) auto-deploy your app to GitHub Pages\n\n\n\npip install stlitepack\n\n\n\nfrom stlitepack import pack\n\n# Pack your Streamlit app (e.g., \"app.py\") into a stlite bundle\npack(\"app.py\")\nThis will create an index.html file with all of the required stlite additions, which you can then serve as a static file using a hosting platform such as github pages.\n\n\nOpening index.html directly in your browser may show navigation or media errors if you use session state in multi-page apps or if you are loading in external file. This is normal — it only happens when using file:// URLs.\nFix: Serve the app over HTTP (e.g., python -m http.server) or deploy to GitHub Pages.\nEverything will work correctly once served via a web server!\nFor local testing prior to deployment, try running\npython -m http.server 8000\nfrom the root of your local repository.\nThen open http://localhost:8000/index.html (or change the path to reflect the final location of your created index.html file - e.g. http://localhost:8000/docs/index.html)\nAlternatively, you can try setting run_preview_server=True in your pack() function call - this will try to spin up a server that points at the right document automatically, though this can be a bit temperamental with complex folder structures.\n\n\n\n\nCheck out the quickstart guide at hsma-tools.github.io/stlitepack/stlitepack_docs/stlitepack_quickstart.\nYou can also find the full reference for each function at hsma-tools.github.io/stlitepack/reference/.\n\n\n\n\n✅ v0.1.0: Single-page app packing\n✅ v0.2.0: Helper functions for GitHub Pages auto-deploy (via GitHub Actions workflow generation)\n✅ v0.3.0: Multi-page app support (for pages/ subfolder method) and simple additional file inclusion\n✅ v0.4.0: Lots of improvements!\n\nBetter support for resource bundling (images, CSVs, assets, config files etc.) of local or web-based file, also leading to multi-page app support via st.navigation() method\nStarting to automate changes of known stlite/streamlit differences (e.g. await asyncio.sleep(1) being required when using st.spinner)\nOptional automatic spinning up of a preview server for the deployed app\nSupport for material icons\n\n✅ v0.4.1: Bugfix for asyncio code\n✅ v0.4.2: Automatic creation of a 404 redirect page\nv0.4.3: Better documentation and testing of v0.4 features\nv0.5.0: Further auto-handling of stlite-specific required changes\nv0.6.0: Add support for generating the required package.json for desktop app bundling\nv0.7.0: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache\nv0.8.0: TOML or YAML file support as optional alternative to the packing function\nv1.0.0: Full toolkit for packaging, deploying, and managing stlite apps\n\n\n\n\nWhile these examples use a fork of the repository, there’s nothing to stop you using stlite as part of your original repository - it’s designed to keep all of your actual streamlit files untouched, so you can serve both a streamlit app and a streamlit community cloud hosted version from within the same repository\n\n\nAn example with an app in the root directory which uses the ‘pages’ subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder\nAll credits go to Peter Saiu and collaborators for the original repository!\n\nPacking script: github.com/Bergam0t/eFIT-tool-stlitepack/blob/main/pack_to_stlite.py\nHosted stlite app: sammirosser.com/eFIT-tool-stlitepack/\nstlite Repository: github.com/Bergam0t/eFIT-tool-stlitepack\nOriginal Repository: github.com/pete4nhs/eFIT-tool\n\n\n\n\nAn example with an app in an ‘apps’ subfolder, which uses the ‘st.navigation’ method for a multipage streamlit app, and outputs the html file to the root of the repository\nAll credits go to Helena Robinson and collaborators for the original repository!\n\nPacking script: github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py\nHosted stlite app: sammirosser.com/hr_Non-Elective-Flow-Simulation/\nstlite Repository: github.com/Bergam0t/hr_Non-Elective-Flow-Simulation\nOriginal Repository: github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation\n\n\n\n\nAnother example with an app in the root directory which uses the ‘pages’ subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder\nAll credits go to Tom Monks and Amy Heather for the original repository!\n\nPacking script: github.com/Bergam0t/stars-streamlit-example-stlitepack/blob/main/pack_to_stlite.py\nHosted stlite app: sammirosser.com/stars-streamlit-example-stlitepack/\nstlite Repository: github.com/Bergam0t/stars-streamlit-example-stlitepack\nOriginal Repository: github.com/pythonhealthdatascience/stars-streamlit-example\n\n\n\n\n\nContributions, feature requests, and feedback are welcome!\nOpen an issue or submit a pull request to help improve stlitepack.\n\n\nTo run tests, use\npytest\nTo generate a code coverage report, run\npytest --cov-report xml:cov.xml --cov .\n\n\n\n\nApache 2.0 License. See LICENSE for details.\n\n\n\n\nwhitphx for creating the amazing stlite framework!\n\n\n\n\nTowards the end of the initial phase of development, I stumbled across a mention of Luke Fullard’s script2stlite\nCheck that out if stlitepack doesn’t meet your needs (or if you just want to see which approach you prefer!)\nIt’s got some really nice features like support for embedding more types of files rather than requiring linking out to them on the web, and an approach using a config file instead of a packing function.\n\n\n\nThis package was developed with the assistance of ChatGPT (OpenAI’s GPT-5 model) as a coding and documentation partner. Google Gemini Pro 2.5 was also used. All code and design decisions were reviewed and finalized by a human, and any LLM output was used as a foundation rather than a final product.",
     "crumbs": [
       "Introduction"
     ]
@@ -513,7 +463,7 @@
     "href": "stlitepack_docs/index.html#examples-of-use",
     "title": "stlitepack",
     "section": "",
-    "text": "An example with an app in the root directory which uses the ‘pages’ subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder\nAll credits go to Peter Saiu and collaborators for the original repository!\n\nstlite Repository: github.com/Bergam0t/eFIT-tool-stlitepack\nOriginal Repository: github.com/pete4nhs/eFIT-tool\nPacking script: github.com/Bergam0t/eFIT-tool-stlitepack/blob/main/pack_to_stlite.py\nHosted stlite app: sammirosser.com/eFIT-tool-stlitepack/\n\n\n\n\nAn example with an app in an ‘apps’ subfolder, which uses the ‘st.navigation’ method for a multipage streamlit app, and outputs the html file to the root of the repository\nAll credits go to Helena Robinson and collaborators for the original repository!\n\nstlite Repository: github.com/Bergam0t/hr_Non-Elective-Flow-Simulation\nOriginal Repository: github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation\nPacking script: github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py\nHosted stlite app: sammirosser.com/hr_Non-Elective-Flow-Simulation/\n\n\n\n\nAnother example with an app in the root directory which uses the ‘pages’ subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder\nAll credits go to Tom Monks and Amy Heather for the original repository!\n\nstlite Repository: github.com/Bergam0t/stars-streamlit-example-stlitepack\nOriginal Repository: github.com/pythonhealthdatascience/stars-streamlit-example\nPacking script: github.com/Bergam0t/stars-streamlit-example-stlitepack/blob/main/pack_to_stlite.py\nHosted stlite app: sammirosser.com/stars-streamlit-example-stlitepack/",
+    "text": "While these examples use a fork of the repository, there’s nothing to stop you using stlite as part of your original repository - it’s designed to keep all of your actual streamlit files untouched, so you can serve both a streamlit app and a streamlit community cloud hosted version from within the same repository\n\n\nAn example with an app in the root directory which uses the ‘pages’ subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder\nAll credits go to Peter Saiu and collaborators for the original repository!\n\nPacking script: github.com/Bergam0t/eFIT-tool-stlitepack/blob/main/pack_to_stlite.py\nHosted stlite app: sammirosser.com/eFIT-tool-stlitepack/\nstlite Repository: github.com/Bergam0t/eFIT-tool-stlitepack\nOriginal Repository: github.com/pete4nhs/eFIT-tool\n\n\n\n\nAn example with an app in an ‘apps’ subfolder, which uses the ‘st.navigation’ method for a multipage streamlit app, and outputs the html file to the root of the repository\nAll credits go to Helena Robinson and collaborators for the original repository!\n\nPacking script: github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py\nHosted stlite app: sammirosser.com/hr_Non-Elective-Flow-Simulation/\nstlite Repository: github.com/Bergam0t/hr_Non-Elective-Flow-Simulation\nOriginal Repository: github.com/Countess-of-Chester-Hospital-NHS-FT/Non-Elective-Flow-Simulation\n\n\n\n\nAnother example with an app in the root directory which uses the ‘pages’ subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder\nAll credits go to Tom Monks and Amy Heather for the original repository!\n\nPacking script: github.com/Bergam0t/stars-streamlit-example-stlitepack/blob/main/pack_to_stlite.py\nHosted stlite app: sammirosser.com/stars-streamlit-example-stlitepack/\nstlite Repository: github.com/Bergam0t/stars-streamlit-example-stlitepack\nOriginal Repository: github.com/pythonhealthdatascience/stars-streamlit-example",
     "crumbs": [
       "Introduction"
     ]

@@ -414,27 +414,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#version-history" id="toc-version-history" class="nav-link active" data-scroll-target="#version-history">Version History</a></li>
-  <li><a href="#history" id="toc-history" class="nav-link" data-scroll-target="#history">HISTORY</a>
+  <li><a href="#version-history" id="toc-version-history" class="nav-link active" data-scroll-target="#version-history">Version History</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">[0.4.2]</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">[0.4.2]</a>
+  <ul class="collapse">
   <li><a href="#added" id="toc-added" class="nav-link" data-scroll-target="#added">Added</a></li>
   <li><a href="#improved" id="toc-improved" class="nav-link" data-scroll-target="#improved">Improved</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">[0.4.1]</a></li>
+  </ul></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">[0.4.1]</a>
+  <ul class="collapse">
   <li><a href="#fixes" id="toc-fixes" class="nav-link" data-scroll-target="#fixes">Fixes</a></li>
   <li><a href="#added-1" id="toc-added-1" class="nav-link" data-scroll-target="#added-1">Added</a></li>
+  </ul></li>
   <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">[0.4.0]</a>
   <ul class="collapse">
   <li><a href="#breaking-changes" id="toc-breaking-changes" class="nav-link" data-scroll-target="#breaking-changes">BREAKING CHANGES</a></li>
-  </ul></li>
   <li><a href="#added-2" id="toc-added-2" class="nav-link" data-scroll-target="#added-2">Added</a></li>
+  </ul></li>
   <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">[0.3.1]</a>
   <ul class="collapse">
   <li><a href="#fixed" id="toc-fixed" class="nav-link" data-scroll-target="#fixed">Fixed</a></li>
   <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
   </ul></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">[0.3.0]</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">[0.3.0]</a>
+  <ul class="collapse">
   <li><a href="#fixed-1" id="toc-fixed-1" class="nav-link" data-scroll-target="#fixed-1">Fixed</a></li>
+  </ul></li>
   <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">[0.2.0]</a>
   <ul class="collapse">
   <li><a href="#added-3" id="toc-added-3" class="nav-link" data-scroll-target="#added-3">Added</a></li>
@@ -455,23 +460,19 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="version-history" class="level1">
 <h1>Version History</h1>
-</section>
-<section id="history" class="level1">
-<h1>HISTORY</h1>
 <p>All notable changes to <code>stlitepack</code> are documented in this file.</p>
 <p>Please note that prior to version 1.0, breaking API changes may occur at any time. The API should not be considered stable until the 1.0 release. After the version 1 release, all breaking changes will only occur on major version increments (e.g.&nbsp;version 1 –&gt; version 2).</p>
 <p>During the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.</p>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section">[0.4.2]</h2>
-</section>
-<section id="added" class="level2">
-<h2 class="anchored" data-anchor-id="added">Added</h2>
+<section id="added" class="level3">
+<h3 class="anchored" data-anchor-id="added">Added</h3>
 <ul>
 <li>Automatic creation of a 404 redirect page when publishing, with either ‘relative’ option, or option to pass an absolute URL to redirect to.</li>
 </ul>
 </section>
-<section id="improved" class="level2">
-<h2 class="anchored" data-anchor-id="improved">Improved</h2>
+<section id="improved" class="level3">
+<h3 class="anchored" data-anchor-id="improved">Improved</h3>
 <ul>
 <li>[BREAKING] Some publish steps now rely on passing the relative or absolute path to the root of the repository instead of a less clear ‘output_dir’ parameter.</li>
 <li>Ports for preview server now default to a random free port in the range 8000-8999. A fixed port can still be set if preferred.</li>
@@ -479,21 +480,22 @@ ul.task-list li input[type="checkbox"] {
 <li>Changed how directories are handled by the preview server so that change of directories doesn’t persist for subsequent steps in packing script</li>
 </ul>
 </section>
+</section>
 <section id="section-1" class="level2">
 <h2 class="anchored" data-anchor-id="section-1">[0.4.1]</h2>
-</section>
-<section id="fixes" class="level2">
-<h2 class="anchored" data-anchor-id="fixes">Fixes</h2>
+<section id="fixes" class="level3">
+<h3 class="anchored" data-anchor-id="fixes">Fixes</h3>
 <ul>
 <li>Fix bug where indendation level of subsequent code may be incorrect when async fixes are applied to spinner usage</li>
 <li>Prevent directory change for preview server if just putting the folder in docs (smarter handling of this planned in the future!)</li>
 </ul>
 </section>
-<section id="added-1" class="level2">
-<h2 class="anchored" data-anchor-id="added-1">Added</h2>
+<section id="added-1" class="level3">
+<h3 class="anchored" data-anchor-id="added-1">Added</h3>
 <ul>
 <li>Added option to toggle automatic stlite fixes (like adding async await to spinner) on and off with <code>automated_stlite_fixes</code> parameter in pack.</li>
 </ul>
+</section>
 </section>
 <section id="section-2" class="level2">
 <h2 class="anchored" data-anchor-id="section-2">[0.4.0]</h2>
@@ -509,9 +511,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-</section>
-<section id="added-2" class="level2">
-<h2 class="anchored" data-anchor-id="added-2">Added</h2>
+<section id="added-2" class="level3">
+<h3 class="anchored" data-anchor-id="added-2">Added</h3>
 <ul>
 <li>Added automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution
 <ul>
@@ -524,6 +525,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Add ability to automatically start a preview server after packing the app</li>
 <li>Add more flexibility in where the output files will go (better at handling cases where app is contained within e.g.&nbsp;app subfolder of repo)</li>
 </ul>
+</section>
 </section>
 <section id="section-3" class="level2">
 <h2 class="anchored" data-anchor-id="section-3">[0.3.1]</h2>
@@ -544,12 +546,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">[0.3.0]</h2>
-</section>
-<section id="fixed-1" class="level2">
-<h2 class="anchored" data-anchor-id="fixed-1">Fixed</h2>
+<section id="fixed-1" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-1">Fixed</h3>
 <ul>
 <li>GitHub Pages <code>setup_github_pages</code> documentation corrected.</li>
 </ul>
+</section>
 </section>
 <section id="section-5" class="level2">
 <h2 class="anchored" data-anchor-id="section-5">[0.2.0]</h2>
