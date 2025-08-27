@@ -8,7 +8,13 @@ only occur on major version increments (e.g. version 1 --> version 2).
 
 During the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.
 
-## [0.4.4]
+## [0.4.5]
+
+### Bugfixes
+
+- Fixed missing dependency
+
+## [0.4.4] (yanked due to missing dependency)
 
 ### Improved
 
@@ -18,14 +24,14 @@ During the pre v1 phase, all breaking changes will be clearly highlighted in the
 
 - Updates to quickstart and readme to better reflect newest version of package
 
-## [0.4.3]
+## [0.4.3] (yanked due to missing dependency)
 
 ### Improved
 
 - Changed default stlite version to [0.80.5](https://github.com/whitphx/stlite/releases/tag/v0.80.5) as this was observed to work particularly well in testing. This version was release in March 2024.
 - Improved docstrings for embedding vs linking.
 
-## [0.4.2]
+## [0.4.2] (yanked due to missing dependency)
 
 ### Added
 

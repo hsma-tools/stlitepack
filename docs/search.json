@@ -333,7 +333,7 @@
     "href": "stlitepack_docs/changelog.html",
     "title": "Version History",
     "section": "",
-    "text": "All notable changes to stlitepack are documented in this file.\nPlease note that prior to version 1.0, breaking API changes may occur at any time. The API should not be considered stable until the 1.0 release. After the version 1 release, all breaking changes will only occur on major version increments (e.g. version 1 –&gt; version 2).\nDuring the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.\n\n\n\n\n\nSignificant docstring improvments\n\n\n\n\n\nUpdates to quickstart and readme to better reflect newest version of package\n\n\n\n\n\n\n\n\nChanged default stlite version to 0.80.5 as this was observed to work particularly well in testing. This version was release in March 2024.\nImproved docstrings for embedding vs linking.\n\n\n\n\n\n\n\n\nAutomatic creation of a 404 redirect page when publishing, with either ‘relative’ option, or option to pass an absolute URL to redirect to.\n\n\n\n\n\n[BREAKING] Some publish steps now rely on passing the relative or absolute path to the root of the repository instead of a less clear ‘output_dir’ parameter.\nPorts for preview server now default to a random free port in the range 8000-8999. A fixed port can still be set if preferred.\nLinting of key files with ruff\nChanged how directories are handled by the preview server so that change of directories doesn’t persist for subsequent steps in packing script\n\n\n\n\n\n\n\n\nFix bug where indendation level of subsequent code may be incorrect when async fixes are applied to spinner usage\nPrevent directory change for preview server if just putting the folder in docs (smarter handling of this planned in the future!)\n\n\n\n\n\nAdded option to toggle automatic stlite fixes (like adding async await to spinner) on and off with automated_stlite_fixes parameter in pack.\n\n\n\n\n\n\n\n\nextra_files parameter split to extra_files_to_embed and extra_files_to_link\nadded prepend_github_path parameter to allow users to quickly point to hosted files\nadded list_files_in_folders helper for quick gathering of files meeting criteria to either link or embed\nuse_raw_api default changed from False to True.\n\nToo many features are not available within the simplified (non-mount) API. Therefore, swiching to the mount API as default ensures other parameters will work as expected. Turning this to ‘False’ should now be considered a step for advanced users only.\n\n\n\n\n\n\nAdded automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution\n\nThis is achieved by automatically inserting an `await async.sleep(1) block in the relevant part of the code\n\nAdd fix for material icon display\n\nThis is achieved via embedding of material icon font. Bonus feature - you can select your preferred material font style.\n\nAdd ability to automatically start a preview server after packing the app\nAdd more flexibility in where the output files will go (better at handling cases where app is contained within e.g. app subfolder of repo)\n\n\n\n\n\n\n\n\nAdded missing dependency to build file (requests)\n\n\n\n\n\nQuickstart guide in .qmd format, including detailed parameters for pack() and publish().\nAdded description of stlite, benefits of stlitepack, and Pyodide vs traditional server apps.\nCreated contributor CODE_OF_CONDUCT.md.\n\n\n\n\n\n\n\n\nGitHub Pages setup_github_pages documentation corrected.\n\n\n\n\n\n\n\n\nSupport for raw API with multipage apps.\nConditional configuration and extra_files mounting.\nSupport for relative paths in app file mounting.\nFunction to fetch valid Stlite versions from GitHub.\nTerminal-friendly messages for version info.\nWarning if pyodide_version is set while using the raw API.\n\n\n\n\n\npack() function now accepts app_file as main entrypoint and maintains relative path handling.\npublish() / GitHub Pages workflow documentation clarified.\nRaw API template updated to support streamlitConfig and multipage apps.\nVersion checks added for stylesheet_version and js_bundle_version (must be &gt;= 0.76.0).\n\n\n\n\n\nPath handling in the raw API HTML template to work across OSes (forward slashes normalized).\n\n\n\n\n\n\nBasic pack() function for packaging Streamlit apps to Stlite.\nGitHub Pages deployment support with setup_github_pages().\nRaw API HTML template for single-file apps.",
+    "text": "All notable changes to stlitepack are documented in this file.\nPlease note that prior to version 1.0, breaking API changes may occur at any time. The API should not be considered stable until the 1.0 release. After the version 1 release, all breaking changes will only occur on major version increments (e.g. version 1 –&gt; version 2).\nDuring the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.\n\n\n\n\n\nFixed missing dependency\n\n\n\n\n\n\n\n\nSignificant docstring improvments\n\n\n\n\n\nUpdates to quickstart and readme to better reflect newest version of package\n\n\n\n\n\n\n\n\nChanged default stlite version to 0.80.5 as this was observed to work particularly well in testing. This version was release in March 2024.\nImproved docstrings for embedding vs linking.\n\n\n\n\n\n\n\n\nAutomatic creation of a 404 redirect page when publishing, with either ‘relative’ option, or option to pass an absolute URL to redirect to.\n\n\n\n\n\n[BREAKING] Some publish steps now rely on passing the relative or absolute path to the root of the repository instead of a less clear ‘output_dir’ parameter.\nPorts for preview server now default to a random free port in the range 8000-8999. A fixed port can still be set if preferred.\nLinting of key files with ruff\nChanged how directories are handled by the preview server so that change of directories doesn’t persist for subsequent steps in packing script\n\n\n\n\n\n\n\n\nFix bug where indendation level of subsequent code may be incorrect when async fixes are applied to spinner usage\nPrevent directory change for preview server if just putting the folder in docs (smarter handling of this planned in the future!)\n\n\n\n\n\nAdded option to toggle automatic stlite fixes (like adding async await to spinner) on and off with automated_stlite_fixes parameter in pack.\n\n\n\n\n\n\n\n\nextra_files parameter split to extra_files_to_embed and extra_files_to_link\nadded prepend_github_path parameter to allow users to quickly point to hosted files\nadded list_files_in_folders helper for quick gathering of files meeting criteria to either link or embed\nuse_raw_api default changed from False to True.\n\nToo many features are not available within the simplified (non-mount) API. Therefore, swiching to the mount API as default ensures other parameters will work as expected. Turning this to ‘False’ should now be considered a step for advanced users only.\n\n\n\n\n\n\nAdded automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution\n\nThis is achieved by automatically inserting an `await async.sleep(1) block in the relevant part of the code\n\nAdd fix for material icon display\n\nThis is achieved via embedding of material icon font. Bonus feature - you can select your preferred material font style.\n\nAdd ability to automatically start a preview server after packing the app\nAdd more flexibility in where the output files will go (better at handling cases where app is contained within e.g. app subfolder of repo)\n\n\n\n\n\n\n\n\nAdded missing dependency to build file (requests)\n\n\n\n\n\nQuickstart guide in .qmd format, including detailed parameters for pack() and publish().\nAdded description of stlite, benefits of stlitepack, and Pyodide vs traditional server apps.\nCreated contributor CODE_OF_CONDUCT.md.\n\n\n\n\n\n\n\n\nGitHub Pages setup_github_pages documentation corrected.\n\n\n\n\n\n\n\n\nSupport for raw API with multipage apps.\nConditional configuration and extra_files mounting.\nSupport for relative paths in app file mounting.\nFunction to fetch valid Stlite versions from GitHub.\nTerminal-friendly messages for version info.\nWarning if pyodide_version is set while using the raw API.\n\n\n\n\n\npack() function now accepts app_file as main entrypoint and maintains relative path handling.\npublish() / GitHub Pages workflow documentation clarified.\nRaw API template updated to support streamlitConfig and multipage apps.\nVersion checks added for stylesheet_version and js_bundle_version (must be &gt;= 0.76.0).\n\n\n\n\n\nPath handling in the raw API HTML template to work across OSes (forward slashes normalized).\n\n\n\n\n\n\nBasic pack() function for packaging Streamlit apps to Stlite.\nGitHub Pages deployment support with setup_github_pages().\nRaw API HTML template for single-file apps.",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -343,7 +343,37 @@
     "href": "stlitepack_docs/changelog.html#section",
     "title": "Version History",
     "section": "",
+    "text": "Fixed missing dependency",
+    "crumbs": [
+      "Changelog/Version History"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/changelog.html#yanked-due-to-missing-dependency",
+    "href": "stlitepack_docs/changelog.html#yanked-due-to-missing-dependency",
+    "title": "Version History",
+    "section": "",
     "text": "Significant docstring improvments\n\n\n\n\n\nUpdates to quickstart and readme to better reflect newest version of package",
+    "crumbs": [
+      "Changelog/Version History"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/changelog.html#yanked-due-to-missing-dependency-1",
+    "href": "stlitepack_docs/changelog.html#yanked-due-to-missing-dependency-1",
+    "title": "Version History",
+    "section": "",
+    "text": "Changed default stlite version to 0.80.5 as this was observed to work particularly well in testing. This version was release in March 2024.\nImproved docstrings for embedding vs linking.",
+    "crumbs": [
+      "Changelog/Version History"
+    ]
+  },
+  {
+    "objectID": "stlitepack_docs/changelog.html#yanked-due-to-missing-dependency-2",
+    "href": "stlitepack_docs/changelog.html#yanked-due-to-missing-dependency-2",
+    "title": "Version History",
+    "section": "",
+    "text": "Automatic creation of a 404 redirect page when publishing, with either ‘relative’ option, or option to pass an absolute URL to redirect to.\n\n\n\n\n\n[BREAKING] Some publish steps now rely on passing the relative or absolute path to the root of the repository instead of a less clear ‘output_dir’ parameter.\nPorts for preview server now default to a random free port in the range 8000-8999. A fixed port can still be set if preferred.\nLinting of key files with ruff\nChanged how directories are handled by the preview server so that change of directories doesn’t persist for subsequent steps in packing script",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -353,7 +383,7 @@
     "href": "stlitepack_docs/changelog.html#section-1",
     "title": "Version History",
     "section": "",
-    "text": "Changed default stlite version to 0.80.5 as this was observed to work particularly well in testing. This version was release in March 2024.\nImproved docstrings for embedding vs linking.",
+    "text": "Fix bug where indendation level of subsequent code may be incorrect when async fixes are applied to spinner usage\nPrevent directory change for preview server if just putting the folder in docs (smarter handling of this planned in the future!)\n\n\n\n\n\nAdded option to toggle automatic stlite fixes (like adding async await to spinner) on and off with automated_stlite_fixes parameter in pack.",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -363,7 +393,7 @@
     "href": "stlitepack_docs/changelog.html#section-2",
     "title": "Version History",
     "section": "",
-    "text": "Automatic creation of a 404 redirect page when publishing, with either ‘relative’ option, or option to pass an absolute URL to redirect to.\n\n\n\n\n\n[BREAKING] Some publish steps now rely on passing the relative or absolute path to the root of the repository instead of a less clear ‘output_dir’ parameter.\nPorts for preview server now default to a random free port in the range 8000-8999. A fixed port can still be set if preferred.\nLinting of key files with ruff\nChanged how directories are handled by the preview server so that change of directories doesn’t persist for subsequent steps in packing script",
+    "text": "extra_files parameter split to extra_files_to_embed and extra_files_to_link\nadded prepend_github_path parameter to allow users to quickly point to hosted files\nadded list_files_in_folders helper for quick gathering of files meeting criteria to either link or embed\nuse_raw_api default changed from False to True.\n\nToo many features are not available within the simplified (non-mount) API. Therefore, swiching to the mount API as default ensures other parameters will work as expected. Turning this to ‘False’ should now be considered a step for advanced users only.\n\n\n\n\n\n\nAdded automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution\n\nThis is achieved by automatically inserting an `await async.sleep(1) block in the relevant part of the code\n\nAdd fix for material icon display\n\nThis is achieved via embedding of material icon font. Bonus feature - you can select your preferred material font style.\n\nAdd ability to automatically start a preview server after packing the app\nAdd more flexibility in where the output files will go (better at handling cases where app is contained within e.g. app subfolder of repo)",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -373,7 +403,7 @@
     "href": "stlitepack_docs/changelog.html#section-3",
     "title": "Version History",
     "section": "",
-    "text": "Fix bug where indendation level of subsequent code may be incorrect when async fixes are applied to spinner usage\nPrevent directory change for preview server if just putting the folder in docs (smarter handling of this planned in the future!)\n\n\n\n\n\nAdded option to toggle automatic stlite fixes (like adding async await to spinner) on and off with automated_stlite_fixes parameter in pack.",
+    "text": "Added missing dependency to build file (requests)\n\n\n\n\n\nQuickstart guide in .qmd format, including detailed parameters for pack() and publish().\nAdded description of stlite, benefits of stlitepack, and Pyodide vs traditional server apps.\nCreated contributor CODE_OF_CONDUCT.md.",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -383,7 +413,7 @@
     "href": "stlitepack_docs/changelog.html#section-4",
     "title": "Version History",
     "section": "",
-    "text": "extra_files parameter split to extra_files_to_embed and extra_files_to_link\nadded prepend_github_path parameter to allow users to quickly point to hosted files\nadded list_files_in_folders helper for quick gathering of files meeting criteria to either link or embed\nuse_raw_api default changed from False to True.\n\nToo many features are not available within the simplified (non-mount) API. Therefore, swiching to the mount API as default ensures other parameters will work as expected. Turning this to ‘False’ should now be considered a step for advanced users only.\n\n\n\n\n\n\nAdded automatic fix to ensure st.spinner gets displayed and the code running within the block does not block all execution\n\nThis is achieved by automatically inserting an `await async.sleep(1) block in the relevant part of the code\n\nAdd fix for material icon display\n\nThis is achieved via embedding of material icon font. Bonus feature - you can select your preferred material font style.\n\nAdd ability to automatically start a preview server after packing the app\nAdd more flexibility in where the output files will go (better at handling cases where app is contained within e.g. app subfolder of repo)",
+    "text": "GitHub Pages setup_github_pages documentation corrected.",
     "crumbs": [
       "Changelog/Version History"
     ]
@@ -391,26 +421,6 @@
   {
     "objectID": "stlitepack_docs/changelog.html#section-5",
     "href": "stlitepack_docs/changelog.html#section-5",
-    "title": "Version History",
-    "section": "",
-    "text": "Added missing dependency to build file (requests)\n\n\n\n\n\nQuickstart guide in .qmd format, including detailed parameters for pack() and publish().\nAdded description of stlite, benefits of stlitepack, and Pyodide vs traditional server apps.\nCreated contributor CODE_OF_CONDUCT.md.",
-    "crumbs": [
-      "Changelog/Version History"
-    ]
-  },
-  {
-    "objectID": "stlitepack_docs/changelog.html#section-6",
-    "href": "stlitepack_docs/changelog.html#section-6",
-    "title": "Version History",
-    "section": "",
-    "text": "GitHub Pages setup_github_pages documentation corrected.",
-    "crumbs": [
-      "Changelog/Version History"
-    ]
-  },
-  {
-    "objectID": "stlitepack_docs/changelog.html#section-7",
-    "href": "stlitepack_docs/changelog.html#section-7",
     "title": "Version History",
     "section": "",
     "text": "Support for raw API with multipage apps.\nConditional configuration and extra_files mounting.\nSupport for relative paths in app file mounting.\nFunction to fetch valid Stlite versions from GitHub.\nTerminal-friendly messages for version info.\nWarning if pyodide_version is set while using the raw API.\n\n\n\n\n\npack() function now accepts app_file as main entrypoint and maintains relative path handling.\npublish() / GitHub Pages workflow documentation clarified.\nRaw API template updated to support streamlitConfig and multipage apps.\nVersion checks added for stylesheet_version and js_bundle_version (must be &gt;= 0.76.0).\n\n\n\n\n\nPath handling in the raw API HTML template to work across OSes (forward slashes normalized).",
