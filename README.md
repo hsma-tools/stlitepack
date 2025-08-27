@@ -78,6 +78,8 @@ You can also find the full reference for each function at [hsma-tools.github.io/
 
 ### eFIT-tool
 
+*An example with an app in the root directory which uses the 'pages' subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder*
+
 All credits go to [Peter Saiu](https://github.com/pete4nhs) and collaborators for the original repository!
 
 - stlite Repository: [github.com/Bergam0t/eFIT-tool-stlitepack](https://github.com/Bergam0t/eFIT-tool-stlitepack)
@@ -87,6 +89,8 @@ All credits go to [Peter Saiu](https://github.com/pete4nhs) and collaborators fo
 
 ### Non-elective Flow Simulation
 
+*An example with an app in an 'apps' subfolder, which uses the 'st.navigation' method for a multipage streamlit app, and outputs the html file to the root of the repository*
+
 All credits go to [Helena Robinson](https://github.com/helenajr) and collaborators for the original repository!
 
 - stlite Repository: [github.com/Bergam0t/hr_Non-Elective-Flow-Simulation](https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation)
@@ -95,6 +99,8 @@ All credits go to [Helena Robinson](https://github.com/helenajr) and collaborato
 - Hosted stlite app: [sammirosser.com/hr_Non-Elective-Flow-Simulation/](http://sammirosser.com/hr_Non-Elective-Flow-Simulation/)
 
 ### Treatment Centre Simulation Model
+
+*Another example with an app in the root directory which uses the 'pages' subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder*
 
 All credits go to [Tom Monks](https://github.com/TomMonks) and [Amy Heather](https://github.com/amyheather) for the original repository!
 

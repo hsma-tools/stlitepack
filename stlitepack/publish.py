@@ -3,6 +3,7 @@ import os
 import traceback
 
 
+# MARK: Private helper functions
 def _create_nojekyll():
     """Create a .nojekyll file in the given directory."""
     out_path_root = Path(".nojekyll")
@@ -11,29 +12,58 @@ def _create_nojekyll():
     return out_path_root
 
 
-def _create_404(url):
+def _create_404(url, use_docs):
     """Create a 404.html file in the given directory."""
-    out_path = Path("404.html")
-    content_404 = f"""
+    if use_docs:
+        out_path = Path("docs") / "404.html"
+    else:
+        out_path = Path("404.html")
+    if url != "relative":
+        content_404 = f"""
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta http-equiv="refresh" content="0; URL={url}" />
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <title>Stlite App</title>
+      </head>
+      <body>
+      <div id="root">
+        <p> Redirecting you to the app </p>
+      </div>
+      </body>
+    </html>
+        """
+    else:
+        content_404 = """
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0; URL={url}" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>Stlite App</title>
-  </head>
-  <body>
-  <div id="root">
-    <p> Redirecting you to the app </p>
-  </div>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting…</title>
+  <script>
+    // Remove everything after the first segment of the app
+    // Assumes your app is contained in a single "folder" level in the URL
+    const segments = location.pathname.split('/').filter(Boolean);
+
+    // Go to the first segment if it exists, otherwise root
+    const redirectTo = segments.length > 0 ? `/${segments[0]}/` : '/';
+
+    location.replace(redirectTo);
+  </script>
+</head>
+<body>
+  <p>Page not found. Redirecting you to the app…</p>
+</body>
 </html>
-    """
+"""
     out_path.write_text(content_404)
     print(f"404.html file written to {out_path.resolve()}")
     return out_path
@@ -101,6 +131,7 @@ jobs:
         return workflow_path
 
 
+# MARK: Main function
 def setup_github_pages(
     root_dir: str = "current_dir",
     use_docs: bool = True,
@@ -187,7 +218,7 @@ def setup_github_pages(
 
     if create_404 != "none":
         try:
-            _create_404("." if create_404 == "relative" else create_404)
+            _create_404(create_404, use_docs=use_docs)
         except Exception as e:
             print("Issues creating 404 file in root folder:")
             traceback.print_exc()
@@ -226,10 +257,10 @@ To complete setup:
   - Source: **Github Actions**
 3. **NOW** commit the following files:
   - the deploy.yml file that has been created in .github/workflows
-  - the `index.html` and `.nojekyll` files that have been created in the root of your repository
+  - the `index.html` that was created in the specified folder in your repository
+  - the `404.html` and `.nojekyll` files that have been created in the root of your repository
 4. Visit your deployed app at https://your-github-username.github.io/your-repo-name/
   - note that it may take a few minutes for the app to finish deploying
-
             """
         print(msg)
         helpfile = Path("PAGES_SETUP.md")

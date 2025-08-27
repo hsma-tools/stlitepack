@@ -562,13 +562,13 @@ def pack(
             _run_preview_server(
                 port=_get_free_port(),
                 start_page=f"{output_file}",
-                dir_to_change_to="" if output_dir == "docs" else output_dir,
+                dir_to_change_to=None if output_dir == "current_dir" else output_dir,
             )
         else:
             _run_preview_server(
                 port=8000,
                 start_page=f"{output_file}",
-                dir_to_change_to="" if output_dir == "docs" else output_dir,
+                dir_to_change_to=None if output_dir == "current_dir" else output_dir,
             )
     elif print_preview_message:
         print("Preview your app by running")

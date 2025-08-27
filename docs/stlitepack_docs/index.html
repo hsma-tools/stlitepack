@@ -504,7 +504,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Support for material icons</li>
 </ul></li>
 <li>✅ v0.4.1: Bugfix for asyncio code</li>
-<li>v0.4.2: Automatic creation of a 404 redirect page</li>
+<li>✅ v0.4.2: Automatic creation of a 404 redirect page</li>
 <li>v0.4.3: Better documentation and testing of v0.4 features</li>
 <li>v0.5.0: Further auto-handling of stlite-specific required changes</li>
 <li>v0.6.0: Add support for generating the required package.json for <a href="https://github.com/whitphx/stlite/tree/main/packages/desktop">desktop app bundling</a></li>
@@ -517,6 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples-of-use">Examples of Use</h2>
 <section id="efit-tool" class="level3">
 <h3 class="anchored" data-anchor-id="efit-tool">eFIT-tool</h3>
+<p><em>An example with an app in the root directory which uses the ‘pages’ subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder</em></p>
 <p>All credits go to <a href="https://github.com/pete4nhs">Peter Saiu</a> and collaborators for the original repository!</p>
 <ul>
 <li>stlite Repository: <a href="https://github.com/Bergam0t/eFIT-tool-stlitepack">github.com/Bergam0t/eFIT-tool-stlitepack</a></li>
@@ -527,6 +528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="non-elective-flow-simulation" class="level3">
 <h3 class="anchored" data-anchor-id="non-elective-flow-simulation">Non-elective Flow Simulation</h3>
+<p><em>An example with an app in an ‘apps’ subfolder, which uses the ‘st.navigation’ method for a multipage streamlit app, and outputs the html file to the root of the repository</em></p>
 <p>All credits go to <a href="https://github.com/helenajr">Helena Robinson</a> and collaborators for the original repository!</p>
 <ul>
 <li>stlite Repository: <a href="https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation">github.com/Bergam0t/hr_Non-Elective-Flow-Simulation</a></li>
@@ -537,6 +539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="treatment-centre-simulation-model" class="level3">
 <h3 class="anchored" data-anchor-id="treatment-centre-simulation-model">Treatment Centre Simulation Model</h3>
+<p><em>Another example with an app in the root directory which uses the ‘pages’ subfolder methods for a multipage streamlit app, and outputs the html file to the docs/ subfolder</em></p>
 <p>All credits go to <a href="https://github.com/TomMonks">Tom Monks</a> and <a href="https://github.com/amyheather">Amy Heather</a> for the original repository!</p>
 <ul>
 <li>stlite Repository: <a href="https://github.com/Bergam0t/stars-streamlit-example-stlitepack">github.com/Bergam0t/stars-streamlit-example-stlitepack</a></li>
@@ -550,6 +553,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="contributing">🤝 Contributing</h2>
 <p>Contributions, feature requests, and feedback are welcome!</p>
 <p>Open an issue or submit a pull request to help improve stlitepack.</p>
+<section id="running-tests" class="level3">
+<h3 class="anchored" data-anchor-id="running-tests">Running Tests</h3>
+<p>To run tests, use</p>
+<p><code>pytest</code></p>
+<p>To generate a code coverage report, run</p>
+<p><code>pytest --cov-report xml:cov.xml --cov .</code></p>
+</section>
 </section>
 <section id="license" class="level2">
 <h2 class="anchored" data-anchor-id="license">📜 License</h2>

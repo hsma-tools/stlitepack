@@ -10,6 +10,19 @@ only occur on major version increments (e.g. version 1 --> version 2).
 
 During the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.
 
+## [0.4.2]
+
+## Added
+
+- Automatic creation of a 404 redirect page when publishing, with either 'relative' option, or option to pass an absolute URL to redirect to.
+
+## Improved
+
+- [BREAKING] Some publish steps now rely on passing the relative or absolute path to the root of the repository instead of a less clear 'output_dir' parameter.
+- Ports for preview server now default to a random free port in the range 8000-8999. A fixed port can still be set if preferred.
+- Linting of key files with ruff
+- Changed how directories are handled by the preview server so that change of directories doesn't persist for subsequent steps in packing script
+
 ## [0.4.1]
 
 ## Fixes

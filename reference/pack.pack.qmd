@@ -19,6 +19,8 @@ pack.pack(
     force_redownload_material_icons=False,
     print_preview_message=True,
     run_preview_server=False,
+    randomise_preview_port=True,
+    port=8000,
     automated_stlite_fixes=True,
 )
 ```
@@ -49,6 +51,8 @@ these will be added in as additional files.
 | replace_df_with_table  | bool                | Some versions of streamlit and stlite seem to have issues with displaying tables that should be shown with st.dataframe. This option will replace all instances of st.dataframe with st.table, removing interactivity from the tables but ensuring they do at least display. Default is `False`.                | `False`     |
 | print_preview_message  | bool                | If True, prints a message explaining how to start a preview server. Ignored if run_preview_server is True. Default is `True`.                                                                                                                                                                                   | `True`      |
 | run_preview_server     | bool                | If True, starts a small server previewing the output file. Supersedes print_preview_message. If both are True, only the preview server will be started. Default is `True`.                                                                                                                                      | `False`     |
+| randomise_preview_port | bool                | If True, this will choose a different port from 8000-8999 each time. This can prevent clashes - for example, if you pack two apps and accidentally leave one running... Ignored if run_preview_server is False Default is True                                                                                  | `True`      |
+| port                   | int                 | If randomise_preview_port is False, will use the port provided here. Ignored if run_preview_server is False Default is 8000                                                                                                                                                                                     | `8000`      |
 | automated_stlite_fixes | bool                | If True, applies some automated fixes for common stlite issues - Inserts an await statement at the start of any st.spinner blocks to ensure the code in the spinner is non-blocking and also that the spinner itself is displayed - [PLANNED] Replace time.sleep with async equivalent                          | `True`      |
 
 ## Raises {.doc-section .doc-section-raises}

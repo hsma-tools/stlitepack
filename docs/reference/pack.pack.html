@@ -472,8 +472,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    force_redownload_material_icons<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    print_preview_message<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    run_preview_server<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    automated_stlite_fixes<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    randomise_preview_port<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    port<span class="op">=</span><span class="dv">8000</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    automated_stlite_fixes<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Pack a Streamlit app into a stlite-compatible index.html file.</p>
 <p>This function reads a Streamlit Python script, injects it into an HTML template compatible with stlite, and writes the output as <code>index.html</code>. The resulting HTML can be served as static content (e.g., via GitHub Pages).</p>
 <p>If additional pages are found in a ‘pages’ folder at the same level as the main app file, these will be added in as additional files.</p>
@@ -572,6 +574,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>bool</td>
 <td>If True, starts a small server previewing the output file. Supersedes print_preview_message. If both are True, only the preview server will be started. Default is <code>True</code>.</td>
 <td><code>False</code></td>
+</tr>
+<tr class="even">
+<td>randomise_preview_port</td>
+<td>bool</td>
+<td>If True, this will choose a different port from 8000-8999 each time. This can prevent clashes - for example, if you pack two apps and accidentally leave one running… Ignored if run_preview_server is False Default is True</td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td>port</td>
+<td>int</td>
+<td>If randomise_preview_port is False, will use the port provided here. Ignored if run_preview_server is False Default is 8000</td>
+<td><code>8000</code></td>
 </tr>
 <tr class="even">
 <td>automated_stlite_fixes</td>
