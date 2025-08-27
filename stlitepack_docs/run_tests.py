@@ -15,14 +15,14 @@ html_report = log_dir / f"pytest_report_{timestamp}.html"
 
 # --- Run pytest ---
 process = subprocess.run(
-        [
-            "pytest",
-            "-q",
-            "--disable-warnings",
-            "--maxfail=1",
-            f"--html={html_report}",  # pytest-html plugin
-            "--self-contained-html"   # standalone HTML with CSS
-        ]
+    [
+        "pytest",
+        "-q",
+        "--disable-warnings",
+        "--maxfail=1",
+        f"--html={html_report}",  # pytest-html plugin
+        "--self-contained-html",  # standalone HTML with CSS
+    ]
 )
 
 print(f"HTML report saved to {html_report}")

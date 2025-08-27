@@ -8,3 +8,6 @@ PAGES_SETUP.md
 
 test_logs/*
 !test_logs/.gitkeep
+
+.vscode
+404.html

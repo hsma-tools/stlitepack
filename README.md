@@ -66,7 +66,7 @@ You can also find the full reference for each function at [hsma-tools.github.io/
     - Optional automatic spinning up of a preview server for the deployed app
     - Support for material icons
 - ✅ v0.4.1: Bugfix for asyncio code
-- v0.4.2: Automatic creation of a 404 redirect page
+- ✅ v0.4.2: Automatic creation of a 404 redirect page
 - v0.4.3: Better documentation and testing of v0.4 features
 - v0.5.0: Further auto-handling of stlite-specific required changes
 - v0.6.0: Add support for generating the required package.json for [desktop app bundling](https://github.com/whitphx/stlite/tree/main/packages/desktop)
@@ -108,6 +108,16 @@ All credits go to [Tom Monks](https://github.com/TomMonks) and [Amy Heather](htt
 Contributions, feature requests, and feedback are welcome!
 
 Open an issue or submit a pull request to help improve stlitepack.
+
+### Running Tests
+
+To run tests, use
+
+`pytest`
+
+To generate a code coverage report, run
+
+`pytest --cov-report xml:cov.xml --cov .`
 
 ## 📜 License
 Apache 2.0 License. See LICENSE for details.

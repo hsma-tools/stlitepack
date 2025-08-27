@@ -14,6 +14,7 @@ import time
 import random
 import socket
 
+# MARK: HTML templates
 TEMPLATE = """<!doctype html>
 <html>
   <head>
@@ -76,16 +77,21 @@ TEMPLATE_MOUNT = """<!DOCTYPE html>
   </body>
 </html>"""
 
-def _read_file_flexibly(path: Path):
-  try:
-      # Try reading as UTF-8 text
-      return path.read_text(encoding="utf-8")
-  except UnicodeDecodeError:
-      # Fallback: read as bytes and encode as base64
-      binary_content = path.read_bytes()
-      return base64.b64encode(binary_content).decode("utf-8")
 
-def _material_icons_style(version: str = "Rounded", force_download: bool = False) -> str:
+# MARK: Private helper functions
+def _read_file_flexibly(path: Path):
+    try:
+        # Try reading as UTF-8 text
+        return path.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        # Fallback: read as bytes and encode as base64
+        binary_content = path.read_bytes()
+        return base64.b64encode(binary_content).decode("utf-8")
+
+
+def _material_icons_style(
+    version: str = "Rounded", force_download: bool = False
+) -> str:
     """
     Get Material Icons CSS with embedded base64 font.
     Caches the font locally to avoid repeated downloads.
@@ -103,27 +109,29 @@ def _material_icons_style(version: str = "Rounded", force_download: bool = False
         A <style> block containing the Material Icons font embedded as base64.
     """
     if version not in ["Rounded", "Outlined", "Sharp"]:
-        raise ValueError(f"Valid values for version are 'Rounded', 'Outlined' or 'Sharp'. You entered {version}.")
+        raise ValueError(
+            f"Valid values for version are 'Rounded', 'Outlined' or 'Sharp'. You entered {version}."
+        )
 
     try:
-      # Cache directory (cross-platform)
-      cache_dir = Path.home() / ".cache" / "material_icons"
-      cache_dir.mkdir(parents=True, exist_ok=True)
-      font_path = cache_dir / "MaterialIcons-Regular.woff2"
+        # Cache directory (cross-platform)
+        cache_dir = Path.home() / ".cache" / "material_icons"
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        font_path = cache_dir / "MaterialIcons-Regular.woff2"
 
-      # Download font if not cached or if forced
-      if not font_path.exists() or force_download:
-          url = f"https://raw.githubusercontent.com/google/material-design-icons/refs/heads/master/variablefont/MaterialSymbols{version}%5BFILL%2CGRAD%2Copsz%2Cwght%5D.woff2"
-          resp = requests.get(url)
-          resp.raise_for_status()
-          font_path.write_bytes(resp.content)
+        # Download font if not cached or if forced
+        if not font_path.exists() or force_download:
+            url = f"https://raw.githubusercontent.com/google/material-design-icons/refs/heads/master/variablefont/MaterialSymbols{version}%5BFILL%2CGRAD%2Copsz%2Cwght%5D.woff2"
+            resp = requests.get(url)
+            resp.raise_for_status()
+            font_path.write_bytes(resp.content)
 
-      # Load from cache
-      font_bytes = font_path.read_bytes()
-      font_b64 = base64.b64encode(font_bytes).decode("utf-8")
+        # Load from cache
+        font_bytes = font_path.read_bytes()
+        font_b64 = base64.b64encode(font_bytes).decode("utf-8")
 
-      # Build CSS
-      css = f"""
+        # Build CSS
+        css = f"""
       <style>
       @font-face {{
         font-family: 'Material Icons';
@@ -169,7 +177,7 @@ def _material_icons_style(version: str = "Rounded", force_download: bool = False
       </style>
       """
 
-      return css
+        return css
     except:
         print("Error retrieving material icons font file")
         return ""
@@ -198,15 +206,12 @@ def _run_preview_server(
 
     url = f"http://localhost:{port}/{start_page}"
 
-    if dir_to_change_to != "":
-        print(f"Changing directory to: {dir_to_change_to}")
-        os.chdir(dir_to_change_to)
-
     # Start the server in a subprocess
     process = subprocess.Popen(
         [sys.executable, "-m", "http.server", str(port)],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        cwd=dir_to_change_to,
     )
 
     # Give the server a moment to start
@@ -217,14 +222,18 @@ def _run_preview_server(
 
     print(f"Serving at {url}")
     print("Press Ctrl+C to stop the server.")
+    print(
+        "Note that any subsequent functions in your script will not run until you stop the server!"
+    )
 
     try:
         process.wait()  # Keep running until interrupted
     except KeyboardInterrupt:
-        print("\nStopping server...")
+        print("\nStopping server...\n")
         process.terminate()
 
 
+# MARK: Main Function
 def pack(
     app_file: str,
     extra_files_to_embed: list[str] | None = None,
@@ -362,8 +371,10 @@ def pack(
     """
     # --- Version check ---
     min_version = version.parse("0.76.0")
-    for v_name, v_str in [("stylesheet_version", stylesheet_version),
-                          ("js_bundle_version", js_bundle_version)]:
+    for v_name, v_str in [
+        ("stylesheet_version", stylesheet_version),
+        ("js_bundle_version", js_bundle_version),
+    ]:
         if version.parse(v_str) < min_version:
             raise ValueError(f"{v_name} must be >= 0.76.0, got {v_str}")
 
@@ -397,7 +408,6 @@ def pack(
         req_list = requirements
 
     def code_replacements(code_str, replace_df_with_table=False):
-
         def replace_spinner(code_str):
             lines = code_str.splitlines()
             new_lines = []
@@ -407,14 +417,14 @@ def pack(
                 stripped = line.lstrip()
                 if stripped.startswith("with st.spinner"):
                     new_lines.append(line)  # keep spinner line
-                    base_indent = line[:len(line)-len(stripped)]
+                    base_indent = line[: len(line) - len(stripped)]
 
                     # Find the indentation of the first line inside the spinner block
                     block_indent = None
                     j = i + 1
                     while j < len(lines):
                         next_line = lines[j]
-                        if next_line.strip() == '':
+                        if next_line.strip() == "":
                             j += 1
                             continue
                         next_line_indent = len(next_line) - len(next_line.lstrip())
@@ -424,7 +434,7 @@ def pack(
 
                     # If the block is empty, use 4 spaces deeper than spinner
                     if block_indent is None:
-                        block_indent = base_indent + '    '
+                        block_indent = base_indent + "    "
 
                     # Insert extra lines with correct indentation
                     new_lines.append(f"{block_indent}import asyncio")
@@ -439,7 +449,7 @@ def pack(
         code_str = replace_spinner(code_str=code_str)
 
         if replace_df_with_table:
-            code_str = re.sub(r'st\.dataframe', 'st.table', code_str)
+            code_str = re.sub(r"st\.dataframe", "st.table", code_str)
 
         return code_str
 
@@ -458,9 +468,7 @@ def pack(
         # where instead of embedding the code
         if isinstance(extra_files_to_link, dict):
             for k, v in extra_files_to_link.items():
-                file_entries.append(
-                    f'"{k}": {{\nurl: "{v}"\n}}'
-                )
+                file_entries.append(f'"{k}": {{\nurl: "{v}"\n}}')
         elif isinstance(extra_files_to_link, list) and prepend_github_path is not None:
             for f in extra_files_to_link:
                 file_entries.append(
@@ -468,10 +476,10 @@ def pack(
                 )
         elif isinstance(extra_files_to_link, list) and prepend_github_path is None:
             warnings.warn(
-                  "pyodide_version is ignored when use_raw_api=False. "
-                  "The simple API uses Pyodide version linked to the chosen stlite release.",
-                  UserWarning
-                )
+                "pyodide_version is ignored when use_raw_api=False. "
+                "The simple API uses Pyodide version linked to the chosen stlite release.",
+                UserWarning,
+            )
 
         # Finalise the string of additional files
         files_js = ",\n".join(file_entries)
@@ -479,9 +487,9 @@ def pack(
         if pyodide_version != "default":
             if not use_raw_api:
                 warnings.warn(
-                  "pyodide_version is ignored when use_raw_api=False. "
-                  "The simple API uses Pyodide version linked to the chosen stlite release.",
-                  UserWarning
+                    "pyodide_version is ignored when use_raw_api=False. "
+                    "The simple API uses Pyodide version linked to the chosen stlite release.",
+                    UserWarning,
                 )
                 pyodide_version_string = ""
             else:
@@ -497,7 +505,9 @@ def pack(
             entrypoint=app_path.relative_to(base_dir).as_posix(),
             files=files_js,
             pyodide_version=pyodide_version_string,
-            material_icons_style = _material_icons_style(force_download=force_redownload_material_icons)
+            material_icons_style=_material_icons_style(
+                force_download=force_redownload_material_icons
+            ),
         )
 
     # Build for <streamlit-app> template
@@ -506,7 +516,11 @@ def pack(
         app_file_blocks = []
         for f in files_to_pack:
             code = f.read_text(encoding="utf-8")
-            code = code_replacements(code, replace_df_with_table=replace_df_with_table) if automated_stlite_fixes else code
+            code = (
+                code_replacements(code, replace_df_with_table=replace_df_with_table)
+                if automated_stlite_fixes
+                else code
+            )
             rel_name = f.relative_to(base_dir).as_posix()
             entry_attr = " entrypoint" if f == app_path else ""
             app_file_blocks.append(
@@ -518,7 +532,9 @@ def pack(
 
         # Requirements block
         if req_list:
-            reqs = "<app-requirements>\n" + "\n".join(req_list) + "\n</app-requirements>"
+            reqs = (
+                "<app-requirements>\n" + "\n".join(req_list) + "\n</app-requirements>"
+            )
         else:
             reqs = ""
 
@@ -528,7 +544,9 @@ def pack(
             requirements=reqs,
             stylesheet_version=stylesheet_version,
             js_bundle_version=js_bundle_version,
-            material_icons_style = _material_icons_style(force_download=force_redownload_material_icons)
+            material_icons_style=_material_icons_style(
+                force_download=force_redownload_material_icons
+            ),
         )
 
     # Write to output dir
@@ -597,10 +615,11 @@ def get_stlite_versions():
         print("Other valid releases:")
         # print in columns of 5
         for i in range(0, len(other_versions), 5):
-            print("  " + ", ".join(other_versions[i:i+5]))
+            print("  " + ", ".join(other_versions[i : i + 5]))
     print("=======================\n")
 
     return versions
+
 
 def list_files_in_folders(folders, recursive=False, pattern=None, invert=False):
     """
@@ -636,7 +655,9 @@ def list_files_in_folders(folders, recursive=False, pattern=None, invert=False):
         if recursive:
             for root, _, files in os.walk(folder):
                 for file in files:
-                    rel_path = os.path.relpath(os.path.join(root, file), start=os.path.dirname(folder))
+                    rel_path = os.path.relpath(
+                        os.path.join(root, file), start=os.path.dirname(folder)
+                    )
                     rel_path = rel_path.replace(os.sep, "/")
                     if regex:
                         match = bool(regex.search(rel_path))
