@@ -25,7 +25,42 @@ from stlitepack import pack
 pack("app.py")
 ```
 
-This will create an `index.html` file with all of the required stlite additions, which you can then serve as a static file using a hosting platform such as github pages.
+This will create an `index.html` file in the same folder as your app file with all of the required stlite additions, which you can then serve as a static file using a hosting platform such as github pages.
+
+If you're not familiar with Github pages, you can also use the `setup_github_pages()` function to help generate all the key files that will get your app up and hosted for users in moments.
+
+```python
+from stlitepack import setup_github_pages
+
+setup_github_pages(mode="gh-actions")
+```
+
+This will generate
+
+- a github workflow file
+- a .nojekyll file (to prevent post-processing by github)
+- a custom 404 page to make users redirect smoothly when your app is refreshed or shared
+- a PAGES_SETUP.md file with instructions of how to enable github pages on your repository
+
+Once you have followed the instructions in PAGES_SETUP.md, head over to the 'about' section of your repostiory and click on the cog.
+
+![](assets/2025-08-27-13-01-53.png)
+
+Tick 'Use your GitHub Pages website' - your will likely take the form 'https://your-username.github.io/your-repository-name'
+
+![](assets/2025-08-27-13-02-18.png)
+
+Then click 'save changes'
+
+![](assets/2025-08-27-13-03-16.png)
+
+You can then click the link to head to your hosted app.
+
+![](assets/2025-08-27-13-03-42.png)
+
+If the app has built successfully, there will be a green tick next to your last commit message:
+
+![](assets/2025-08-27-13-04-19.png)
 
 
 ### ⚠️ Heads Up!
@@ -55,6 +90,11 @@ Check out the quickstart guide at [hsma-tools.github.io/stlitepack/stlitepack_do
 
 You can also find the full reference for each function at [hsma-tools.github.io/stlitepack/reference/](http://hsma-tools.github.io/stlitepack/reference/).
 
+The two key functions are
+
+- [pack](https://hsma-tools.github.io/stlitepack/reference/pack.pack.html)
+- [publish](https://hsma-tools.github.io/stlitepack/reference/publish.setup_github_pages.html)
+
 ## 🔮 Roadmap
 
 - ✅ v0.1.0: Single-page app packing
@@ -68,7 +108,8 @@ You can also find the full reference for each function at [hsma-tools.github.io/
 - ✅ v0.4.1: Bugfix for asyncio code
 - ✅ v0.4.2: Automatic creation of a 404 redirect page
 - ✅ v0.4.3: Change the default to a version of stlite to one known to work reliably (0.80.5)
-- v0.4.4: Better documentation and testing of v0.4 features
+- ✅ v0.4.4: Docstring fixes
+- v0.4.5: Better documentation and testing of v0.4 features
 - v0.5.0: Further auto-handling of stlite-specific required changes
 - v0.6.0: Add support for generating the required package.json for [desktop app bundling](https://github.com/whitphx/stlite/tree/main/packages/desktop)
 - v0.7.0: Add helpers for generating files for additional deployment options e.g. Docker, Caddy, Nginx, Apache

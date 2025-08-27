@@ -8,6 +8,16 @@ only occur on major version increments (e.g. version 1 --> version 2).
 
 During the pre v1 phase, all breaking changes will be clearly highlighted in the release notes below.
 
+## [0.4.4]
+
+### Improved
+
+- Significant docstring improvments
+
+### Documentation
+
+- Updates to quickstart and readme to better reflect newest version of package
+
 ## [0.4.3]
 
 ### Improved

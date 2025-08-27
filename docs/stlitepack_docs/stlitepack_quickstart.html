@@ -455,12 +455,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#key-parameters" id="toc-key-parameters" class="nav-link" data-scroll-target="#key-parameters">Key Parameters</a></li>
+  <li><a href="#extra_files_to_link" id="toc-extra_files_to_link" class="nav-link" data-scroll-target="#extra_files_to_link"><code>extra_files_to_link</code></a></li>
+  <li><a href="#run_preview_server" id="toc-run_preview_server" class="nav-link" data-scroll-target="#run_preview_server">run_preview_server</a></li>
   </ul></li>
   <li><a href="#publishing-with-github-pages" id="toc-publishing-with-github-pages" class="nav-link" data-scroll-target="#publishing-with-github-pages">Publishing with GitHub Pages</a>
   <ul class="collapse">
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
   <li><a href="#typical-workflow" id="toc-typical-workflow" class="nav-link" data-scroll-target="#typical-workflow">Typical workflow</a></li>
-  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#what-the-function-creates" id="toc-what-the-function-creates" class="nav-link" data-scroll-target="#what-the-function-creates">What the function creates</a></li>
   <li><a href="#finishing-steps-by-mode" id="toc-finishing-steps-by-mode" class="nav-link" data-scroll-target="#finishing-steps-by-mode">Finishing steps (by mode)</a></li>
   </ul></li>
@@ -528,6 +529,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="packing-your-app" class="level2">
 <h2 class="anchored" data-anchor-id="packing-your-app">Packing Your App</h2>
+<p>To pack your app, make a new .py file in the same folder as your app.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is easiest if your main app file is in the root (top-level) folder of your repository - if it is not, check out <a href="https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py">this packing file</a> for an example of how to deal with it.</p>
+</div>
+</div>
 <p>The <code>pack</code> function converts a Streamlit app into a single <code>index.html</code> file that can be served as a static website.</p>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
@@ -536,20 +551,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will create:</p>
-<pre><code>index.html</code></pre>
-<p>Alternatively, you may wish for the output index.html file to be placed in a different subfolder to keep your repository tidy, or if your chosen static hosting site expects it to be somewhere else.</p>
+<p>Running this will create a new index.html file that is a full stlite app:</p>
+<pre><code>docs/index.html</code></pre>
+<p>The package handles all the additional boilerplate html, as well as applying some common stlite-specific corrections that ensure features like streamlit spinners and material-ui icons work correctly.</p>
+<p>By default, the index.html file is put in the docs folder to keep everything tidy, and because this is a folder github pages can easily be configured to look for.</p>
+<p>Alternatively, you may wish for the output index.html file to be placed in a different subfolder if your chosen static hosting site expects it to be somewhere else.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    requirements<span class="op">=</span>[<span class="st">"matplotlib"</span>, <span class="st">"numpy"</span>],</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"My Demo App"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"docs"</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"my_other_folder"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will create:</p>
-<pre><code>docs/
+<pre><code>my_other_folder/
   └── index.html</code></pre>
+<p>If you want to put it one level up from the current location, you can make your packing file in the same location as the app file (making sure you then run the packing file from that location using the <code>cd</code> command or similar), and then use <code>".."</code> as the path to tell the package to place the output file one level up.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">".."</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will create:</p>
+<pre><code>index.html
+app/
+  └── streamlit_app.py
+  └── my_packing_file.py</code></pre>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -581,9 +608,10 @@ Tip
 <pre><code>Failed to execute 'pushState' on 'History'</code></pre>
 <pre><code>GET http://stlite.invalid/... net::ERR_NAME_NOT_RESOLVED</code></pre>
 <p>Don’t worry! These errors are caused by browser security restrictions and do not indicate a problem with the app.</p>
-<p>To run the app correctly, you need to serve it over HTTP/HTTPS. For example, to test locally:</p>
+<p>To run the app correctly, you need to serve it over HTTP/HTTPS.</p>
+<p>If you add the argument <code>run_preview_server=True</code> to your packing function, the app will automatically be previewed - though remember to close the server with CTRL + C if you’ve got extra steps in your packing file.</p>
+<p>Alternatively, you can start the server yourself:</p>
 <p>Once served over HTTP, navigation and media files will work as expected.</p>
-<p>Optional: you could also include a note about GitHub Pages:</p>
 <p>Deploying the app to GitHub Pages or any web server will automatically avoid these errors.</p>
 </div>
 </div>
@@ -603,19 +631,19 @@ Tip
 <li>a path to a <code>requirements.txt</code> file.</li>
 </ul>
 <p>e.g.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    requirements<span class="op">=</span>[<span class="st">"matplotlib"</span>, <span class="st">"numpy"</span>],</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    requirements<span class="op">=</span>[<span class="st">"matplotlib"</span>, <span class="st">"numpy"</span>],</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    requirements<span class="op">=</span><span class="st">"requirements.txt"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    requirements<span class="op">=</span><span class="st">"requirements.txt"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If omitted, no extra packages are installed.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -627,7 +655,8 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>*Note that due to the way packages are managed in stlite, using pyodide and micropip, you may not be able to ‘pin’ dependencies in the way you are used to with streamlit apps. More detail about this will be added soon.</p>
+<p><em>Note that due to the way packages are managed in stlite, using pyodide and micropip, you </em>may* not be able to ‘pin’ certain dependencies in the way you are used to with streamlit apps.</p>
+<p>More detail about this will be added soon.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -641,66 +670,134 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <p>In particular, it’s not possible to specify a version of the Streamlit package - this will be ignored by stlite!</p>
+<p>Pandas, numpy, scipy and other common packages that are not pure python are other packages where issues may be encountered.</p>
 </div>
 </div>
 </section>
 <section id="title" class="level5">
 <h5 class="anchored" data-anchor-id="title"><code>title</code></h5>
 <p>This controls the name of the app that will be displayed when a user has it open in a web browser, showing up as the name of the tab.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"My Amazing App"</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"My Amazing App"</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="stylesheet_version-js_bundle_version" class="level5">
 <h5 class="anchored" data-anchor-id="stylesheet_version-js_bundle_version"><code>stylesheet_version</code> / <code>js_bundle_version</code></h5>
 <p>Version numbers of the stlite JavaScript and CSS bundles. Must be valid versions from the stlite releases page. This will control the Streamlit version that is used too.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    stylesheet_version<span class="op">=</span><span class="st">"0.84.1"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    js_bundle_version<span class="op">=</span><span class="st">"0.84.1"</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you want to see the list of valid stlite versions:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack.pack <span class="im">import</span> get_stlite_versions</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>get_stlite_versions()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="use_raw_api" class="level5">
-<h5 class="anchored" data-anchor-id="use_raw_api"><code>use_raw_api</code></h5>
-<p>st-lite provides two ways of wrapping apps. If this parameter is set to <code>True</code>, use stlite’s raw <code>mount()</code> API instead of the <code>&lt;streamlit-app&gt;</code> block. The main reason for doing this is if you want to specify a particular pyodide version.</p>
-</section>
-<section id="pyodide_version" class="level5">
-<h5 class="anchored" data-anchor-id="pyodide_version"><code>pyodide_version</code></h5>
-<p>Specify the Pyodide version to use. <strong>Ignored if <code>use_raw_api=False</code>.</strong></p>
-</section>
-<section id="extra_files" class="level5">
-<h5 class="anchored" data-anchor-id="extra_files"><code>extra_files</code></h5>
-<p>Extra files (relative paths) to mount inside the app, e.g.&nbsp;a <code>.streamlit/config.toml</code> or extra helper scripts. Note that this must be passed as a list of strings (even if you’re only adding one extra file this way).</p>
-<p>Also note that you don’t need to manually add extra app pages from your <code>pages</code> subfolder this way - they will automatically be picked up when you pass in the path of your main/entrypoint file.</p>
-<p>e.g.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The package will default to “0.80.5”, which is known to be particularly stable.</p>
+</div>
+</div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    extra_files<span class="op">=</span>[<span class="st">".streamlit/config.toml"</span>, <span class="st">"data.csv"</span>]</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># It's highly recommended to use the same version for both arguments!</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    stylesheet_version<span class="op">=</span><span class="st">"0.84.1"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    js_bundle_version<span class="op">=</span><span class="st">"0.84.1"</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want to see the list of valid stlite versions:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack.pack <span class="im">import</span> get_stlite_versions</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>get_stlite_versions()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="extra_files_to_embed" class="level5">
+<h5 class="anchored" data-anchor-id="extra_files_to_embed"><code>extra_files_to_embed</code></h5>
+<p>Extra files (relative paths) to mount inside the app, e.g.&nbsp;a <code>.streamlit/config.toml</code> or extra helper scripts.</p>
+<p>e.g.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>pack(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    extra_files<span class="op">=</span>[<span class="st">".streamlit/config.toml"</span>, <span class="st">"data.csv"</span>]</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that this must be passed as a list of strings (even if you’re only adding one extra file this way).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Also note that you don’t need to manually add extra app pages from your <code>pages</code> subfolder this way - they will automatically be picked up when you pass in the path of your main/entrypoint file.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At present, this only really works with text-based files, like .py, .toml, .yml, .csv, etc.</p>
+<p>It will try to convert binary file types like .jpg, .png, .mp4 etc. into an embeddable format, but this is experimental and will increase the size of your index.html file significantly</p>
+<p>If you need to include these kinds of files, it’s recommended to use <code>extra_files_to_link</code> instead.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="extra_files_to_link" class="level3">
+<h3 class="anchored" data-anchor-id="extra_files_to_link"><code>extra_files_to_link</code></h3>
+<p>Additional files to hyperlink to. - If passed as a list, must be used with the argument ‘prepend_github_path’. The list must be a list of relative filepaths. - If passed as a dict, expects key:value pairs of relative_filepath: url</p>
+<p>e.g.&nbsp;{‘img/my_img.png’: ’https://raw.githubusercontent.com/your-github-username/your-github-repository/refs/heads/main/img/my_img.png}</p>
+<section id="prepend_github_path" class="level4">
+<h4 class="anchored" data-anchor-id="prepend_github_path">prepend_github_path</h4>
+<p>If files to be linked are stored on github, you can pass them as relative paths in the ‘extra_files_to_link’ argument, and then use this argument to automatically generate the url links to the files in your repository.</p>
+<p>Needs to passed in the format “username/reponame” e.g.&nbsp;a username of Bergam0t with a reponame of my-streamlit-app would be “Bergam0t/my-streamlit-app”</p>
+<p>Then, for example, if you passed a list of [‘img/my_img.png’] to the ‘extra_files_to_link’ argument, it would automatically generate the url of https://raw.githubusercontent.com/Bergam0t/my-streamlit-app/refs/heads/main/img/my_img.png</p>
+</section>
+<section id="github_branch" class="level4">
+<h4 class="anchored" data-anchor-id="github_branch">github_branch</h4>
+<p>If files to be linked to on Github need to come from a branch other than main, provide the name of the desired branch here. e.g.&nbsp;a username of Bergam0t with a reponame of my-streamlit-app would be “Bergam0t/my-streamlit-app”</p>
+<p>If you passed ‘dev’ as your branch to this argument, and then passed a list of [‘img/my_img.png’] to the ‘extra_files_to_link’ argument, it would automatically generate the url of https://raw.githubusercontent.com/Bergam0t/my-streamlit-app/refs/heads/dev/img/my_img.png</p>
+</section>
+</section>
+<section id="run_preview_server" class="level3">
+<h3 class="anchored" data-anchor-id="run_preview_server">run_preview_server</h3>
+<p>Setting <code>run_preview_server</code> to true will automatically preview your stlite app in a new browser window so you can check it works as expected.</p>
+<p>Rremember to close the server with CTRL + C if you’ve got extra steps in your packing file.</p>
 <hr>
-</section>
-</section>
 </section>
 </section>
 <section id="publishing-with-github-pages" class="level2">
 <h2 class="anchored" data-anchor-id="publishing-with-github-pages">Publishing with GitHub Pages</h2>
-<p>Use <code>setup_github_pages()</code> to scaffold a GitHub Pages deployment for your packaged stlite app. It creates the necessary files and prints step-by-step instructions (also saved to <code>PAGES_SETUP.md</code>).</p>
+<p>Use <code>setup_github_pages()</code> to scaffold a GitHub Pages deployment for your packaged stlite app.</p>
+<p>It creates the necessary files and prints step-by-step instructions (also saved to <code>PAGES_SETUP.md</code>).</p>
 <section id="prerequisites" class="level3">
 <h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
 <ul>
 <li>You have a GitHub account and a repository for your app.</li>
-<li>Your packaged app (e.g., <code>docs/index.html</code>) is committed in that repository.</li>
 <li>You know which branch you’ll publish from (default: <code>main</code>).</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -723,54 +820,30 @@ GitHub Basics
 </section>
 <section id="typical-workflow" class="level3">
 <h3 class="anchored" data-anchor-id="typical-workflow">Typical workflow</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack, setup_github_pages</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Pack your app into docs/index.html (recommended for Pages)</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>pack(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    requirements<span class="op">=</span>[<span class="st">"matplotlib"</span>],</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"docs"</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Scaffold GitHub Pages</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>setup_github_pages(</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    mode<span class="op">=</span><span class="st">"gh-actions"</span>,     <span class="co"># or "manual"</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    use_docs<span class="op">=</span><span class="va">True</span>,         <span class="co"># serve from /docs (recommended)</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    only_on_index<span class="op">=</span><span class="va">True</span>,    <span class="co"># only trigger CI when index.html changes (gh-actions mode only)</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    branch<span class="op">=</span><span class="st">"main"</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Commit and push the changes (index.html, .nojekyll, and possibly .github/workflows/deploy.yml)</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">#    Then follow the printed instructions (also saved to PAGES_SETUP.md).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="parameters" class="level3">
-<h3 class="anchored" data-anchor-id="parameters">Parameters</h3>
-<ul>
-<li><code>mode</code>: <code>{"gh-actions", "manual"}</code>
-<ul>
-<li><code>"gh-actions"</code>: Creates a GitHub Actions workflow to deploy your Pages site. You must still go to <strong>Repo → Settings → Pages</strong> and set <strong>Source: GitHub Actions</strong> so the workflow may run.</li>
-<li><code>"manual"</code>: You deploy directly from a branch (no Actions). The function prints and writes setup instructions (to <code>PAGES_SETUP.md</code>) so you can configure Pages in repo settings.</li>
-</ul></li>
-<li><code>use_docs</code> <em>(bool, default <code>True</code>)</em>
-<ul>
-<li>If <code>True</code>, serve from the <code>docs/</code> folder (i.e., your app is at <code>docs/index.html</code>).</li>
-<li>If <code>False</code>, serve from the repository root (i.e., <code>./index.html</code>).</li>
-</ul></li>
-<li><code>only_on_index</code> <em>(bool, default <code>True</code> — <strong>gh-actions only</strong>)</em>
-<ul>
-<li>If <code>True</code>, the workflow triggers only when <code>index.html</code> changes.</li>
-<li>Ignored in <code>"manual"</code> mode.</li>
-</ul></li>
-<li><code>branch</code> <em>(str, default <code>"main"</code>)</em>
-<ul>
-<li>The source branch for GitHub Pages (and for the workflow if using Actions).</li>
-</ul></li>
-</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stlitepack <span class="im">import</span> pack, setup_github_pages</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Pack your app into docs/index.html (recommended for Pages)</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>pack(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    app_file<span class="op">=</span><span class="st">"streamlit_app.py"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    requirements<span class="op">=</span>[<span class="st">"matplotlib"</span>],</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"docs"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Scaffold GitHub Pages</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>setup_github_pages(</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    mode<span class="op">=</span><span class="st">"gh-actions"</span>,     <span class="co"># or "manual"</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    use_docs<span class="op">=</span><span class="va">True</span>,         <span class="co"># serve from /docs (recommended) - matches the pack default</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    only_on_index<span class="op">=</span><span class="va">True</span>,    <span class="co"># only trigger a pages rebuild when index.html changes</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    branch<span class="op">=</span><span class="st">"main"</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Follow the printed instructions (also saved to PAGES_SETUP.md).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="what-the-function-creates" class="level3">
 <h3 class="anchored" data-anchor-id="what-the-function-creates">What the function creates</h3>
 <ul>
-<li>A <code>.nojekyll</code> file in the <strong>repo root</strong>, and <strong>also in <code>docs/</code></strong> if <code>use_docs=True</code> (disables Jekyll so files are served as-is).</li>
+<li>A <code>.nojekyll</code> file in the <strong>repo root</strong> (disables Jekyll so files are served as-is).</li>
+<li>A <code>404.html</code> file in the same folder as your <code>index.html</code> file (due to the way navigation works in stlite, this ensures users won’t see a 404 page not found error when refreshing while on a subpage of your app, or if they share or bookmark a link to a subpage)</li>
 <li>If <code>mode="gh-actions"</code>:
 <ul>
 <li>A workflow file at <strong><code>.github/workflows/deploy.yml</code></strong>.</li>
@@ -800,10 +873,27 @@ GitHub Basics
 <ul>
 <li><strong>Build and deployment → Source</strong>: <code>GitHub Actions</code>.</li>
 </ul></li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Make sure you enable this before committing the files!</p>
+<p>If you do not, it will not trigger a build when first enabled without you forcibly making a change to <code>index.html</code> and committing/pushing that change.</p>
+</div>
+</div>
+<ol start="2" type="1">
 <li>Commit the generated files:
 <ul>
 <li><code>.github/workflows/deploy.yml</code></li>
-<li><code>.nojekyll</code> (root and, if applicable, <code>docs/.nojekyll</code>)</li>
+<li><code>.nojekyll</code></li>
+<li><code>404.html</code></li>
 <li><code>index.html</code> in your target folder (<code>docs/</code> if <code>use_docs=True</code>, else repo root).</li>
 </ul></li>
 <li>Push to your repo. The workflow will build and deploy your site.</li>

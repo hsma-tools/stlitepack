@@ -327,7 +327,7 @@ def pack(
         Title to insert into the HTML ``<title>`` tag. Default is ``"stlite app"``.
     output_dir : str, optional
         Directory where the generated ``index.html`` will be written.
-        Default is ``"dist"``.
+        Default is ``"docs"``.
     use_raw_api : bool, optional
         If True, will use the version of the template that calls the `mount()` API explicitly.
         Default is `True`.

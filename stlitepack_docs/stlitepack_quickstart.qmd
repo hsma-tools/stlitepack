@@ -48,6 +48,13 @@ pip install stlitepack
 
 ## Packing Your App
 
+To pack your app, make a new .py file in the same folder as your app.
+
+:::{.callout-tip}
+This is easiest if your main app file is in the root (top-level) folder of your repository - if it is not, check out [this packing file](https://github.com/Bergam0t/hr_Non-Elective-Flow-Simulation/blob/main/app/pack.py) for an example of how to deal with it.
+:::
+
+
 The `pack` function converts a Streamlit app into a single `index.html` file that can be served as a static website.
 
 ### Example
@@ -60,30 +67,52 @@ pack(
 )
 ```
 
-This will create:
+Running this will create a new index.html file that is a full stlite app:
 
 ```
-index.html
+docs/index.html
 ```
 
-Alternatively, you may wish for the output index.html file to be placed in a different subfolder to keep your repository tidy, or if your chosen static hosting site expects it to be somewhere else.
+The package handles all the additional boilerplate html, as well as applying some common stlite-specific corrections that ensure features like streamlit spinners and material-ui icons work correctly.
+
+By default, the index.html file is put in the docs folder to keep everything tidy, and because this is a folder github pages can easily be configured to look for.
+
+Alternatively, you may wish for the output index.html file to be placed in a different subfolder if your chosen static hosting site expects it to be somewhere else.
 
 ```python
 from stlitepack import pack
 
 pack(
     app_file="streamlit_app.py",
-    requirements=["matplotlib", "numpy"],
-    title="My Demo App",
-    output_dir="docs"
+    output_dir="my_other_folder"
 )
 ```
 
 This will create:
 
 ```
-docs/
+my_other_folder/
   └── index.html
+```
+
+If you want to put it one level up from the current location, you can make your packing file in the same location as the app file (making sure you then run the packing file from that location using the `cd` command or similar), and then use `".."` as the path to tell the package to place the output file one level up.
+
+```python
+from stlitepack import pack
+
+pack(
+    app_file="streamlit_app.py",
+    output_dir=".."
+)
+```
+
+This will create:
+
+```
+index.html
+app/
+  └── streamlit_app.py
+  └── my_packing_file.py
 ```
 
 :::{.callout-tip}
@@ -108,7 +137,11 @@ GET http://stlite.invalid/... net::ERR_NAME_NOT_RESOLVED
 
 Don’t worry! These errors are caused by browser security restrictions and do not indicate a problem with the app.
 
-To run the app correctly, you need to serve it over HTTP/HTTPS. For example, to test locally:
+To run the app correctly, you need to serve it over HTTP/HTTPS.
+
+If you add the argument `run_preview_server=True` to your packing function, the app will automatically be previewed - though remember to close the server with CTRL + C if you've got extra steps in your packing file.
+
+Alternatively, you can start the server yourself:
 
 ```{=bash}
 # From the root of the packaged app
@@ -119,10 +152,7 @@ http://localhost:8000/docs/index.html
 
 Once served over HTTP, navigation and media files will work as expected.
 
-Optional: you could also include a note about GitHub Pages:
-
 Deploying the app to GitHub Pages or any web server will automatically avoid these errors.
-
 
 :::
 
@@ -169,12 +199,15 @@ If omitted, no extra packages are installed.
 
 :::{.callout-warning}
 
-*Note that due to the way packages are managed in stlite, using pyodide and micropip, you may not be able to 'pin' dependencies in the way you are used to with streamlit apps. More detail about this will be added soon.
+*Note that due to the way packages are managed in stlite, using pyodide and micropip, you *may* not be able to 'pin' certain dependencies in the way you are used to with streamlit apps.
 
+More detail about this will be added soon.
 :::
 
 :::{.callout-warning}
 In particular, it's not possible to specify a version of the Streamlit package - this will be ignored by stlite!
+
+Pandas, numpy, scipy and other common packages that are not pure python are other packages where issues may be encountered.
 :::
 
 ##### `title`
@@ -194,11 +227,16 @@ pack(
 
 Version numbers of the stlite JavaScript and CSS bundles. Must be valid versions from the stlite releases page. This will control the Streamlit version that is used too.
 
+:::{.callout-tip}
+The package will default to "0.80.5", which is known to be particularly stable.
+:::
+
 ```python
 from stlitepack import pack
 
 pack(
     app_file="streamlit_app.py",
+    # It's highly recommended to use the same version for both arguments!
     stylesheet_version="0.84.1",
     js_bundle_version="0.84.1"
 )
@@ -211,19 +249,8 @@ from stlitepack.pack import get_stlite_versions
 
 get_stlite_versions()
 ```
-
-##### `use_raw_api`
-
-st-lite provides two ways of wrapping apps. If this parameter is set to `True`, use stlite’s raw `mount()` API instead of the `<streamlit-app>` block.
-The main reason for doing this is if you want to specify a particular pyodide version.
-
-##### `pyodide_version`
-Specify the Pyodide version to use. **Ignored if `use_raw_api=False`.**
-
-##### `extra_files`
-Extra files (relative paths) to mount inside the app, e.g. a `.streamlit/config.toml` or extra helper scripts. Note that this must be passed as a list of strings (even if you're only adding one extra file this way).
-
-Also note that you don't need to manually add extra app pages from your `pages` subfolder this way - they will automatically be picked up when you pass in the path of your main/entrypoint file.
+##### `extra_files_to_embed`
+Extra files (relative paths) to mount inside the app, e.g. a `.streamlit/config.toml` or extra helper scripts.
 
 e.g.
 
@@ -236,7 +263,61 @@ pack(
 )
 ```
 
+:::{.callout-tip}
+Note that this must be passed as a list of strings (even if you're only adding one extra file this way).
+:::
 
+:::{.callout-tip}
+Also note that you don't need to manually add extra app pages from your `pages` subfolder this way - they will automatically be picked up when you pass in the path of your main/entrypoint file.
+:::
+
+:::{.callout-warning}
+At present, this only really works with text-based files, like .py, .toml, .yml, .csv, etc.
+
+It will try to convert binary file types like .jpg, .png, .mp4 etc. into an embeddable format, but this is experimental and will increase the size of your index.html file significantly
+
+If you need to include these kinds of files, it's recommended to use `extra_files_to_link` instead.
+:::
+
+### `extra_files_to_link`
+
+Additional files to hyperlink to.
+- If passed as a list, must be used with the argument 'prepend_github_path'.
+  The list must be a list of relative filepaths.
+- If passed as a dict, expects key:value pairs of relative_filepath: url
+
+e.g. {'img/my_img.png': 'https://raw.githubusercontent.com/your-github-username/your-github-repository/refs/heads/main/img/my_img.png}
+
+#### prepend_github_path
+If files to be linked are stored on github, you can pass them as relative paths in the
+'extra_files_to_link' argument, and then use this argument to automatically generate the url
+links to the files in your repository.
+
+Needs to passed in the format "username/reponame"
+e.g. a username of Bergam0t with a reponame of my-streamlit-app would be
+"Bergam0t/my-streamlit-app"
+
+Then, for example, if you passed a list of ['img/my_img.png'] to the 'extra_files_to_link'
+argument, it would automatically generate the url of
+https://raw.githubusercontent.com/Bergam0t/my-streamlit-app/refs/heads/main/img/my_img.png
+
+#### github_branch
+
+If files to be linked to on Github need to come from a branch other than main, provide
+the name of the desired branch here.
+e.g. a username of Bergam0t with a reponame of my-streamlit-app would be
+"Bergam0t/my-streamlit-app"
+
+If you passed 'dev' as your branch to this argument, and then passed a list
+of ['img/my_img.png'] to the 'extra_files_to_link' argument, it would automatically
+generate the url of
+https://raw.githubusercontent.com/Bergam0t/my-streamlit-app/refs/heads/dev/img/my_img.png
+
+### run_preview_server
+
+Setting `run_preview_server` to true will automatically preview your stlite app in a new browser window so you can check it works as expected.
+
+Rremember to close the server with CTRL + C if you've got extra steps in your packing file.
 
 ---
 
@@ -244,12 +325,12 @@ pack(
 ## Publishing with GitHub Pages
 
 Use `setup_github_pages()` to scaffold a GitHub Pages deployment for your packaged stlite app.
+
 It creates the necessary files and prints step-by-step instructions (also saved to `PAGES_SETUP.md`).
 
 ### Prerequisites
 
 - You have a GitHub account and a repository for your app.
-- Your packaged app (e.g., `docs/index.html`) is committed in that repository.
 - You know which branch you’ll publish from (default: `main`).
 
 :::{.callout-note}
@@ -275,37 +356,21 @@ pack(
 # 2) Scaffold GitHub Pages
 setup_github_pages(
     mode="gh-actions",     # or "manual"
-    use_docs=True,         # serve from /docs (recommended)
-    only_on_index=True,    # only trigger CI when index.html changes (gh-actions mode only)
+    use_docs=True,         # serve from /docs (recommended) - matches the pack default
+    only_on_index=True,    # only trigger a pages rebuild when index.html changes
     branch="main"
 )
 
-# 3) Commit and push the changes (index.html, .nojekyll, and possibly .github/workflows/deploy.yml)
-#    Then follow the printed instructions (also saved to PAGES_SETUP.md).
+# 3) Follow the printed instructions (also saved to PAGES_SETUP.md).
 ```
-
-### Parameters
-
-- `mode`: `{"gh-actions", "manual"}`
-  - `"gh-actions"`: Creates a GitHub Actions workflow to deploy your Pages site.
-    You must still go to **Repo → Settings → Pages** and set **Source: GitHub Actions** so the workflow may run.
-  - `"manual"`: You deploy directly from a branch (no Actions). The function prints and writes setup instructions (to `PAGES_SETUP.md`) so you can configure Pages in repo settings.
-
-- `use_docs` *(bool, default `True`)*
-  - If `True`, serve from the `docs/` folder (i.e., your app is at `docs/index.html`).
-  - If `False`, serve from the repository root (i.e., `./index.html`).
-
-- `only_on_index` *(bool, default `True` — **gh-actions only**)*
-  - If `True`, the workflow triggers only when `index.html` changes.
-  - Ignored in `"manual"` mode.
-
-- `branch` *(str, default `"main"`)*
-  - The source branch for GitHub Pages (and for the workflow if using Actions).
 
 ### What the function creates
 
-- A `.nojekyll` file in the **repo root**, and **also in `docs/`** if `use_docs=True`
+- A `.nojekyll` file in the **repo root**
   (disables Jekyll so files are served as-is).
+- A `404.html` file in the same folder as your `index.html` file
+  (due to the way navigation works in stlite, this ensures users won't see a 404 page not found error
+  when refreshing while on a subpage of your app, or if they share or bookmark a link to a subpage)
 - If `mode="gh-actions"`:
   - A workflow file at **`.github/workflows/deploy.yml`**.
   - A **`PAGES_SETUP.md`** helper with the exact steps to enable Pages via **GitHub Actions**.
@@ -326,9 +391,18 @@ setup_github_pages(
 
 1. In **Repo → Settings → Pages**:
    - **Build and deployment → Source**: `GitHub Actions`.
+
+:::{.callout-warning}
+Make sure you enable this before committing the files!
+
+If you do not, it will not trigger a build when first enabled without you forcibly making a change
+to `index.html` and committing/pushing that change.
+:::
+
 2. Commit the generated files:
    - `.github/workflows/deploy.yml`
-   - `.nojekyll` (root and, if applicable, `docs/.nojekyll`)
+   - `.nojekyll`
+   - `404.html`
    - `index.html` in your target folder (`docs/` if `use_docs=True`, else repo root).
 3. Push to your repo. The workflow will build and deploy your site.
 
