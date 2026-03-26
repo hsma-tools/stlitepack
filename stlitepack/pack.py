@@ -247,6 +247,7 @@ def _run_preview_server(
 # MARK: Main Function
 def pack(
     app_file: str,
+    project_root: str | None = None,
     extra_files_to_embed: list[str] | None = None,
     extra_files_to_link: list[str] | dict | None = None,
     prepend_github_path: str | None = None,
@@ -288,6 +289,25 @@ def pack(
         Path to the main Streamlit application file (entrypoint) (e.g., ``"app.py"``).
         If additional pages are found in a 'pages' folder at the same level as this main app file,
         these will be added in as additional files.
+    project_root : str, optional
+        Path to the root directory of the project. If provided, all files to be
+        embedded or linked must be located within this directory, and their
+        relative paths will be computed with respect to it.
+
+        This is useful for projects that separate the Streamlit app and supporting
+        code into different folders (e.g., an ``app/`` folder for the UI and a
+        ``src/`` folder for importable packages). In such cases, setting
+        ``project_root`` ensures that all required files can be included and
+        correctly referenced in the packaged output.
+
+        To use the top-level project directory (i.e., the folder containing both
+        ``app/`` and ``src/``), you can pass:
+
+        - ``project_root="."`` if running the script from the project root, or
+        - an explicit path such as ``project_root="my_project"`` or an absolute path.
+
+        If ``None`` (default), the project root is assumed to be the parent
+        directory of ``app_file``, preserving the behaviour from 0.4.5 and earlier.
     extra_files_to_embed : list[str], optional
         Additional files to mount directly into the app (e.g. .streamlit/config.toml).
         This will work best with files that are primarily text-based (e.g. .py, .toml, .csv).
@@ -412,11 +432,14 @@ def pack(
         if version.parse(v_str) < min_version:
             raise ValueError(f"{v_name} must be >= 0.76.0, got {v_str}")
 
-    app_path = Path(app_file)
+    app_path = Path(app_file).resolve()
     if not app_path.exists():
         raise FileNotFoundError(f"App file not found: {app_file}")
 
-    base_dir = app_path.parent
+    if project_root is not None:
+        base_dir = Path(project_root).resolve()
+    else:
+        base_dir = app_path.parent.resolve()
 
     # Gather files: entrypoint first, then optional pages/*
     files_to_pack = [app_path]
@@ -492,8 +515,16 @@ def pack(
         file_entries = []
         # Pack main files
         for f in files_to_pack:
-            rel_name = f.relative_to(base_dir).as_posix()
-            content = _read_file_flexibly(f)
+            try:
+                f_resolved = f.resolve()
+                rel_name = f_resolved.relative_to(base_dir).as_posix()
+            except ValueError:
+                raise ValueError(
+                    f"File '{f}' is not inside the project root '{base_dir}'.\n\n"
+                    "If you are using a src/ layout or files outside the app directory,\n"
+                    "consider setting project_root='.' when calling pack()."
+                )
+            content = _read_file_flexibly(f_resolved)
             processed = (
                 code_replacements(content, replace_df_with_table=replace_df_with_table)
                 if automated_stlite_fixes
@@ -508,11 +539,38 @@ def pack(
         # where instead of embedding the code
         if isinstance(extra_files_to_link, dict):
             for k, v in extra_files_to_link.items():
-                file_entries.append(f'"{k}": {{\nurl: "{v}"\n}}')
+                k_path = Path(k)
+
+                if project_root is not None:
+                    try:
+                        k_resolved = k_path.resolve()
+                        rel_name = k_resolved.relative_to(base_dir).as_posix()
+                    except ValueError:
+                        raise ValueError(
+                            f"Linked file '{k}' is not inside the project root '{base_dir}'."
+                        )
+                else:
+                    rel_name = k_path.as_posix()
+
+                file_entries.append(f'"{rel_name}": {{\nurl: "{v}"\n}}')
         elif isinstance(extra_files_to_link, list) and prepend_github_path is not None:
             for f in extra_files_to_link:
+                f_path = Path(f)
+
+                if project_root is not None:
+                    try:
+                        f_resolved = f_path.resolve()
+                        rel_name = f_resolved.relative_to(base_dir).as_posix()
+                    except ValueError:
+                        raise ValueError(
+                            f"Linked file '{f}' is not inside the project root '{base_dir}'.\n\n"
+                            "All linked files must also be within project_root."
+                        )
+                else:
+                    rel_name = f_path.as_posix()
+
                 file_entries.append(
-                    f'"{f}": {{\nurl: "https://raw.githubusercontent.com/{prepend_github_path}/refs/heads/{github_branch}/{f}"\n}}'
+                    f'"{rel_name}": {{\nurl: "https://raw.githubusercontent.com/{prepend_github_path}/refs/heads/{github_branch}/{rel_name}"\n}}'
                 )
         elif isinstance(extra_files_to_link, list) and prepend_github_path is None:
             warnings.warn(
@@ -561,7 +619,8 @@ def pack(
                 if automated_stlite_fixes
                 else code
             )
-            rel_name = f.relative_to(base_dir).as_posix()
+            f_resolved = f.resolve()
+            rel_name = f_resolved.relative_to(base_dir)
             entry_attr = " entrypoint" if f == app_path else ""
             app_file_blocks.append(
                 f'  <app-file name="{rel_name}"{entry_attr}>\n'
