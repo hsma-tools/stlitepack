@@ -76,7 +76,6 @@ quartodoc:
       desc: ""
       contents:
         - pack.pack
-        - pack.list_files_in_folders
     - title: Publishing Functions
       desc: ""
       contents:
@@ -85,6 +84,7 @@ quartodoc:
       desc: ""
       contents:
         - pack.get_stlite_versions
+        - pack.list_files_in_folders
 
 format:
   html:
