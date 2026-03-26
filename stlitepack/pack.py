@@ -89,6 +89,17 @@ def _read_file_flexibly(path: Path):
         return base64.b64encode(binary_content).decode("utf-8")
 
 
+def _escape_js_template_literal(s: str) -> str:
+    """
+    Escape a string so it can be safely embedded inside a JS template literal.
+    """
+    return (
+        s.replace("\\", "\\\\")  # escape backslashes first
+        .replace("`", "\\`")  # escape backticks
+        .replace("${", "\\${")  # prevent template interpolation
+    )
+
+
 def _material_icons_style(
     version: str = "Rounded", force_download: bool = False
 ) -> str:
@@ -483,9 +494,15 @@ def pack(
         for f in files_to_pack:
             rel_name = f.relative_to(base_dir).as_posix()
             content = _read_file_flexibly(f)
-            file_entries.append(
-                f'"{rel_name}": `\n{code_replacements(content, replace_df_with_table=replace_df_with_table) if automated_stlite_fixes else content}\n            `'
+            processed = (
+                code_replacements(content, replace_df_with_table=replace_df_with_table)
+                if automated_stlite_fixes
+                else content
             )
+
+            escaped = _escape_js_template_literal(processed)
+
+            file_entries.append(f'"{rel_name}": `\n{escaped}\n            `')
 
         # NOTE - Here will add in the step of including any additional linked files
         # where instead of embedding the code
